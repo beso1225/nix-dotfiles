@@ -35,6 +35,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     git
+    neovim
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -75,4 +76,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  xdg.configFile."nvim".source = ./nvim;
 }
+
