@@ -18,65 +18,134 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
     git
     neovim
+    eza
+    lazygit
+    yazi
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-    ".gitconfig".source = ./git/.gitconfig;
+  home.sessionVariables = {
+    FZF_TMUX = "1";
+    FZF_TMUX_OPTS = "-p 50%";
+    CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/yutarotakagi/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
+  home.sessionPath = [
+    "$HOME/bin"
+    "$HOME/.local/bin"
+    "$HOME/.moon/bin"
+  ];
+
+  home.file = {
+    ".gitconfig".source = ./git/.gitconfig;
+
+    # Custom zsh functions loaded via fpath
+    ".config/zsh/functions/ccnew".source = ./zsh/functions/ccnew;
+    ".config/zsh/functions/y".source = ./zsh/functions/y;
+
+    # zsh-abbr abbreviations (hardcoded in nix)
+    ".config/zsh-abbr/user-abbreviations".text = ''
+      abbr "cdev"='podman run --rm -it -v $PWD:/work -v "$HOME/Documents/programing/Cpp/podman/bashrc":/root/.bashrc:ro -w /work cpp-toolbox:ubuntu2404 bash'
+      abbr "l"="eza -F --git --icons"
+      abbr "lg"="lazygit"
+      abbr "ll"="eza -al --git --icons"
+    '';
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+      character = {
+        success_symbol = "[❯](green)";
+        error_symbol = "[❯](red)";
+      };
+      git_branch = {
+        symbol = " ";
+        style = "bold yellow";
+      };
+      git_status = {
+        disabled = false;
+      };
+      package = {
+        disabled = true;
+      };
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd" "cd" ];
+  };
+
+  programs.carapace = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # Sheldon manages zsh plugins (autosuggestions, syntax-highlighting, zsh-abbr).
+  # Autocompletion is handled by nix enableCompletion + carapace instead.
+  programs.sheldon = {
+    enable = true;
+    settings = {
+      shell = "zsh";
+      plugins = {
+        zsh-autosuggestions = { github = "zsh-users/zsh-autosuggestions"; };
+        zsh-syntax-highlighting = { github = "zsh-users/zsh-syntax-highlighting"; };
+        zsh-abbr = { github = "olets/zsh-abbr"; };
+      };
+    };
+  };
+
+  programs.zsh = {
+    enable = true;
+    # Autosuggestions and syntax-highlighting are managed by sheldon above.
+    autosuggestion.enable = false;
+    syntaxHighlighting.enable = false;
+    enableCompletion = true;
+
+    history = {
+      size = 10000;
+      save = 10000;
+      ignoreDups = true;
+      ignoreSpace = true;
+      extended = true;
+      share = true;
+    };
+
+    initContent = ''
+      ulimit -n 8192 2>/dev/null
+
+      # Homebrew setup (macOS)
+      if [ -f /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+
+      # Load custom zsh functions via fpath
+      fpath=($HOME/.config/zsh/functions $fpath)
+      autoload -Uz ccnew y
+
+      # Completion styling
+      zstyle ':completion:*' menu select
+      zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7aa2f7'
+
+      # Useful zsh options
+      setopt auto_pushd
+      setopt auto_cd
+    '';
+  };
+
   xdg.configFile."nvim".source = ./nvim;
 }
-
