@@ -122,7 +122,7 @@
       # Completion styling
       zstyle ':completion:*' menu select
       zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-      zstyle ':autosuggestion:*' highlight-style 'fg=#7aa2f7'
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7aa2f7'
 
       # Useful zsh options
       setopt auto_pushd
