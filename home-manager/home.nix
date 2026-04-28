@@ -36,6 +36,7 @@
     # '')
     git
     neovim
+    starship
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -76,6 +77,42 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -la";
+      la = "ls -A";
+      l = "ls -CF";
+      vim = "nvim";
+      vi = "nvim";
+    };
+
+    history = {
+      size = 10000;
+      save = 10000;
+      ignoreDups = true;
+      ignoreSpace = true;
+      extended = true;
+      share = true;
+    };
+
+    initContent = ''
+      # Initialize starship prompt
+      eval "$(starship init zsh)"
+
+      # Homebrew setup (macOS)
+      if [ -f /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+
+      # Add local bin to PATH
+      export PATH="$HOME/.local/bin:$PATH"
+    '';
+  };
 
   xdg.configFile."nvim".source = ./nvim;
 }
