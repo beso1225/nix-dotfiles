@@ -7,31 +7,6 @@
     # zsh-autocomplete manages compinit internally; skip home-manager's default call
     enableCompletion = false;
 
-    plugins = [
-      {
-        name = "zsh-autosuggestions";
-        src = pkgs.zsh-autosuggestions;
-        file = "share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh";
-      }
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-syntax-highlighting;
-        file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh";
-      }
-      {
-        name = "zsh-autocomplete";
-        src = pkgs.zsh-autocomplete;
-        file = "share/zsh-autocomplete/zsh-autocomplete.plugin.zsh";
-      }
-      {
-        # zsh-abbr must be loaded after compinit; zsh-autocomplete (above) calls
-        # compinit when sourced, so loading abbr last satisfies that requirement.
-        name = "zsh-abbr";
-        src = pkgs.zsh-abbr;
-        file = "share/zsh/zsh-abbr/zsh-abbr.plugin.zsh";
-      }
-    ];
-
     initContent = ''
       ulimit -n 8192 2>/dev/null
 
@@ -41,6 +16,34 @@
       source ${config.xdg.configHome}/zsh/functions.zsh
     '';
   };
+
+  programs.sheldon = {
+    enable = true;
+  };
+
+  # plugins.toml is written directly to control load order:
+  # zsh-abbr must be sourced after zsh-autocomplete (which calls compinit).
+  # Nix attrsets are sorted alphabetically, so programs.sheldon.plugins would
+  # load zsh-abbr before zsh-autocomplete — writing the file manually avoids this.
+  xdg.configFile."sheldon/plugins.toml".text = ''
+    [plugins.zsh-autosuggestions]
+    local = "${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions"
+    use = ["*.plugin.zsh"]
+
+    [plugins.zsh-syntax-highlighting]
+    local = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting"
+    use = ["*.plugin.zsh"]
+
+    # zsh-autocomplete calls compinit when sourced
+    [plugins.zsh-autocomplete]
+    local = "${pkgs.zsh-autocomplete}/share/zsh-autocomplete"
+    use = ["*.plugin.zsh"]
+
+    # zsh-abbr must be loaded after compinit
+    [plugins.zsh-abbr]
+    local = "${pkgs.zsh-abbr}/share/zsh/zsh-abbr"
+    use = ["*.plugin.zsh"]
+  '';
 
   programs.fzf = {
     enable = true;
