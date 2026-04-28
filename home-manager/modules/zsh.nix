@@ -20,21 +20,23 @@
 
   programs.sheldon = {
     enable = true;
+    settings = {
+      plugins = {
+        zsh-autosuggestions = {
+          local = "${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions";
+          use = [ "*.plugin.zsh" ];
+        };
+        zsh-syntax-highlighting = {
+          local = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting";
+          use = [ "*.plugin.zsh" ];
+        };
+        zsh-abbr = {
+          local = "${pkgs.zsh-abbr}/share/zsh/zsh-abbr";
+          use = [ "*.plugin.zsh" ];
+        };
+      };
+    };
   };
-
-  xdg.configFile."sheldon/plugins.toml".text = ''
-    [plugins.zsh-autosuggestions]
-    local = "${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions"
-    use = ["*.plugin.zsh"]
-
-    [plugins.zsh-syntax-highlighting]
-    local = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting"
-    use = ["*.plugin.zsh"]
-
-    [plugins.zsh-abbr]
-    local = "${pkgs.zsh-abbr}/share/zsh/zsh-abbr"
-    use = ["*.plugin.zsh"]
-  '';
 
   programs.carapace = {
     enable = true;
