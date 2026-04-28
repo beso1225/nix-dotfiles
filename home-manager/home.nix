@@ -59,6 +59,23 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+      character = {
+        success_symbol = "[❯](green)";
+        error_symbol = "[❯](red)";
+      };
+      git_branch = {
+        symbol = " ";
+        style = "bold yellow";
+      };
+      git_status = {
+        disabled = false;
+      };
+      package = {
+        disabled = true;
+      };
+    };
   };
 
   programs.fzf = {
