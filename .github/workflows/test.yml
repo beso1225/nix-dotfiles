@@ -1,0 +1,65 @@
+name: Test Nix Flake
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Validate flake structure on Linux (fast, platform-agnostic check)
+  flake-check:
+    name: Flake Check (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v30
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Check flake
+        run: nix flake check --no-build
+
+      - name: Show flake outputs
+        run: nix flake show
+
+  # Build the macOS (aarch64-darwin) home-manager configuration
+  build-darwin:
+    name: Build Home Manager (macOS aarch64)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v30
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Build home-manager configuration (dry-run)
+        run: |
+          nix build .#homeConfigurations.yutarotakagi.activationPackage \
+            --dry-run \
+            --show-trace
+
+  # Placeholder for future Linux (NixOS / generic Linux) support
+  # Uncomment and extend when a Linux home-manager configuration is added.
+  #
+  # build-linux:
+  #   name: Build Home Manager (Linux x86_64)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: cachix/install-nix-action@v30
+  #       with:
+  #         nix_path: nixpkgs=channel:nixos-unstable
+  #         extra_nix_config: |
+  #           experimental-features = nix-command flakes
+  #     - name: Build home-manager configuration (dry-run)
+  #       run: |
+  #         nix build .#homeConfigurations.<linux-username>.activationPackage \
+  #           --dry-run \
+  #           --show-trace
