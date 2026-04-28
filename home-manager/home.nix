@@ -100,7 +100,7 @@
       share = true;
     };
 
-    initContent = ''
+    initExtra = ''
       # Initialize starship prompt
       eval "$(starship init zsh)"
 
