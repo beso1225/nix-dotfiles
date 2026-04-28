@@ -26,12 +26,12 @@
           local = "${pkgs.zsh-autosuggestions}/share/zsh/plugins/zsh-autosuggestions";
           use = [ "*.plugin.zsh" ];
         };
-        zsh-syntax-highlighting = {
-          local = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting";
-          use = [ "*.plugin.zsh" ];
-        };
         zsh-abbr = {
           local = "${pkgs.zsh-abbr}/share/zsh/zsh-abbr";
+          use = [ "*.plugin.zsh" ];
+        };
+        zsh-syntax-highlighting = {
+          local = "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting";
           use = [ "*.plugin.zsh" ];
         };
       };
