@@ -14,7 +14,11 @@
     { nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = pkg:
+          builtins.elem (nixpkgs.lib.getName pkg) [ "zsh-abbr" ];
+      };
     in
     {
       homeConfigurations."yutarotakagi" = home-manager.lib.homeManagerConfiguration {
