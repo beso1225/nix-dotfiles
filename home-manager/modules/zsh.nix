@@ -32,7 +32,7 @@
       }
     ];
 
-    initExtra = ''
+    initContent = ''
       ulimit -n 8192 2>/dev/null
 
       # Highlight Color Setting
@@ -46,7 +46,7 @@
     enable = true;
     enableZshIntegration = true;
     tmux = {
-      enable = true;
+      enableShellIntegration = true;
       shellIntegrationOptions = [ "-p 50%" ];
     };
   };
