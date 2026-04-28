@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/zsh.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "yutarotakagi";
@@ -36,6 +39,9 @@
     # '')
     git
     neovim
+    eza
+    lazygit
+    yazi
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
