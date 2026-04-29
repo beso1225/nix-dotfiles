@@ -150,6 +150,6 @@
     '';
   };
 
-  xdg.configFile."nvim".source =
+  home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
 }
