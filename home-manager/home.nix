@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfilesDir, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -150,5 +150,6 @@
     '';
   };
 
-  xdg.configFile."nvim".source = ./nvim;
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
 }

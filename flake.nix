@@ -24,8 +24,9 @@
         # the path to your home.nix.
         modules = [ ./home-manager/home.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        # Pass the dotfiles directory so home.nix can create out-of-store
+        # symlinks (writable) instead of Nix store symlinks (read-only).
+        extraSpecialArgs = { dotfilesDir = builtins.toString ./.; };
       };
     };
 }
