@@ -23,6 +23,9 @@
     eza
     lazygit
     yazi
+    just
+    cargo-watch
+    tree-sitter
   ];
 
   home.sessionVariables = {
