@@ -151,5 +151,5 @@
   };
 
   home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-dotfiles/home-manager/nvim";
 }
