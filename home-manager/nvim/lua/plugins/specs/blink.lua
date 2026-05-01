@@ -3,6 +3,7 @@ return {
   dependencies = {
     'saghen/blink.lib',
   },
+  version = "*",
   build = function()
     require('blink.cmp').build():wait(60000)
   end,
@@ -24,7 +25,8 @@ return {
       keymap = {
         preset = "super-tab",
       }
-    }
+    },
+    fuzzy = { implementation = "rust" },
   },
   opts_extend = { "sources.default" },
 }
