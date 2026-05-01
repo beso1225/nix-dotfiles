@@ -1,4 +1,4 @@
-{ config, pkgs, dotfilesDir, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -26,6 +26,8 @@
     just
     cargo-watch
     tree-sitter
+    cargo
+    rustc
   ];
 
   home.sessionVariables = {
