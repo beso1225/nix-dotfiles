@@ -26,9 +26,12 @@
     just
     cargo-watch
     tree-sitter
-    # cargo
-    # rustc
+    fd
+    ripgrep
+    bat
+    gh
   ];
+
 
   home.sessionVariables = {
     FZF_TMUX = "1";
