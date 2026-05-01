@@ -26,8 +26,8 @@
     just
     cargo-watch
     tree-sitter
-    cargo
-    rustc
+    # cargo
+    # rustc
   ];
 
   home.sessionVariables = {
@@ -131,6 +131,8 @@
 
     initContent = ''
       ulimit -n 8192 2>/dev/null
+      
+      source $HOME/.cargo/env
 
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
