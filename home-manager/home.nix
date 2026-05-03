@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
-
+let
+  inherit (lib.file) mkOutOfStoreSymlink;
+  dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -66,6 +69,8 @@
       abbr "ll"="eza -al --git --icons"
       abbr "lg"="lazygit"
     '';
+    ".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
   };
 
   # Let Home Manager install and manage itself.
@@ -226,6 +231,4 @@
     ];
   };
 
-  home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-dotfiles/home-manager/nvim";
 }
