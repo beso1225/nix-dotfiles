@@ -7,7 +7,6 @@ return {
       require("tokyonight").setup({
         transparent = true,
         styles = {
-          comments = { italic = false },
           sidebars = "transparent",
           floats = "transparent",
         }
