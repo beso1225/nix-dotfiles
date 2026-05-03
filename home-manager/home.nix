@@ -57,10 +57,13 @@
     # zsh-abbr abbreviations (hardcoded in nix)
     ".config/zsh-abbr/user-abbreviations".text = ''
       abbr "cdev"='podman run --rm -it -v $PWD:/work -v "$HOME/Documents/programing/Cpp/podman/bashrc":/root/.bashrc:ro -w /work cpp-toolbox:ubuntu2404 bash'
+      abbr "t"="eza -F --tree --icons"
+      abbr "ta"="eza -aF --tree --icons --git-ignore"
+      abbr "tl"="eza -alF --tree --git --icons --git-ignore"
       abbr "l"="eza -F --icons"
       abbr "la"="eza -aF --icons"
-      abbr "lg"="lazygit"
       abbr "ll"="eza -al --git --icons"
+      abbr "lg"="lazygit"
     '';
   };
 
