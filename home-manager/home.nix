@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
-
+let
+  inherit (lib.file) mkOutOfStoreSymlink;
+  dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -31,6 +34,9 @@
     bat
     gh
     wget
+    ghq
+    uv
+    chezmoi
     # cargo
     # rustc
   ];
@@ -65,6 +71,14 @@
       abbr "ll"="eza -al --git --icons"
       abbr "lg"="lazygit"
     '';
+    
+    # Neovim configuration
+    ".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+
+    # Chezmoi configuration
+    ".config/chezmoi".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   # Let Home Manager install and manage itself.
@@ -160,6 +174,30 @@
       # Useful zsh options
       setopt auto_pushd
       setopt auto_cd
+
+      # ghq setup
+      ghq() {
+        if [ $# -eq 0 ]; then
+          local repo_path
+          repo_path=$(command ghq list | fzf --height 40% --reverse)
+          if [[ -n "$repo_path" ]]; then
+            cd "$(command ghq root)/$repo_path"
+          fi
+        else
+          command ghq "$@"
+        fi
+      }
+
+      ghq-fzf_change_directory() {
+        local src=$(command ghq list | fzf --preview "eza -l -g -a --icons $(command ghq root)/{} | tail -n+4 | awk '{print \$6\"/\"\$8\" \"\$9 \" \" \$10}'")
+        if [ -n "$src" ]; then
+          BUFFER="cd $(command ghq root)/$src"
+          zle accept-line
+        fi
+        zle -R -c
+      }
+      zle -N ghq-fzf_change_directory
+      bindkey '^f' ghq-fzf_change_directory
     '';
   };
 
@@ -199,6 +237,4 @@
     ];
   };
 
-  home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-dotfiles/home-manager/nvim";
 }

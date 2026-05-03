@@ -1,0 +1,4 @@
+progress = true
+
+[edit]
+command = "nvim"
