@@ -71,8 +71,14 @@ in
       abbr "ll"="eza -al --git --icons"
       abbr "lg"="lazygit"
     '';
+    
+    # Neovim configuration
     ".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+
+    # Chezmoi configuration
+    ".config/chezmoi".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   # Let Home Manager install and manage itself.
