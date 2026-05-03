@@ -26,6 +26,11 @@
     just
     cargo-watch
     tree-sitter
+    fd
+    ripgrep
+    bat
+    gh
+    wget
     # cargo
     # rustc
   ];
@@ -52,9 +57,13 @@
     # zsh-abbr abbreviations (hardcoded in nix)
     ".config/zsh-abbr/user-abbreviations".text = ''
       abbr "cdev"='podman run --rm -it -v $PWD:/work -v "$HOME/Documents/programing/Cpp/podman/bashrc":/root/.bashrc:ro -w /work cpp-toolbox:ubuntu2404 bash'
-      abbr "l"="eza -F --git --icons"
-      abbr "lg"="lazygit"
+      abbr "t"="eza -F --tree --icons"
+      abbr "ta"="eza -aF --tree --icons --git-ignore"
+      abbr "tl"="eza -alF --tree --git --icons --git-ignore"
+      abbr "l"="eza -F --icons"
+      abbr "la"="eza -aF --icons"
       abbr "ll"="eza -al --git --icons"
+      abbr "lg"="lazygit"
     '';
   };
 
@@ -152,6 +161,44 @@
       setopt auto_pushd
       setopt auto_cd
     '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    mouse = true;
+    baseIndex = 1;
+    historyLimit = 100000;
+    prefix = "C-a";
+
+    extraConfig = ''
+      # split panes using | and -
+      bind | split-window -h
+      bind - split-window -v
+
+      # move panes like vim
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+      
+      # resize panes like vim
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
+
+      # set default terminal to tmux-256color
+      set -g default-terminal "tmux-256color"
+    '';
+
+    plugins = with pkgs; [
+      tmuxPlugins.resurrect
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = "set -g @continuum-restore 'on'";
+      }
+    ];
   };
 
   home.file.".config/nvim".source =
