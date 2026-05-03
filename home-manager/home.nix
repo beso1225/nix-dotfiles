@@ -36,6 +36,7 @@ in
     wget
     ghq
     uv
+    chezmoi
     # cargo
     # rustc
   ];
