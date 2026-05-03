@@ -35,6 +35,7 @@ in
     gh
     wget
     ghq
+    uv
     # cargo
     # rustc
   ];
