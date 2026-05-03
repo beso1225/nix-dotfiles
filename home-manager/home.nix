@@ -30,6 +30,7 @@
     ripgrep
     bat
     gh
+    wget
     # cargo
     # rustc
   ];
