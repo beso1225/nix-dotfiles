@@ -80,7 +80,7 @@
         error_symbol = "[❯](red)";
       };
       git_branch = {
-        symbol = " ";
+        symbol = " ";
         style = "bold yellow";
       };
       git_status = {
@@ -170,6 +170,7 @@
     baseIndex = 1;
     historyLimit = 100000;
     prefix = "C-a";
+    terminal = "tmux-256color";
 
     extraConfig = ''
       # split panes using | and -
@@ -187,9 +188,6 @@
       bind -r J resize-pane -D 5
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
-
-      # set default terminal to tmux-256color
-      set -g default-terminal "tmux-256color"
     '';
 
     plugins = with pkgs; [
