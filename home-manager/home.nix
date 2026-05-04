@@ -40,6 +40,7 @@ in
     # cargo
     # rustc
     cargo-binutils
+    sqlx-cli
   ];
 
   home.sessionVariables = {
