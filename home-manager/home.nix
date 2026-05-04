@@ -39,6 +39,7 @@ in
     chezmoi
     # cargo
     # rustc
+    cargo-binutils
   ];
 
   home.sessionVariables = {
