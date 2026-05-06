@@ -4,6 +4,10 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,10 +15,18 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      rust-overlay,
+      ...
+    }:
     let
       system = "aarch64-darwin";
-      overlays = [ (import ./overlays) ];
+      overlays = [
+        rust-overlay.overlays.default
+        (import ./overlays)
+      ];
       pkgs = import nixpkgs { inherit system overlays; };
     in
     {
