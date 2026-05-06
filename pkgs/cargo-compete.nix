@@ -4,6 +4,7 @@
   fetchCrate,
   pkg-config,
   openssl,
+  zlib,
   libiconv,
   stdenv,
 }:
@@ -17,15 +18,13 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-EbseENvy8vBn97aR2LlH8eVgHtC1DKECSo6Dw0X6Vo0=";
   };
 
-  # Run `nix build .#homeConfigurations.yutarotakagi.activationPackage 2>&1 | grep "got:"`
-  # to get the actual hash, then replace this placeholder.
-  cargoHash = "sha256-lid1tyR8Y6lvjpeGJ4vGzqDTY6V2y/5rL9fGyjyF3yw=
-";
+  cargoHash = "sha256-lid1tyR8Y6lvjpeGJ4vGzqDTY6V2y/5rL9fGyjyF3yw=";
 
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
+    [ zlib ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   meta = with lib; {
