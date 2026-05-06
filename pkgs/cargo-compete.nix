@@ -4,8 +4,8 @@
   fetchCrate,
   pkg-config,
   openssl,
+  libiconv,
   stdenv,
-  darwin,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -17,18 +17,15 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-EbseENvy8vBn97aR2LlH8eVgHtC1DKECSo6Dw0X6Vo0=";
   };
 
-  # Run `nix build` once to get the actual hash from the error output,
-  # then replace this placeholder with the real value.
+  # Run `nix build .#homeConfigurations.yutarotakagi.activationPackage 2>&1 | grep "got:"`
+  # to get the actual hash, then replace this placeholder.
   cargoHash = lib.fakeHash;
 
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.Security
-      darwin.apple_sdk.frameworks.SystemConfiguration
-    ];
+    lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   meta = with lib; {
     description = "A Cargo subcommand for competitive programming";
