@@ -23,8 +23,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [ zlib ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ openssl ]
+    [ zlib openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   meta = with lib; {
