@@ -14,7 +14,8 @@
     { nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [ (import ./overlays) ];
+      pkgs = import nixpkgs { inherit system overlays; };
     in
     {
       homeConfigurations."yutarotakagi" = home-manager.lib.homeManagerConfiguration {
