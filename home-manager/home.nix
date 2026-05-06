@@ -43,6 +43,8 @@ in
     # rustc
     cargo-binutils
     sqlx-cli
+    cargo-compete
+    mini-redis
 
     # C/C++ tools
     gcc
