@@ -19,7 +19,8 @@ rustPlatform.buildRustPackage rec {
 
   # Run `nix build .#homeConfigurations.yutarotakagi.activationPackage 2>&1 | grep "got:"`
   # to get the actual hash, then replace this placeholder.
-  cargoHash = lib.fakeHash;
+  cargoHash = "sha256-lid1tyR8Y6lvjpeGJ4vGzqDTY6V2y/5rL9fGyjyF3yw=
+";
 
   nativeBuildInputs = [ pkg-config ];
 
