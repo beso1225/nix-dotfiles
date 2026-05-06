@@ -22,6 +22,9 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
+  # Tests require network access and a writable home directory, both unavailable in the Nix sandbox
+  doCheck = false;
+
   buildInputs =
     [ zlib openssl ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
