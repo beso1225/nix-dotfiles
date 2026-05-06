@@ -37,10 +37,17 @@ in
     ghq
     uv
     chezmoi
+
+    # rust tools
     # cargo
     # rustc
     cargo-binutils
     sqlx-cli
+
+    # C/C++ tools
+    gcc
+    cmake
+    ninja
   ];
 
   home.sessionVariables = {
