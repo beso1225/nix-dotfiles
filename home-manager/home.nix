@@ -20,7 +20,18 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
+     })
+  ];
+
   home.packages = with pkgs; [
+    direnv
+    nix-direnv
+
     git
     neovim
     eza
@@ -51,6 +62,7 @@ in
     cmake
     ninja
   ];
+
 
   home.sessionVariables = {
     FZF_TMUX = "1";
@@ -185,6 +197,9 @@ in
       # Useful zsh options
       setopt auto_pushd
       setopt auto_cd
+
+      # direnv setup
+      eval "$(direnv hook zsh)"
 
       # ghq setup
       ghq() {
