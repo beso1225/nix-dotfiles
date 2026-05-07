@@ -2,6 +2,9 @@
 let
   inherit (lib.file) mkOutOfStoreSymlink;
   dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
+  rustToolchain = pkgs.rust-bin.stable.latest.default.override {
+    extensions = [ "llvm-tools-preview" ];
+  };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -50,8 +53,7 @@ in
     chezmoi
 
     # rust tools
-    # cargo
-    # rustc
+    rustToolchain
     cargo-binutils
     sqlx-cli
     cargo-compete
@@ -177,8 +179,6 @@ in
 
     initContent = ''
       ulimit -n 8192 2>/dev/null
-      
-      source $HOME/.cargo/env
 
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
