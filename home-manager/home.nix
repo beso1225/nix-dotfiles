@@ -32,6 +32,9 @@ in
   ];
 
   home.packages = with pkgs; [
+    nixfmt
+    nixd
+
     direnv
     nix-direnv
 
@@ -262,5 +265,4 @@ in
       }
     ];
   };
-
 }
