@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -19,6 +23,7 @@
       nixpkgs,
       home-manager,
       rust-overlay,
+      nix-darwin,
       ...
     }:
     let
@@ -40,6 +45,10 @@
         # Pass the dotfiles directory so home.nix can create out-of-store
         # symlinks (writable) instead of Nix store symlinks (read-only).
         extraSpecialArgs = { dotfilesDir = builtins.toString ./.; };
+      };
+
+      darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
+        modules = [ ./nix-darwin/configuration.nix ];
       };
     };
 }
