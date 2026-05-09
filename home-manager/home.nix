@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib.file) mkOutOfStoreSymlink;
   dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
@@ -24,11 +29,12 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-
   nixpkgs.overlays = [
     (final: prev: {
-      direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
-     })
+      direnv = prev.direnv.overrideAttrs (_: {
+        doCheck = false;
+      });
+    })
   ];
 
   home.packages = with pkgs; [
@@ -68,7 +74,6 @@ in
     ninja
   ];
 
-
   home.sessionVariables = {
     FZF_TMUX = "1";
     FZF_TMUX_OPTS = "-p 50%";
@@ -99,14 +104,13 @@ in
       abbr "ll"="eza -al --git --icons"
       abbr "lg"="lazygit"
     '';
-    
+
     # Neovim configuration
-    ".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
 
     # Chezmoi configuration
     ".config/chezmoi".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   # Let Home Manager install and manage itself.
@@ -142,7 +146,10 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    options = [ "--cmd" "cd" ];
+    options = [
+      "--cmd"
+      "cd"
+    ];
   };
 
   programs.carapace = {
@@ -157,9 +164,15 @@ in
     settings = {
       shell = "zsh";
       plugins = {
-        zsh-autosuggestions = { github = "zsh-users/zsh-autosuggestions"; };
-        zsh-syntax-highlighting = { github = "zsh-users/zsh-syntax-highlighting"; };
-        zsh-abbr = { github = "olets/zsh-abbr"; };
+        zsh-autosuggestions = {
+          github = "zsh-users/zsh-autosuggestions";
+        };
+        zsh-syntax-highlighting = {
+          github = "zsh-users/zsh-syntax-highlighting";
+        };
+        zsh-abbr = {
+          github = "olets/zsh-abbr";
+        };
       };
     };
   };
@@ -182,6 +195,8 @@ in
 
     initContent = ''
       ulimit -n 8192 2>/dev/null
+
+      export PATH="$HOME/bin:$PATH"
 
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
@@ -249,7 +264,7 @@ in
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
-      
+
       # resize panes like vim
       bind -r H resize-pane -L 5
       bind -r J resize-pane -D 5
