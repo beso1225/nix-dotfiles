@@ -1,14 +1,25 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 let
-  inherit (lib.file) mkOutOfStoreSymlink;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
   dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
+
   rustToolchain = pkgs.rust-bin.stable.latest.default.override {
     extensions = [ "llvm-tools-preview" ];
+  };
+
+  tex = pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-medium
+      luatexja
+      jsclasses
+
+      # Additional packages not included in the above schemes
+      silence
+      ;
   };
 in
 {
@@ -72,6 +83,12 @@ in
     gcc
     cmake
     ninja
+
+    # TeX
+    tex
+    biber
+    ghostscript
+    poppler-utils
   ];
 
   home.sessionVariables = {
@@ -106,11 +123,10 @@ in
     '';
 
     # Neovim configuration
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+    ".config/nvim".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
 
     # Chezmoi configuration
-    ".config/chezmoi".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
+    ".config/chezmoi".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   # Let Home Manager install and manage itself.
