@@ -20,10 +20,12 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
-      rust-overlay,
       nix-darwin,
+
+      rust-overlay,
       ...
     }:
     let
@@ -44,10 +46,13 @@
 
         # Pass the dotfiles directory so home.nix can create out-of-store
         # symlinks (writable) instead of Nix store symlinks (read-only).
-        extraSpecialArgs = { dotfilesDir = builtins.toString ./.; };
+        extraSpecialArgs = {
+          dotfilesDir = builtins.toString ./.;
+        };
       };
 
       darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self; };
         modules = [ ./nix-darwin/configuration.nix ];
       };
     };
