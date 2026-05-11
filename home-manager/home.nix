@@ -94,7 +94,7 @@ in
   home.sessionVariables = {
     FZF_TMUX = "1";
     FZF_TMUX_OPTS = "-p 50%";
-    CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
+    CARAPACE_BRIDGES = "zsh";
   };
 
   home.sessionPath = [
