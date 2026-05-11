@@ -12,34 +12,47 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
+      nix-darwin,
+
       rust-overlay,
       ...
     }:
     let
-      system = "aarch64-darwin";
-      overlays = [
+      sharedOverlays = [
+        (_: prev: {
+          direnv = prev.direnv.overrideAttrs (_: {
+            doCheck = false;
+            });
+         })
         rust-overlay.overlays.default
         (import ./overlays)
       ];
-      pkgs = import nixpkgs { inherit system overlays; };
     in
     {
-      homeConfigurations."yutarotakagi" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home-manager/home.nix ];
-
-        # Pass the dotfiles directory so home.nix can create out-of-store
-        # symlinks (writable) instead of Nix store symlinks (read-only).
-        extraSpecialArgs = { dotfilesDir = builtins.toString ./.; };
+    
+      darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self; };
+        modules = [
+          { nixpkgs.overlays = sharedOverlays; }
+          ./nix-darwin/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."yutarotakagi" = ./home-manager/home.nix;
+          }
+        ];
       };
     };
 }

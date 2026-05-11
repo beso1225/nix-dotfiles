@@ -1,9 +1,25 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
-  inherit (lib.file) mkOutOfStoreSymlink;
+  inherit (config.lib.file) mkOutOfStoreSymlink;
   dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
   rustToolchain = pkgs.rust-bin.stable.latest.default.override {
     extensions = [ "llvm-tools-preview" ];
+  };
+
+  
+  tex = pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-medium
+      luatexja
+      jsclasses
+
+      # Additional packages not included in the above schemes
+      silence
+      ;
   };
 in
 {
@@ -23,13 +39,6 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      direnv = prev.direnv.overrideAttrs (_: { doCheck = false; });
-     })
-  ];
 
   home.packages = with pkgs; [
     nixfmt
@@ -66,17 +75,23 @@ in
     gcc
     cmake
     ninja
-  ];
 
+    # TeX
+    tex
+    biber
+    ghostscript
+    poppler-utils
+  ];
 
   home.sessionVariables = {
     FZF_TMUX = "1";
     FZF_TMUX_OPTS = "-p 50%";
-    CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
+    CARAPACE_BRIDGES = "zsh";
   };
 
   home.sessionPath = [
     "$HOME/bin"
+    "/etc/profiles/per-user/yutarotakagi/bin"
     "$HOME/.local/bin"
     "$HOME/.moon/bin"
   ];
@@ -99,14 +114,12 @@ in
       abbr "ll"="eza -al --git --icons"
       abbr "lg"="lazygit"
     '';
-    
+
     # Neovim configuration
-    ".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
+    ".config/nvim".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
 
     # Chezmoi configuration
-    ".config/chezmoi".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
+    ".config/chezmoi".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   # Let Home Manager install and manage itself.
@@ -142,7 +155,10 @@ in
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    options = [ "--cmd" "cd" ];
+    options = [
+      "--cmd"
+      "cd"
+    ];
   };
 
   programs.carapace = {
@@ -154,12 +170,19 @@ in
   # Autocompletion is handled by nix enableCompletion + carapace instead.
   programs.sheldon = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       shell = "zsh";
       plugins = {
-        zsh-autosuggestions = { github = "zsh-users/zsh-autosuggestions"; };
-        zsh-syntax-highlighting = { github = "zsh-users/zsh-syntax-highlighting"; };
-        zsh-abbr = { github = "olets/zsh-abbr"; };
+        zsh-autosuggestions = {
+          github = "zsh-users/zsh-autosuggestions";
+        };
+        zsh-syntax-highlighting = {
+          github = "zsh-users/zsh-syntax-highlighting";
+        };
+        zsh-abbr = {
+          github = "olets/zsh-abbr";
+        };
       };
     };
   };
@@ -182,6 +205,8 @@ in
 
     initContent = ''
       ulimit -n 8192 2>/dev/null
+
+      export PATH="$HOME/bin:$PATH"
 
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
@@ -249,7 +274,7 @@ in
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
-      
+
       # resize panes like vim
       bind -r H resize-pane -L 5
       bind -r J resize-pane -D 5
