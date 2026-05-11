@@ -92,7 +92,6 @@ in
   home.sessionPath = [
     "$HOME/bin"
     "/etc/profiles/per-user/yutarotakagi/bin"
-    "$HOME/.nix-profile/bin"
     "$HOME/.local/bin"
     "$HOME/.moon/bin"
   ];
