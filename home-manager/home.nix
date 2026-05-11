@@ -6,11 +6,11 @@
 let
   inherit (config.lib.file) mkOutOfStoreSymlink;
   dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
-
   rustToolchain = pkgs.rust-bin.stable.latest.default.override {
     extensions = [ "llvm-tools-preview" ];
   };
 
+  
   tex = pkgs.texlive.combine {
     inherit (pkgs.texlive)
       scheme-medium
@@ -39,14 +39,6 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      direnv = prev.direnv.overrideAttrs (_: {
-        doCheck = false;
-      });
-    })
-  ];
 
   home.packages = with pkgs; [
     nixfmt
@@ -99,6 +91,8 @@ in
 
   home.sessionPath = [
     "$HOME/bin"
+    "/etc/profiles/per-user/yutarotakagi/bin"
+    "$HOME/.nix-profile/bin"
     "$HOME/.local/bin"
     "$HOME/.moon/bin"
   ];
@@ -177,6 +171,7 @@ in
   # Autocompletion is handled by nix enableCompletion + carapace instead.
   programs.sheldon = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       shell = "zsh";
       plugins = {

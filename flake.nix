@@ -29,16 +29,22 @@
       ...
     }:
     let
-      overlays = [
+      sharedOverlays = [
+        (_: prev: {
+          direnv = prev.direnv.overrideAttrs (_: {
+            doCheck = false;
+            });
+         })
         rust-overlay.overlays.default
         (import ./overlays)
       ];
-      pkgs = import nixpkgs { inherit overlays; };
     in
     {
+    
       darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
         modules = [
+          { nixpkgs.overlays = sharedOverlays; }
           ./nix-darwin/configuration.nix
           home-manager.darwinModules.home-manager
         ];

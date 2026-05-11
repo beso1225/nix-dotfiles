@@ -14,7 +14,7 @@
     primaryUser = "yutarotakagi";
   };
 
-  # Set the home directory 
+  # Set the home directory
   users.users."yutarotakagi".home = "/Users/yutarotakagi";
 
   imports = [
@@ -27,7 +27,7 @@
 
   # Set the default shell to zsh
   programs.zsh.enable = true;
-  
+
   # Enable Touch ID authentication for sudo and reattach to the session after authentication.
   security.pam.services.sudo_local = {
     touchIdAuth = true;
