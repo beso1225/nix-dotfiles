@@ -28,4 +28,23 @@
     touchIdAuth = true;
     reattach = true;
   };
+
+  # macOS defaults
+  system.defaults = {
+    NSGlobalDomain = {
+      AppleInterfaceStyle = "Dark";
+    };
+    finder = {
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      FXEnableExtensionChangeWarning = false;
+      ShowPathbar = true;
+    };
+    dock = {
+      autohide = true;
+      show-recents = false;
+      show-process-indicators = true;
+    };
+    trackpad.tapToClick = true;
+  };
 }
