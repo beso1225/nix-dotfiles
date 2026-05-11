@@ -26,9 +26,9 @@ jobs:
       - name: Show flake outputs
         run: nix flake show
 
-  # Build the macOS (aarch64-darwin) home-manager configuration
+  # Build the macOS (aarch64-darwin) nix-darwin configuration
   build-darwin:
-    name: Build Home Manager (macOS aarch64)
+    name: Build nix-darwin (macOS aarch64)
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,9 +39,9 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
 
-      - name: Build home-manager configuration (dry-run)
+      - name: Build nix-darwin configuration (dry-run)
         run: |
-          nix build .#homeConfigurations.yutarotakagi.activationPackage \
+          nix build .#darwinConfigurations.TY.system \
             --dry-run \
             --show-trace
 
