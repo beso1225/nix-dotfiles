@@ -33,6 +33,7 @@
   system.defaults = {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
+      "com.apple.mouse.tapBehavior" = 1;
     };
     finder = {
       AppleShowAllExtensions = true;
@@ -45,6 +46,5 @@
       show-recents = false;
       show-process-indicators = true;
     };
-    trackpad.tapToClick = true;
   };
 }
