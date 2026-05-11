@@ -29,31 +29,19 @@
       ...
     }:
     let
-      system = "aarch64-darwin";
       overlays = [
         rust-overlay.overlays.default
         (import ./overlays)
       ];
-      pkgs = import nixpkgs { inherit system overlays; };
+      pkgs = import nixpkgs { inherit overlays; };
     in
     {
-      homeConfigurations."yutarotakagi" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home-manager/home.nix ];
-
-        # Pass the dotfiles directory so home.nix can create out-of-store
-        # symlinks (writable) instead of Nix store symlinks (read-only).
-        extraSpecialArgs = {
-          dotfilesDir = builtins.toString ./.;
-        };
-      };
-
       darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
-        modules = [ ./nix-darwin/configuration.nix ];
+        modules = [
+          ./nix-darwin/configuration.nix
+          home-manager.darwinModules.home-manager
+        ];
       };
     };
 }

@@ -15,7 +15,12 @@
   };
 
   # Set the home directory 
-  users.users.yutarotakagi.home = "/Users/yutarotakagi";
+  users.users."yutarotakagi".home = "/Users/yutarotakagi";
+
+  imports = [
+    # Include the home-manager module
+    ./home_manager.nix
+  ];
 
   # Disable the management of the Nix by nix-darwin, since Home Manager will manage it.
   nix.enable = false;
