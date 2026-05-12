@@ -10,6 +10,10 @@ update-nixpkgs:
     nix flake update nixpkgs
     echo "Updated nixpkgs. Run 'just switch' to apply changes."
 
+update-homebrew:
+    brew update
+    echo "Updated Homebrew. Run 'just switch' to apply changes."
+
 update-all:
     #!/usr/bin/env bash
     set -euo pipefail
