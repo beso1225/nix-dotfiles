@@ -18,6 +18,7 @@
     onActivation = {
       upgrade = true;
       autoUpdate = false;
+      # cleanup = true; # In the future, we may want to enable this to remove old versions of packages.
     };
     global.autoUpdate = false;
 
