@@ -13,7 +13,8 @@ update-all:
     #!/usr/bin/env bash
     set -euo pipefail
     echo "WARNING: This runs 'nix flake update' and may update all flake inputs (including home-manager and nix-darwin)."
-    read -r -p "Continue? [y/N] " reply
+    echo -n "Continue? [y/N] "
+    read -r reply
     if [[ ! "$reply" =~ ^[Yy]$ ]]; then
       echo "Aborted."
       exit 1
