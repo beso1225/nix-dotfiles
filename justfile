@@ -8,6 +8,7 @@ switch host="TY":
 
 update-nixpkgs:
     nix flake update nixpkgs
+    echo "Updated nixpkgs. Run 'just switch' to apply changes."
 
 update-all:
     #!/usr/bin/env bash
@@ -20,3 +21,4 @@ update-all:
       exit 1
     fi
     nix flake update
+    echo "Updated flake inputs. Run 'just switch' to apply changes."
