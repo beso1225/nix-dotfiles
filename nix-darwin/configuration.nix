@@ -17,6 +17,9 @@
   # Set the home directory
   users.users."yutarotakagi".home = "/Users/yutarotakagi";
 
+  # import the Nix Homebrew module to manage Homebrew packages.
+  imports = [ ./homebrew.nix ];
+
   # Disable the management of the Nix by nix-darwin, since Home Manager will manage it.
   nix.enable = false;
 

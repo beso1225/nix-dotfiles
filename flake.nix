@@ -16,6 +16,7 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs =
@@ -24,6 +25,7 @@
       nixpkgs,
       home-manager,
       nix-darwin,
+      nix-homebrew,
 
       rust-overlay,
       ...
@@ -33,20 +35,21 @@
         (_: prev: {
           direnv = prev.direnv.overrideAttrs (_: {
             doCheck = false;
-            });
-         })
+          });
+        })
         rust-overlay.overlays.default
         (import ./overlays)
       ];
     in
     {
-    
+
       darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
         modules = [
           { nixpkgs.overlays = sharedOverlays; }
           ./nix-darwin/configuration.nix
           home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
