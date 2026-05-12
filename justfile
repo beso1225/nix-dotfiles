@@ -3,8 +3,8 @@ set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
 default:
     @just --list
 
-switch:
-    sudo nix run nix-darwin -- switch --flake .#TY
+switch host="TY":
+    sudo nix run nix-darwin -- switch --flake .#{{host}}
 
 update-nixpkgs:
     nix flake update nixpkgs
