@@ -4,7 +4,7 @@ default:
     @just --list
 
 switch host="TY":
-    sudo nix run nix-darwin -- switch --flake .#{{host}}
+    sudo darwin-rebuild switch --flake .#{{host}}
 
 update-nixpkgs:
     nix flake update nixpkgs
