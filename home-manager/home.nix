@@ -1,4 +1,5 @@
 {
+
   config,
   pkgs,
   ...
@@ -10,7 +11,6 @@ let
     extensions = [ "llvm-tools-preview" ];
   };
 
-  
   tex = pkgs.texlive.combine {
     inherit (pkgs.texlive)
       scheme-medium
@@ -266,8 +266,8 @@ in
 
     extraConfig = ''
       # split panes using | and -
-      bind | split-window -h
-      bind - split-window -v
+      bind | split-window -h -c "#{pane_current_path}"
+      bind - split-window -v -c "#{pane_current_path}"
 
       # move panes like vim
       bind h select-pane -L
