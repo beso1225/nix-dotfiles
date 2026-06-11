@@ -16,6 +16,7 @@ return {
       ['<Tab>'] = { 'snippet_forward', 'fallback' },
       ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
       ['<C-p>'] = { 'show_signature', 'show_signature', 'fallback' },
+      ['<C-n>'] = {},
     },
     snippets = {
       preset = "luasnip",
