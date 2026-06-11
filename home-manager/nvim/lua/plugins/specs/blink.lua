@@ -9,13 +9,23 @@ return {
   end,
   opts = {
     keymap = {
-      preset = "enter",
+      preset = "default",
+      ['<C-j>'] = { 'select_next' },
+      ['<C-k>'] = { 'select_prev' },
+      ['<C-m>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = { 'snippet_forward', 'fallback' },
+      ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+      ['<C-p>'] = { 'show_signature', 'show_signature', 'fallback' },
     },
     snippets = {
       preset = "luasnip",
     },
     sources = {
       default = { "snippets", "lsp", "path", "buffer" },
+      per_filetype = {
+        markdown = { "snippets", "lsp", "path" },
+        latex = { "snippets", "lsp", "path" },
+      },
     },
     cmdline = {
       enabled = not vim.g.vscode,
@@ -24,6 +34,8 @@ return {
       },
       keymap = {
         preset = "super-tab",
+        ['<C-j>'] = { 'select_next' },
+        ['<C-k>'] = { 'select_prev' },
       }
     },
     fuzzy = { implementation = "rust" },
