@@ -25,10 +25,13 @@
     # List of Homebrew packages to be installed.
     brews = [
       "arduino-cli"
+      "apm"
+      "pkfire"
       "qemu"
     ];
     casks = [
       "copilot-cli"
+      "codex"
     ];
   };
 }

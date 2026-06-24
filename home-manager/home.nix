@@ -53,6 +53,7 @@ in
     lazygit
     yazi
     just
+    pkl
     cargo-watch
     tree-sitter
     fd
