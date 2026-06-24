@@ -1,0 +1,71 @@
+amends "package://pkg.pkl-lang.org/github.com/mizchi/pkfire/pkfire@0.11.0#/Taskfile.pkl"
+
+local switchTask = new Task {
+  name = "switch"
+  description = "Apply nix-darwin configuration"
+  cache = false
+  params {
+    new {
+      name = "host"
+      type = "string"
+      default = "TY"
+      description = "darwinConfiguration host name"
+    }
+  }
+  cmd = "sudo darwin-rebuild switch --flake .#$HOST"
+}
+
+local updateNixpkgsTask = new Task {
+  name = "update-nixpkgs"
+  description = "Update only the nixpkgs flake input"
+  cache = false
+  cmd = """
+    nix flake update nixpkgs
+    echo "Updated nixpkgs. Run 'pkf run switch' to apply changes."
+    """
+}
+
+local updateHomebrewTask = new Task {
+  name = "update-homebrew"
+  description = "Update Homebrew metadata outside of nix-darwin"
+  cache = false
+  cmd = """
+    brew update
+    echo "Updated Homebrew. Run 'pkf run switch' to apply changes."
+    """
+}
+
+local updateAllTask = new Task {
+  name = "update-all"
+  description = "Update all flake inputs after explicit confirmation"
+  cache = false
+  params {
+    new {
+      name = "yes"
+      type = "bool"
+      default = "false"
+      description = "Skip the confirmation prompt"
+    }
+  }
+  cmd = """
+    if [ "$YES" != "true" ]; then
+      echo "WARNING: This runs 'nix flake update' and may update all flake inputs (including home-manager and nix-darwin)."
+      printf "Continue? [y/N] "
+      read -r reply
+      if [[ ! "$reply" =~ ^[Yy]$ ]]; then
+        echo "Aborted."
+        exit 1
+      fi
+    fi
+
+    nix flake update
+    echo "Updated flake inputs. Run 'pkf run switch' to apply changes."
+    """
+}
+
+tasks {
+  switchTask
+  updateNixpkgsTask
+  updateHomebrewTask
+  updateAllTask
+}
