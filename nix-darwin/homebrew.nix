@@ -25,7 +25,7 @@
     # List of Homebrew packages to be installed.
     brews = [
       "arduino-cli"
-      "apm"
+      "microsoft/apm/apm"
       "pkfire"
       "qemu"
     ];
