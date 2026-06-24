@@ -1,9 +1,12 @@
 amends "package://pkg.pkl-lang.org/github.com/mizchi/pkfire/pkfire@0.11.0#/Taskfile.pkl"
 
+local strictShellFlags: List<String> = List("-eu", "-o", "pipefail", "-c")
+
 local switchTask = new Task {
   name = "switch"
   description = "Apply nix-darwin configuration"
   cache = false
+  shellFlags = strictShellFlags
   params {
     new {
       name = "host"
@@ -19,6 +22,7 @@ local updateNixpkgsTask = new Task {
   name = "update-nixpkgs"
   description = "Update only the nixpkgs flake input"
   cache = false
+  shellFlags = strictShellFlags
   cmd = """
     nix flake update nixpkgs
     echo "Updated nixpkgs. Run 'pkf run switch' to apply changes."
@@ -29,6 +33,7 @@ local updateHomebrewTask = new Task {
   name = "update-homebrew"
   description = "Update Homebrew metadata outside of nix-darwin"
   cache = false
+  shellFlags = strictShellFlags
   cmd = """
     brew update
     echo "Updated Homebrew. Run 'pkf run switch' to apply changes."
@@ -39,6 +44,7 @@ local updateAllTask = new Task {
   name = "update-all"
   description = "Update all flake inputs after explicit confirmation"
   cache = false
+  shellFlags = strictShellFlags
   params {
     new {
       name = "yes"
