@@ -2,6 +2,7 @@
 
   config,
   pkgs,
+  pkfire,
   ...
 }:
 let
@@ -64,6 +65,7 @@ in
     ghq
     uv
     chezmoi
+    pkfire.packages.${pkgs.system}.default
 
     # rust tools
     rustToolchain

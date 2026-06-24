@@ -26,7 +26,6 @@
     brews = [
       "arduino-cli"
       "microsoft/apm/apm"
-      "pkfire"
       "qemu"
     ];
     casks = [

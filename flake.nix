@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    pkfire.url = "github:mizchi/pkfire";
   };
 
   outputs =
@@ -28,6 +29,7 @@
       nix-homebrew,
 
       rust-overlay,
+      pkfire,
       ...
     }:
     let
@@ -44,7 +46,7 @@
     {
 
       darwinConfigurations."TY" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+        specialArgs = { inherit self pkfire; };
         modules = [
           { nixpkgs.overlays = sharedOverlays; }
           ./nix-darwin/configuration.nix
@@ -53,6 +55,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit pkfire; };
             home-manager.users."yutarotakagi" = ./home-manager/home.nix;
           }
         ];
