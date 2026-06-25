@@ -40,7 +40,7 @@
           });
         })
         rust-overlay.overlays.default
-        (import ./overlays)
+        (import ./nix/overlays)
       ];
     in
     {
@@ -49,14 +49,14 @@
         specialArgs = { inherit self pkfire; };
         modules = [
           { nixpkgs.overlays = sharedOverlays; }
-          ./nix-darwin/configuration.nix
+          ./nix/darwin/configuration.nix
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit pkfire; };
-            home-manager.users."yutarotakagi" = ./home-manager/home.nix;
+            home-manager.users."yutarotakagi" = ./nix/home/default.nix;
           }
         ];
       };
