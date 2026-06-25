@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -40,6 +41,42 @@
   programs.carapace = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    mouse = true;
+    baseIndex = 1;
+    historyLimit = 100000;
+    prefix = "C-a";
+    terminal = "tmux-256color";
+
+    extraConfig = ''
+      # split panes using | and -
+      bind | split-window -h -c "#{pane_current_path}"
+      bind - split-window -v -c "#{pane_current_path}"
+
+      # move panes like vim
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
+
+      # resize panes like vim
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
+    '';
+
+    plugins = with pkgs; [
+      tmuxPlugins.resurrect
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = "set -g @continuum-restore 'on'";
+      }
+    ];
   };
 
   # Sheldon manages zsh plugins (autosuggestions, syntax-highlighting, zsh-abbr).
