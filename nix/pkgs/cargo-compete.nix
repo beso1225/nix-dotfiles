@@ -25,9 +25,11 @@ rustPlatform.buildRustPackage rec {
   # Tests require network access and a writable home directory, both unavailable in the Nix sandbox
   doCheck = false;
 
-  buildInputs =
-    [ zlib openssl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+  buildInputs = [
+    zlib
+    openssl
+  ]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
 
   meta = with lib; {
     description = "A Cargo subcommand for competitive programming";
