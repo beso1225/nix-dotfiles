@@ -32,3 +32,8 @@ opt.conceallevel = 2
 
 -- turn
 opt.wrap = true
+
+-- transparent
+opt.termguicolors = true
+opt.winblend = 0
+opt.pumblend = 0
