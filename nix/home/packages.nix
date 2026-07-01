@@ -14,6 +14,7 @@ let
       luatexja
       jsclasses
       silence
+      circuitikz
       ;
   };
 in
