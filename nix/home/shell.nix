@@ -66,6 +66,8 @@ in
       ulimit -n 8192 2>/dev/null
 
       export PATH="$HOME/bin:$PATH"
+      export EDITOR=nvim
+      export VISUAL=nvim
 
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
