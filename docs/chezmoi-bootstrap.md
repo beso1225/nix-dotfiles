@@ -8,6 +8,13 @@ targets.
 
 ## First bootstrap
 
+> **Warning**
+>
+> Do not run this bootstrap procedure yet. It documents the intended future
+> workflow and is not operational during Phase 2. Use it only after the
+> file-owned configurations have been migrated to chezmoi in later phases and
+> the complete sequence has been validated end to end.
+
 After installing Nix and making `chezmoi` available, run:
 
 ```sh

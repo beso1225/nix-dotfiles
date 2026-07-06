@@ -45,6 +45,7 @@ assert_contains docs/chezmoi-bootstrap.md 'chezmoi init beso1225/nix-dotfiles'
 assert_contains docs/chezmoi-bootstrap.md 'chezmoi apply'
 assert_contains docs/chezmoi-bootstrap.md 'darwin-rebuild switch --flake "$source_dir"#TY'
 assert_contains docs/chezmoi-bootstrap.md 'single owner'
+assert_contains docs/chezmoi-bootstrap.md 'Do not run this bootstrap procedure yet.'
 assert_not_contains nix/home/shell.nix '".config/chezmoi"'
 
 source_state=$(HOME="$test_home" chezmoi --source "$repo_root" source-path)
