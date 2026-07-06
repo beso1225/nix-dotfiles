@@ -41,9 +41,6 @@ in
 
     # Neovim configuration
     ".config/nvim".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
-
-    # Chezmoi configuration
-    ".config/chezmoi".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   programs.zsh = {

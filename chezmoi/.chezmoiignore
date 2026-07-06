@@ -1,0 +1,4 @@
+# Phase 2 intentionally manages no home-directory paths.
+#
+# Add a source-state entry only after removing the corresponding Home Manager
+# `home.file` entry so that every target continues to have a single owner.

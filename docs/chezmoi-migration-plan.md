@@ -92,6 +92,7 @@ This avoids double ownership of `.zshrc` while still allowing fast user-level ed
 .
 ├── flake.nix
 ├── flake.lock
+├── .chezmoiroot
 ├── Taskfile.pkl
 ├── justfile
 ├── docs/
@@ -149,10 +150,14 @@ Recommended first-machine setup:
 
 This is the safest immediate design.
 
-Example:
+The repository is the chezmoi clone/source directory, while `.chezmoiroot`
+selects `chezmoi/` as its source state. Resolve the flake root from the clone so
+the bootstrap also works with a non-default source directory:
 
-- clone or initialize chezmoi source
-- run `darwin-rebuild switch --flake ~/.local/share/chezmoi#TY`
+```sh
+source_dir=$(git -C "$(chezmoi source-path)" rev-parse --show-toplevel)
+darwin-rebuild switch --flake "$source_dir"#TY
+```
 
 Advantages:
 
@@ -210,7 +215,8 @@ Suggested split:
 1. Create `chezmoi/`
 2. Add `.chezmoi.toml.tmpl`
 3. Add `.chezmoiignore`
-4. Decide whether this repository itself is the chezmoi source repo or whether chezmoi should source from a subdirectory workflow
+4. Use this repository as the chezmoi source repository and select `chezmoi/`
+   as its source state with `.chezmoiroot`
 
 ### Phase 3: move file-owned config trees
 
@@ -262,15 +268,20 @@ Suggested steady-state rules:
 - Nix-only changes: `darwin-rebuild switch --flake <path>#TY`
 - mixed changes: `chezmoi apply && darwin-rebuild switch --flake <path>#TY && chezmoi apply`
 
+## Resolved Decisions
+
+- This repository is the chezmoi source repository.
+- `.chezmoiroot` limits the source state to `chezmoi/`.
+- The flake stays at the repository root and is invoked from the chezmoi clone.
+- No bootstrap shell script is needed until a real pre-switch dependency exists.
+
 ## Open Decisions
 
 The migration still needs explicit choices on these points:
 
-1. Should this repository itself become the chezmoi source repo?
-2. Should `.gitconfig` remain in Nix or move to chezmoi?
-3. Which `~/.config/*` trees are content-owned enough to move immediately?
-4. Should APM-managed or generated paths be excluded from chezmoi from day one?
-5. Should the flake stay at repo root and be invoked from chezmoi source state, or should the flake move to a chezmoi target path later?
+1. Should `.gitconfig` remain in Nix or move to chezmoi?
+2. Which `~/.config/*` trees are content-owned enough to move immediately?
+3. Should APM-managed or generated paths be excluded from chezmoi from day one?
 
 ## Recommended Next Step
 

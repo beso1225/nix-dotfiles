@@ -69,9 +69,18 @@ local updateAllTask = new Task {
     """
 }
 
+local testChezmoiTask = new Task {
+  name = "test-chezmoi"
+  description = "Validate the chezmoi source layout and bootstrap contract"
+  cache = false
+  shellFlags = strictShellFlags
+  cmd = "bash tests/chezmoi-layout.sh"
+}
+
 tasks {
   switchTask
   updateNixpkgsTask
   updateHomebrewTask
   updateAllTask
+  testChezmoiTask
 }
