@@ -69,9 +69,31 @@ local updateAllTask = new Task {
     """
 }
 
+local testNeovimTask = new Task {
+  name = "test-neovim"
+  description = "Run headless Neovim configuration tests"
+  cache = false
+  shellFlags = strictShellFlags
+  inputs {
+    "home-manager/nvim/**/*.lua"
+    "tests/neovim/**/*.lua"
+  }
+  cmd = """
+    state_dir="${TMPDIR:-/tmp}/nix-dotfiles-neovim-test"
+    mkdir -p "$state_dir/state" "$state_dir/cache" "$state_dir/data"
+    REPO_ROOT="$PWD" \
+      XDG_STATE_HOME="$state_dir/state" \
+      XDG_CACHE_HOME="$state_dir/cache" \
+      XDG_DATA_HOME="$state_dir/data" \
+      NVIM_LOG_FILE="$state_dir/nvim.log" \
+      nvim --clean -i NONE --headless -l tests/neovim/moonbit_spec.lua
+    """
+}
+
 tasks {
   switchTask
   updateNixpkgsTask
   updateHomebrewTask
   updateAllTask
+  testNeovimTask
 }

@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 
 require("core.lazy")
 require("options")
+require("core.filetypes")
 -- share clipboard with OS
 vim.opt.clipboard:append('unnamedplus,unnamed')
 

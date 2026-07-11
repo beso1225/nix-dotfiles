@@ -31,6 +31,7 @@ return {
         update_in_insert = true,
         severity_sort = true,
       })
+      vim.lsp.enable("moonbit_ls")
     end
   },
   {
