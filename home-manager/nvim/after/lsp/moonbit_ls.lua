@@ -1,5 +1,5 @@
 return {
-  cmd = { "moonbit-lsp" },
+  cmd = { "moon-lsp" },
   filetypes = { "moonbit" },
   root_markers = {
     "moon.mod.json",

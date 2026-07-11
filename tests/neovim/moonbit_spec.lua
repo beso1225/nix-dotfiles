@@ -18,7 +18,7 @@ assert(parser.install_info.queries == "queries")
 assert(parser.tier == 2)
 
 local lsp = dofile(repo .. "/home-manager/nvim/after/lsp/moonbit_ls.lua")
-assert(vim.deep_equal(lsp.cmd, { "moonbit-lsp" }))
+assert(vim.deep_equal(lsp.cmd, { "moon-lsp" }))
 assert(vim.deep_equal(lsp.filetypes, { "moonbit" }))
 assert(vim.list_contains(lsp.root_markers, "moon.mod.json"))
 assert(vim.list_contains(lsp.root_markers, "moon.pkg.json"))
