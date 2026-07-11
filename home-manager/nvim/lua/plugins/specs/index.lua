@@ -1,6 +1,7 @@
 local spec = {
   { import = "plugins.specs.edit" },
   { import = "plugins.specs.lang" },
+  { import = "plugins.specs.lint" },
   { import = "plugins.specs.lsp" },
   { import = "plugins.specs.obsidian" },
   { import = "plugins.specs.treesitter" },
