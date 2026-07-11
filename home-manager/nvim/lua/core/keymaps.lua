@@ -8,7 +8,10 @@ map("n", "<cr>", "o<esc>")
 map("n", "<S-cr>", "O<esc>")
 
 -- unhighlight search results
-map("n", "<leader>l", "<cmd>nohlsearch<cr>")
+map("n", "<Esc>", function()
+  vim.cmd("nohlsearch")
+  vim.fn.setreg("/", "")
+end)
 
 -- <leader> + +/- to increment / decreent
 vim.keymap.set({ 'n', 'v' }, '<leader>+', '<C-a>', { desc = 'Increment' })
