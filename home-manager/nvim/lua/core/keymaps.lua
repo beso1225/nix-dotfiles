@@ -43,6 +43,17 @@ end
 
 map("n", "lg", "<cmd>lua _lazygit_toggle()<cr>", { noremap = true, silent = true })
 
+vim.api.nvim_create_user_command("Textlint", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" then
+    vim.notify("Textlint requires a saved file", vim.log.levels.WARN)
+    return
+  end
+
+  vim.cmd("!" .. vim.fn.shellescape("textlint") .. " " .. vim.fn.shellescape(file))
+end, { desc = "Run textlint for the current file" })
+map("n", "<leader>tl", "<cmd>Textlint<cr>", { desc = "Run textlint" })
+
 -- for copilot
 map("i", "<C-n>", 'copilot#Accept("<CR>")', { expr = true, replace_keycodes = false })
 vim.g.copilot_no_tab_map = true

@@ -62,5 +62,8 @@ in
     biber
     ghostscript
     poppler-utils
+
+    # Text linting
+    textlint
   ];
 }
