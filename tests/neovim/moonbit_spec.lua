@@ -11,6 +11,7 @@ end
 assert(detected("main.mbt") == "moonbit", ".mbt must use the moonbit filetype")
 assert(detected("main.mbti") == "moonbit", ".mbti must use the moonbit filetype")
 assert(detected("moon.pkg") == "moonbit", "moon.pkg must use the moonbit filetype")
+assert(detected("moon.mod") == "moonbit", "moon.mod must use the moonbit filetype")
 
 local parser = require("plugins.config.treesitter").moonbit_parser_config()
 assert(parser.install_info.url == "https://github.com/moonbitlang/tree-sitter-moonbit")
@@ -20,6 +21,7 @@ assert(parser.tier == 2)
 local lsp = dofile(repo .. "/home-manager/nvim/after/lsp/moonbit_ls.lua")
 assert(vim.deep_equal(lsp.cmd, { "moon-lsp" }))
 assert(vim.deep_equal(lsp.filetypes, { "moonbit" }))
+assert(lsp.root_markers[1] == "moon.mod", "moon.mod must be the preferred module root")
 assert(vim.list_contains(lsp.root_markers, "moon.mod.json"))
 assert(vim.list_contains(lsp.root_markers, "moon.pkg.json"))
 
