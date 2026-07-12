@@ -60,5 +60,8 @@
           }
         ];
       };
+
+      packages.aarch64-darwin.gccWithoutCc =
+        self.darwinConfigurations."TY".pkgs.gccWithoutCc;
     };
 }

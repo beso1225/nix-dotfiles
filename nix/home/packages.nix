@@ -53,7 +53,7 @@ in
     mini-redis
 
     # C/C++ tools
-    gcc
+    gccWithoutCc
     cmake
     ninja
 

@@ -90,10 +90,25 @@ local testNeovimTask = new Task {
     """
 }
 
+local testGccPathTask = new Task {
+  name = "test-gcc-path"
+  description = "Verify GCC does not shadow the macOS cc command"
+  cache = false
+  shellFlags = strictShellFlags
+  inputs {
+    "flake.nix"
+    "flake.lock"
+    "nix/home/packages.nix"
+    "tests/gcc-path-contract.sh"
+  }
+  cmd = "bash tests/gcc-path-contract.sh"
+}
+
 tasks {
   switchTask
   updateNixpkgsTask
   updateHomebrewTask
   updateAllTask
   testNeovimTask
+  testGccPathTask
 }
