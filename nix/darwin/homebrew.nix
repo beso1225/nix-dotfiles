@@ -27,6 +27,8 @@
       "arduino-cli"
       "microsoft/apm/apm"
       "qemu"
+      "hunk"
+      "herdr"
     ];
     casks = [
       "copilot-cli"

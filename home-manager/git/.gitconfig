@@ -3,3 +3,5 @@
 	name = beso1225
 [init]
 	defaultBranch = main
+[core]
+  pager = hunk pager
