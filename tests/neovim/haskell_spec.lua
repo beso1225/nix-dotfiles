@@ -24,4 +24,27 @@ local settings = vim.g.haskell_tools.hls.settings.haskell
 assert(settings.formattingProvider == "fourmolu")
 assert(settings.cabalFormattingProvider == "cabal-gild")
 
+local expected_capabilities = {
+  textDocument = {
+    completion = {
+      completionItem = {
+        snippetSupport = true,
+      },
+    },
+  },
+}
+package.loaded["blink.cmp"] = nil
+package.preload["blink.cmp"] = function()
+  return {
+    get_lsp_capabilities = function()
+      return expected_capabilities
+    end,
+  }
+end
+
+dofile(repo .. "/home-manager/nvim/lua/plugins/config/blink.lua")
+vim.lsp.config("haskell-capabilities-test", {})
+local capabilities = vim.lsp.config["haskell-capabilities-test"].capabilities
+assert(vim.deep_equal(capabilities, expected_capabilities), "Blink capabilities must apply to Haskell LSP clients")
+
 print("haskell neovim configuration: ok")
