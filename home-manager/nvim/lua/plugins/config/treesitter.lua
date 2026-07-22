@@ -1,5 +1,18 @@
 local M = {}
 
+function M.ensure_installed()
+  return {
+    "rust",
+    "c",
+    "cpp",
+    "python",
+    "lua",
+    "latex",
+    "moonbit",
+    "haskell",
+  }
+end
+
 function M.moonbit_parser_config()
   return {
     install_info = {
