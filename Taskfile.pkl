@@ -87,6 +87,12 @@ local testNeovimTask = new Task {
       XDG_DATA_HOME="$state_dir/data" \
       NVIM_LOG_FILE="$state_dir/nvim.log" \
       nvim --clean -i NONE --headless -l tests/neovim/moonbit_spec.lua
+    REPO_ROOT="$PWD" \
+      XDG_STATE_HOME="$state_dir/state" \
+      XDG_CACHE_HOME="$state_dir/cache" \
+      XDG_DATA_HOME="$state_dir/data" \
+      NVIM_LOG_FILE="$state_dir/nvim.log" \
+      nvim --clean -i NONE --headless -l tests/neovim/haskell_spec.lua
     """
 }
 

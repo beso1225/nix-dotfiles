@@ -13,15 +13,7 @@ return {
       })
       treesitter.register_parsers()
       require("nvim-treesitter").setup({})
-      require("nvim-treesitter").install({
-        "rust",
-        "c",
-        "cpp",
-        "python",
-        "lua",
-        "latex",
-        "moonbit",
-      })
+      require("nvim-treesitter").install(treesitter.ensure_installed())
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
         callback = function()
