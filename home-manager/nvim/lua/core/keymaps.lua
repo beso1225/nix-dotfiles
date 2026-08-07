@@ -52,7 +52,7 @@ vim.api.nvim_create_user_command("Textlint", function()
 
   vim.cmd("!" .. vim.fn.shellescape("textlint") .. " " .. vim.fn.shellescape(file))
 end, { desc = "Run textlint for the current file" })
-map("n", "<leader>tl", "<cmd>Textlint<cr>", { desc = "Run textlint" })
+map("n", "<leader>ll", "<cmd>Textlint<cr>", { desc = "Run textlint" })
 
 -- for copilot
 map("i", "<C-n>", 'copilot#Accept("<CR>")', { expr = true, replace_keycodes = false })
