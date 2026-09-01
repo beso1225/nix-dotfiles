@@ -37,6 +37,10 @@
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       "com.apple.mouse.tapBehavior" = 1;
+
+      # menubar space size
+      NSStatusItemSelectionPadding = 6;
+      NSStatusItemSpacing = 6;
     };
     finder = {
       AppleShowAllExtensions = true;
