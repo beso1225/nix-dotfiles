@@ -32,6 +32,9 @@ opt.conceallevel = 2
 
 -- turn
 opt.wrap = true
+opt.breakindent = true
+opt.showbreak = string.rep(" ", 3)
+opt.linebreak = true
 
 -- transparent
 opt.termguicolors = true
