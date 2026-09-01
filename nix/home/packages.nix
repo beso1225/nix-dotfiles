@@ -10,11 +10,7 @@ let
 
   tex = pkgs.texlive.combine {
     inherit (pkgs.texlive)
-      scheme-medium
-      luatexja
-      jsclasses
-      silence
-      circuitikz
+      scheme-full
       ;
   };
 in
@@ -59,7 +55,6 @@ in
 
     # TeX
     tex
-    biber
     ghostscript
     poppler-utils
 

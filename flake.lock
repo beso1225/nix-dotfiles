@@ -55,22 +55,6 @@
         "type": "github"
       }
     },
-    "moon-registry": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1782221602,
-        "narHash": "sha256-/la3E3Kv8GkSB35iQRLuJC0Asu3Y0a1MwwJmKyP8CTY=",
-        "ref": "refs/heads/main",
-        "rev": "1cdbb8aee99a88bb96fe86340d5853775b2cd380",
-        "revCount": 10026,
-        "type": "git",
-        "url": "https://mooncakes.io/git/index"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://mooncakes.io/git/index"
-      }
-    },
     "moonbit-overlay": {
       "inputs": {
         "nixpkgs": "nixpkgs_2",
@@ -176,16 +160,15 @@
     "pkfire": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "moon-registry": "moon-registry",
         "moonbit-overlay": "moonbit-overlay",
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1782230197,
-        "narHash": "sha256-HrVChPcW2UTpv2b5Vw/gMqH/WmHc35fpGWyEfiYth4Q=",
+        "lastModified": 1784054903,
+        "narHash": "sha256-RwMUavud81zp2vxYKmJ7VcufmMoO74EFGkQ5T/+L/T4=",
         "owner": "mizchi",
         "repo": "pkfire",
-        "rev": "4601b7df7b075abab9a7856cbd95c856c4436253",
+        "rev": "fa704078d459bdee2ba363c92725ae98e7ab0be9",
         "type": "github"
       },
       "original": {
