@@ -18,6 +18,11 @@
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     pkfire.url = "github:mizchi/pkfire";
+    nvim-key-insights = {
+      url = "github:beso1225/nvim-key-insights?ref=v0.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pkfire.follows = "pkfire";
+    };
   };
 
   outputs =
@@ -27,6 +32,7 @@
       home-manager,
       nix-darwin,
       nix-homebrew,
+      nvim-key-insights,
 
       rust-overlay,
       pkfire,
@@ -40,6 +46,7 @@
           });
         })
         rust-overlay.overlays.default
+        nvim-key-insights.overlays.default
         (import ./nix/overlays)
       ];
     in
@@ -61,7 +68,6 @@
         ];
       };
 
-      packages.aarch64-darwin.gccWithoutCc =
-        self.darwinConfigurations."TY".pkgs.gccWithoutCc;
+      packages.aarch64-darwin.gccWithoutCc = self.darwinConfigurations."TY".pkgs.gccWithoutCc;
     };
 }

@@ -7,6 +7,7 @@ local spec = {
   { import = "plugins.specs.treesitter" },
   { import = "plugins.specs.luasnip" },
   { import = "plugins.specs.mdpreview" },
+  { import = "plugins.specs.key-insights" },
 }
 if not vim.g.vscode then
   spec[#spec + 1] = { import = "plugins.specs.blink" }
