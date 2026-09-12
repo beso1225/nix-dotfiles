@@ -1,8 +1,8 @@
 local repo = assert(os.getenv("REPO_ROOT"), "REPO_ROOT is required")
 
-vim.opt.runtimepath:prepend(repo .. "/home-manager/nvim")
+vim.opt.runtimepath:prepend(repo .. "/chezmoi/dot_config/nvim")
 
-local spec = dofile(repo .. "/home-manager/nvim/lua/plugins/specs/key-insights.lua")
+local spec = dofile(repo .. "/chezmoi/dot_config/nvim/lua/plugins/specs/key-insights.lua")
 
 assert(spec[1] == "beso1225/nvim-key-insights")
 assert(spec.version == "v0.2.0")

@@ -75,7 +75,7 @@ local testNeovimTask = new Task {
   cache = false
   shellFlags = strictShellFlags
   inputs {
-    "home-manager/nvim/**/*.lua"
+    "chezmoi/dot_config/nvim/**/*.lua"
     "tests/neovim/**/*.lua"
   }
   cmd = """
@@ -102,6 +102,21 @@ local testNeovimTask = new Task {
     """
 }
 
+local testChezmoiTask = new Task {
+  name = "test-chezmoi"
+  description = "Verify chezmoi dotfile ownership and target paths"
+  cache = false
+  shellFlags = strictShellFlags
+  inputs {
+    "chezmoi/.chezmoi.toml.tmpl"
+    "chezmoi/.chezmoiignore"
+    "chezmoi/dot_config/**/*"
+    "nix/home/shell.nix"
+    "tests/chezmoi/phase3_contract.sh"
+  }
+  cmd = "bash tests/chezmoi/phase3_contract.sh"
+}
+
 local testGccPathTask = new Task {
   name = "test-gcc-path"
   description = "Verify GCC does not shadow the macOS cc command"
@@ -122,5 +137,6 @@ tasks {
   updateHomebrewTask
   updateAllTask
   testNeovimTask
+  testChezmoiTask
   testGccPathTask
 }
