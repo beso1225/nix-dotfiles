@@ -4,6 +4,9 @@ set -euo pipefail
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 source_root="$repo_root/chezmoi"
 
+test -f "$source_root/.chezmoi.toml.tmpl"
+test -f "$source_root/.chezmoiignore"
+
 expected_sources=(
   "$source_root/dot_config/nvim/init.lua"
   "$source_root/dot_config/nvim/lua/core/filetypes.lua"

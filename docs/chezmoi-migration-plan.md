@@ -43,7 +43,7 @@ Examples:
 
 Before Phase 3, this repository mixed package ownership and dotfile ownership.
 
-Examples from the current tree:
+Examples from the pre-Phase 3 tree:
 
 - `home-manager/nvim` is linked into `~/.config/nvim`
 - `home-manager/chezmoi` is linked into `~/.config/chezmoi`
