@@ -34,6 +34,12 @@ chezmoi \
   --config "$config_path" \
   --source "$source_root" \
   --destination "$tmp_home" \
+  init --guess-repo-url=false
+
+chezmoi \
+  --config "$config_path" \
+  --source "$source_root" \
+  --destination "$tmp_home" \
   --persistent-state "$tmp_home/chezmoistate.boltdb" \
   --force \
   apply
