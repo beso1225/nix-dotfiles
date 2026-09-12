@@ -19,7 +19,7 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     pkfire.url = "github:mizchi/pkfire";
     nvim-key-insights = {
-      url = "github:beso1225/nvim-key-insights?ref=v0.2.0";
+      url = "github:beso1225/nvim-key-insights?ref=v0.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pkfire.follows = "pkfire";
     };

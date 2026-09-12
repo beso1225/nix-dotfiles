@@ -1,6 +1,6 @@
 return {
   "beso1225/nvim-key-insights",
-  version = "v0.2.0",
+  version = "v0.2.3",
   cmd = {
     "KeyInsightsStart",
     "KeyInsightsPause",
