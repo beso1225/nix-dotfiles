@@ -3,9 +3,21 @@ set -euo pipefail
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 source_root="$repo_root/chezmoi"
+bootstrap_doc="$repo_root/docs/chezmoi-migration-plan.md"
 
 test -f "$source_root/.chezmoi.toml.tmpl"
 test -f "$source_root/.chezmoiignore"
+test -f "$bootstrap_doc"
+
+rg -q 'git clone <repo-url> <repo-path>' "$bootstrap_doc"
+rg -q 'nix profile install nixpkgs#chezmoi' "$bootstrap_doc"
+rg -q 'nix run nix-darwin -- switch --flake <repo-path>#TY' "$bootstrap_doc"
+
+if sed -n '/^### Baseline flow$/,/^### Flake path options$/p' "$bootstrap_doc" \
+  | rg -q 'ghq'; then
+  echo "fresh-machine bootstrap must not depend on ghq" >&2
+  exit 1
+fi
 
 expected_sources=(
   "$source_root/dot_config/nvim/init.lua"

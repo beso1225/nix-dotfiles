@@ -23,10 +23,13 @@ Each path under `$HOME` should be owned by exactly one layer.
 
 The recommended bootstrap flow is:
 
-1. `chezmoi init <repo>`
-2. `chezmoi apply`
-3. `darwin-rebuild switch --flake <path>#TY`
-4. `chezmoi apply`
+1. Install Nix and ensure that a system `git` is available
+2. `git clone <repo-url> <repo-path>`
+3. `nix profile install nixpkgs#chezmoi`
+4. `chezmoi --source <repo-path>/chezmoi init --guess-repo-url=false`
+5. `chezmoi --source <repo-path>/chezmoi apply`
+6. `nix run nix-darwin -- switch --flake <repo-path>#TY`
+7. `chezmoi --source <repo-path>/chezmoi apply`
 
 `chezmoi apply` should be treated as a normal step, not as a recovery step.
 
@@ -146,11 +149,13 @@ This repository keeps the Nix flake at its root and uses `chezmoi/` as an
 explicit source subtree. The first-machine setup is:
 
 1. Install Nix
-2. Clone this repository to `<repo-path>`
-3. `chezmoi --source <repo-path>/chezmoi init --guess-repo-url=false`
-4. `chezmoi --source <repo-path>/chezmoi apply`
-5. `darwin-rebuild switch --flake <repo-path>#TY`
+2. Ensure that a system `git` is available
+3. `git clone <repo-url> <repo-path>`
+4. `nix profile install nixpkgs#chezmoi`
+5. `chezmoi --source <repo-path>/chezmoi init --guess-repo-url=false`
 6. `chezmoi --source <repo-path>/chezmoi apply`
+7. `nix run nix-darwin -- switch --flake <repo-path>#TY`
+8. `chezmoi --source <repo-path>/chezmoi apply`
 
 ### Flake path options
 
@@ -160,9 +165,9 @@ This is the chosen design for the initial migration.
 
 Example:
 
-- clone the repository to `<repo-path>`
+- clone the repository with Git to `<repo-path>`
 - use `chezmoi --source <repo-path>/chezmoi apply` for dotfiles
-- run `darwin-rebuild switch --flake <repo-path>#TY` for Nix
+- run `nix run nix-darwin -- switch --flake <repo-path>#TY` for Nix
 
 Advantages:
 
