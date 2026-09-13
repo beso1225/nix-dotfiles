@@ -16,7 +16,7 @@ return {
       directory = vim.fn.expand("~/.local/state/key-insights/sessions/")
     },
     report = {
-      analyzer = "/Users/yutarotakagi/ghq/github.com/beso1225/nvim-key-insights/target/debug/key-insights",
+      analyzer = "key-insight",
       directory = vim.fn.expand("~/.local/state/key-insights/reports/"),
     },
   },
