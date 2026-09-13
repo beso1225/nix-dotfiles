@@ -29,6 +29,7 @@
   # Enable Touch ID authentication for sudo and reattach to the session after authentication.
   security.pam.services.sudo_local = {
     touchIdAuth = true;
+    watchIdAuth = true;
     reattach = true;
   };
 
