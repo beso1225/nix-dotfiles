@@ -1,6 +1,6 @@
 return {
   "beso1225/nvim-key-insights",
-  version = "v0.2.3",
+  version = "v0.2.4",
   cmd = {
     "KeyInsightsStart",
     "KeyInsightsPause",
@@ -13,11 +13,15 @@ return {
   },
   opts = {
     storage = {
-      directory = vim.fn.expand("~/.local/state/key-insights/sessions"),
+      directory = vim.fn.expand("~/.local/state/key-insights/sessions/")
     },
     report = {
-      analyzer = "key-insights",
-      directory = vim.fn.expand("~/.local/state/key-insights/reports"),
+      analyzer = "/Users/yutarotakagi/ghq/github.com/beso1225/nvim-key-insights/target/debug/key-insights",
+      directory = vim.fn.expand("~/.local/state/key-insights/reports/"),
     },
   },
+  config = function(_, opts)
+    require("key-insights").setup(opts)
+  end,
+
 }
