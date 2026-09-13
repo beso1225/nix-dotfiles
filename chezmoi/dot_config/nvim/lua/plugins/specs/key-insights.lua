@@ -20,4 +20,7 @@ return {
       directory = vim.fn.expand("~/.local/state/key-insights/reports/"),
     },
   },
+  config = function(_, opts)
+    require("key-insights").setup(opts)
+  end,
 }
