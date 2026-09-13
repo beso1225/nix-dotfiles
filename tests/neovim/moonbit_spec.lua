@@ -1,6 +1,6 @@
 local repo = assert(os.getenv("REPO_ROOT"), "REPO_ROOT is required")
 
-vim.opt.runtimepath:prepend(repo .. "/home-manager/nvim")
+vim.opt.runtimepath:prepend(repo .. "/chezmoi/dot_config/nvim")
 
 require("core.filetypes")
 
@@ -18,7 +18,7 @@ assert(parser.install_info.url == "https://github.com/moonbitlang/tree-sitter-mo
 assert(parser.install_info.queries == "queries")
 assert(parser.tier == 2)
 
-local lsp = dofile(repo .. "/home-manager/nvim/after/lsp/moonbit_ls.lua")
+local lsp = dofile(repo .. "/chezmoi/dot_config/nvim/after/lsp/moonbit_ls.lua")
 assert(vim.deep_equal(lsp.cmd, { "moon-lsp" }))
 assert(vim.deep_equal(lsp.filetypes, { "moonbit" }))
 assert(lsp.root_markers[1] == "moon.mod", "moon.mod must be the preferred module root")

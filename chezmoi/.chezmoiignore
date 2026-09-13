@@ -1,0 +1,3 @@
+# Keep filesystem metadata and local state out of the managed target.
+.DS_Store
+chezmoistate.boltdb

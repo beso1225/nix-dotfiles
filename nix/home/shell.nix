@@ -1,11 +1,4 @@
-{
-  config,
-  ...
-}:
-let
-  inherit (config.lib.file) mkOutOfStoreSymlink;
-  dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/beso1225/nix-dotfiles";
-in
+{ ... }:
 {
   home.sessionVariables = {
     FZF_TMUX = "1";
@@ -21,29 +14,8 @@ in
   ];
 
   home.file = {
+    # Git configuration remains Home Manager-owned for now.
     ".gitconfig".source = ../../home-manager/git/.gitconfig;
-
-    # Custom zsh functions loaded via fpath
-    ".config/zsh/functions/ccnew".source = ../../home-manager/zsh/functions/ccnew;
-    ".config/zsh/functions/y".source = ../../home-manager/zsh/functions/y;
-
-    # zsh-abbr abbreviations (hardcoded in nix)
-    ".config/zsh-abbr/user-abbreviations".text = ''
-      abbr "cdev"='podman run --rm -it -v $PWD:/work -v "$HOME/Documents/programing/Cpp/podman/bashrc":/root/.bashrc:ro -w /work cpp-toolbox:ubuntu2404 bash'
-      abbr "t"="eza -F --tree --icons"
-      abbr "ta"="eza -aF --tree --icons --git-ignore"
-      abbr "tl"="eza -alF --tree --git --icons --git-ignore"
-      abbr "l"="eza -F --icons"
-      abbr "la"="eza -aF --icons"
-      abbr "ll"="eza -al --git --icons"
-      abbr "lg"="lazygit"
-    '';
-
-    # Neovim configuration
-    ".config/nvim".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/nvim";
-
-    # Chezmoi configuration
-    ".config/chezmoi".source = mkOutOfStoreSymlink "${dotfilesDir}/home-manager/chezmoi";
   };
 
   programs.zsh = {
@@ -74,7 +46,7 @@ in
         eval "$(/opt/homebrew/bin/brew shellenv)"
       fi
 
-      # Load custom zsh functions via fpath
+      # Load chezmoi-managed custom zsh functions via fpath
       fpath=($HOME/.config/zsh/functions $fpath)
       autoload -Uz ccnew y
 

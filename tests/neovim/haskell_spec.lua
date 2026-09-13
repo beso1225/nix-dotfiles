@@ -1,12 +1,12 @@
 local repo = assert(os.getenv("REPO_ROOT"), "REPO_ROOT is required")
 
-vim.opt.runtimepath:prepend(repo .. "/home-manager/nvim")
+vim.opt.runtimepath:prepend(repo .. "/chezmoi/dot_config/nvim")
 
 local treesitter = require("plugins.config.treesitter")
 local parsers = treesitter.ensure_installed()
 assert(vim.list_contains(parsers, "haskell"), "Haskell must be installed as a Tree-sitter parser")
 
-local language_plugins = dofile(repo .. "/home-manager/nvim/lua/plugins/specs/lang.lua")
+local language_plugins = dofile(repo .. "/chezmoi/dot_config/nvim/lua/plugins/specs/lang.lua")
 local haskell_tools
 for _, plugin in ipairs(language_plugins) do
   if plugin[1] == "mrcjkb/haskell-tools.nvim" then
@@ -42,7 +42,7 @@ package.preload["blink.cmp"] = function()
   }
 end
 
-dofile(repo .. "/home-manager/nvim/lua/plugins/config/blink.lua")
+dofile(repo .. "/chezmoi/dot_config/nvim/lua/plugins/config/blink.lua")
 vim.lsp.config("haskell-capabilities-test", {})
 local capabilities = vim.lsp.config["haskell-capabilities-test"].capabilities
 assert(vim.deep_equal(capabilities, expected_capabilities), "Blink capabilities must apply to Haskell LSP clients")

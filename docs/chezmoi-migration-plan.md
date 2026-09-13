@@ -23,10 +23,13 @@ Each path under `$HOME` should be owned by exactly one layer.
 
 The recommended bootstrap flow is:
 
-1. `chezmoi init <repo>`
-2. `chezmoi apply`
-3. `darwin-rebuild switch --flake <path>#TY`
-4. `chezmoi apply`
+1. Install Nix and ensure that a system `git` is available
+2. `git clone <repo-url> <repo-path>`
+3. `nix profile install nixpkgs#chezmoi`
+4. `chezmoi --source <repo-path>/chezmoi init --guess-repo-url=false`
+5. `chezmoi --source <repo-path>/chezmoi apply`
+6. `nix run nix-darwin -- switch --flake <repo-path>#TY`
+7. `chezmoi --source <repo-path>/chezmoi apply`
 
 `chezmoi apply` should be treated as a normal step, not as a recovery step.
 
@@ -41,9 +44,9 @@ Examples:
 
 ## Current State
 
-Today this repository mixes package ownership and dotfile ownership.
+Before Phase 3, this repository mixed package ownership and dotfile ownership.
 
-Examples from the current tree:
+Examples from the pre-Phase 3 tree:
 
 - `home-manager/nvim` is linked into `~/.config/nvim`
 - `home-manager/chezmoi` is linked into `~/.config/chezmoi`
@@ -52,6 +55,14 @@ Examples from the current tree:
 - `zsh-abbr` content is embedded inline in Nix
 
 This works, but it makes file-level config edits depend on Nix structure and `home.file` ownership.
+
+Phase 3 now gives the migrated paths a dedicated chezmoi source tree:
+
+- `chezmoi/dot_config/nvim` owns `~/.config/nvim`
+- `chezmoi/dot_config/zsh/functions/*` owns the zsh helper files
+- `chezmoi/dot_config/zsh-abbr/user-abbreviations` owns zsh-abbr content
+- `programs.zsh` remains Nix-owned and keeps the shell wiring
+- `.gitconfig`, Codex/APM, and other user config remain outside this phase
 
 ## Target Ownership Model
 
@@ -134,30 +145,35 @@ This avoids double ownership of `.zshrc` while still allowing fast user-level ed
 
 ### Baseline flow
 
-Recommended first-machine setup:
+This repository keeps the Nix flake at its root and uses `chezmoi/` as an
+explicit source subtree. The first-machine setup is:
 
 1. Install Nix
-2. Install or invoke chezmoi
-3. `chezmoi init <repo>`
-4. `chezmoi apply`
-5. `darwin-rebuild switch --flake <flake-path>#TY`
-6. `chezmoi apply`
+2. Ensure that a system `git` is available
+3. `git clone <repo-url> <repo-path>`
+4. `nix profile install nixpkgs#chezmoi`
+5. `chezmoi --source <repo-path>/chezmoi init --guess-repo-url=false`
+6. `chezmoi --source <repo-path>/chezmoi apply`
+7. `nix run nix-darwin -- switch --flake <repo-path>#TY`
+8. `chezmoi --source <repo-path>/chezmoi apply`
 
 ### Flake path options
 
-#### Option A: use the repository source tree as the flake root
+#### Option A: keep the flake root and chezmoi source subtree in one repository
 
-This is the safest immediate design.
+This is the chosen design for the initial migration.
 
 Example:
 
-- clone or initialize chezmoi source
-- run `darwin-rebuild switch --flake ~/.local/share/chezmoi#TY`
+- clone the repository with Git to `<repo-path>`
+- use `chezmoi --source <repo-path>/chezmoi apply` for dotfiles
+- run `nix run nix-darwin -- switch --flake <repo-path>#TY` for Nix
 
 Advantages:
 
-- no need to wait for target files to exist before the first switch
-- minimal bootstrap ambiguity
+- Nix files are not interpreted as chezmoi targets
+- the flake remains available before the first chezmoi apply
+- Nix and dotfile ownership are visible from the repository tree
 
 #### Option B: use a target path such as `~/.config/home-manager`
 
@@ -210,7 +226,7 @@ Suggested split:
 1. Create `chezmoi/`
 2. Add `.chezmoi.toml.tmpl`
 3. Add `.chezmoiignore`
-4. Decide whether this repository itself is the chezmoi source repo or whether chezmoi should source from a subdirectory workflow
+4. Keep this repository as the Nix flake and use `chezmoi/` as an explicit source subtree
 
 ### Phase 3: move file-owned config trees
 

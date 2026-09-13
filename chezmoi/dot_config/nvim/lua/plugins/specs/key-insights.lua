@@ -23,5 +23,4 @@ return {
   config = function(_, opts)
     require("key-insights").setup(opts)
   end,
-
 }
