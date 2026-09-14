@@ -16,7 +16,7 @@ return {
       directory = vim.fn.expand("~/.local/state/key-insights/sessions/")
     },
     report = {
-      analyzer = "key-insight",
+      analyzer = "key-insights",
       directory = vim.fn.expand("~/.local/state/key-insights/reports/"),
     },
   },
