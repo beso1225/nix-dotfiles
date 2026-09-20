@@ -55,6 +55,19 @@
         "type": "github"
       }
     },
+    "jev-jotworthy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789911030,
+        "narHash": "sha256-eKCjNryde94m345PkJZpNK0yASP2k9KTckSscrieVIs=",
+        "path": "/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy",
+        "type": "path"
+      }
+    },
     "moonbit-overlay": {
       "inputs": {
         "nixpkgs": "nixpkgs_2",
@@ -204,6 +217,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "jev-jotworthy": "jev-jotworthy",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",

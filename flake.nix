@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pkfire.follows = "pkfire";
     };
+    # Use the sibling checkout until jev-jotworthy is published as a release.
+    jev-jotworthy = {
+      url = "path:/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy";
+      flake = false;
+    };
   };
 
   outputs =
@@ -33,6 +38,7 @@
       nix-darwin,
       nix-homebrew,
       nvim-key-insights,
+      jev-jotworthy,
 
       rust-overlay,
       pkfire,
@@ -48,6 +54,11 @@
         rust-overlay.overlays.default
         nvim-key-insights.overlays.default
         (import ./nix/overlays)
+        (final: prev: {
+          jotworthy = prev.callPackage ./nix/pkgs/jotworthy.nix {
+            src = jev-jotworthy;
+          };
+        })
       ];
     in
     {

@@ -41,6 +41,13 @@
       export EDITOR=nvim
       export VISUAL=nvim
 
+      # Optional local credentials for jotworthy. Keep this file outside the
+      # dotfiles repository, for example at ~/.config/jotworthy/env, with:
+      #   export JEV_API_KEY='...'
+      if [ -f "$HOME/.config/jotworthy/env" ]; then
+        source "$HOME/.config/jotworthy/env"
+      fi
+
       # Homebrew setup (macOS)
       if [ -f /opt/homebrew/bin/brew ]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"

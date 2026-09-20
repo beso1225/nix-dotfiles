@@ -24,6 +24,7 @@ in
 
     git
     neovim
+    jotworthy
     key-insights
     eza
     lazygit

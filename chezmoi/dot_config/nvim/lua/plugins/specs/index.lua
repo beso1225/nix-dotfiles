@@ -4,6 +4,7 @@ local spec = {
   { import = "plugins.specs.lint" },
   { import = "plugins.specs.lsp" },
   { import = "plugins.specs.obsidian" },
+  { import = "plugins.specs.jotworthy" },
   { import = "plugins.specs.treesitter" },
   { import = "plugins.specs.luasnip" },
   { import = "plugins.specs.mdpreview" },
