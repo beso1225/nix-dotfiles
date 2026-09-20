@@ -1,6 +1,8 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "nix", "develop", "--command", "gopls" },
+  cmd = {
+    "gopls",
+  },
   root_markers = {
     "go.work",
     "go.mod",

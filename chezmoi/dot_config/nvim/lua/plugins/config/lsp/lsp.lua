@@ -24,6 +24,7 @@ function M.mason_lspconfig()
 end
 
 vim.lsp.enable('nixd')
+vim.lsp.enable('gopls')
 
 -- vim.lsp.enable('rust_analyzer')
 return M
