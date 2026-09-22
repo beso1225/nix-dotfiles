@@ -23,9 +23,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pkfire.follows = "pkfire";
     };
-    # Use the sibling checkout until jev-jotworthy is published as a release.
+    # Fetch the published repository so CI does not depend on a local checkout.
     jev-jotworthy = {
-      url = "path:/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy";
+      url = "github:beso1225/jev-jotworthy?ref=main";
       flake = false;
     };
   };

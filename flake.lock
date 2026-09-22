@@ -59,13 +59,17 @@
       "flake": false,
       "locked": {
         "lastModified": 1789911030,
-        "narHash": "sha256-eKCjNryde94m345PkJZpNK0yASP2k9KTckSscrieVIs=",
-        "path": "/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy",
-        "type": "path"
+        "narHash": "sha256-xbO9UzPKdd4fVxov6woEGQJXafm6efw1JWD1KZtpKRw=",
+        "owner": "beso1225",
+        "repo": "jev-jotworthy",
+        "rev": "be311afc09b32fa466dcdee3e97d5df9bf08c408",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/yutarotakagi/ghq/github.com/beso1225/jev-jotworthy",
-        "type": "path"
+        "owner": "beso1225",
+        "ref": "main",
+        "repo": "jev-jotworthy",
+        "type": "github"
       }
     },
     "moonbit-overlay": {
