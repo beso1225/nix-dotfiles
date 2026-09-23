@@ -137,6 +137,19 @@ local testGccPathTask = new Task {
   cmd = "bash tests/gcc-path-contract.sh"
 }
 
+local testAerospaceTask = new Task {
+  name = "test-aerospace"
+  description = "Verify the external-monitor AeroSpace automation contract"
+  cache = false
+  shellFlags = strictShellFlags
+  inputs {
+    "chezmoi/dot_config/aerospace/**/*"
+    "chezmoi/Library/LaunchAgents/com.yutarotakagi.aerospace-external-monitor.plist.tmpl"
+    "tests/aerospace/contract.sh"
+  }
+  cmd = "bash tests/aerospace/contract.sh"
+}
+
 tasks {
   switchTask
   updateNixpkgsTask
@@ -145,4 +158,5 @@ tasks {
   testNeovimTask
   testChezmoiTask
   testGccPathTask
+  testAerospaceTask
 }
