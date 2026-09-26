@@ -8,11 +8,7 @@ let
     extensions = [ "llvm-tools-preview" ];
   };
 
-  tex = pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-full
-      ;
-  };
+  tex = pkgs.texliveSmall.withPackages (tl: [ tl.scheme-full ]);
 in
 {
   home.packages = with pkgs; [
@@ -41,7 +37,7 @@ in
     ghq
     uv
     chezmoi
-    pkfire.packages.${pkgs.system}.default
+    pkfire.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # rust tools
     rustToolchain

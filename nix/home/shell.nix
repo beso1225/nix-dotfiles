@@ -10,6 +10,7 @@
     "$HOME/bin"
     "/etc/profiles/per-user/yutarotakagi/bin"
     "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
     "$HOME/.moon/bin"
   ];
 
