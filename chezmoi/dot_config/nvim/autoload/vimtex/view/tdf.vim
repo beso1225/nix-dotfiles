@@ -2,8 +2,18 @@ function! vimtex#view#tdf#new() abort
   return {
         \ 'view': function('s:view'),
         \ 'out': function('s:out'),
+        \ 'check': function('s:check'),
+        \ 'xdo_check': function('s:xdo_check'),
         \ 'compiler_callback': function('s:compiler_callback'),
         \ }
+endfunction
+
+function! s:check() dict abort
+  return executable('tdf') && executable('herdr')
+endfunction
+
+function! s:xdo_check() dict abort
+  return v:false
 endfunction
 
 function! s:out() dict abort
