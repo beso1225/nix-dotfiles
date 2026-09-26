@@ -17,7 +17,7 @@ function M.open(pdf)
   local socket = '/tmp/tdf-' .. stem .. '.sock'
 
   if vim.uv.fs_stat(socket) then
-    local forward = run({ 'tdf', '--synctex-forward', position, '--synctex-socket', socket })
+    local forward = run({ 'tdf', pdf, '--synctex-forward', position, '--synctex-socket', socket })
     if forward.code == 0 then
       return
     end
