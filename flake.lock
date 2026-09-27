@@ -227,7 +227,8 @@
         "nixpkgs": "nixpkgs",
         "nvim-key-insights": "nvim-key-insights",
         "pkfire": "pkfire",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "tdf-src": "tdf-src"
       }
     },
     "rust-overlay": {
@@ -263,6 +264,23 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tdf-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774543091,
+        "narHash": "sha256-vQSICFY2onPsNk/tf6Y6ymgj+9Dd8B+3aCwNBf76u1E=",
+        "owner": "yebo-liu",
+        "repo": "tdf",
+        "rev": "91709652c18ed027dcb671200e8bf2dc7211dc2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yebo-liu",
+        "repo": "tdf",
+        "rev": "91709652c18ed027dcb671200e8bf2dc7211dc2a",
         "type": "github"
       }
     },
