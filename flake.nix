@@ -28,6 +28,10 @@
       url = "github:beso1225/jev-jotworthy?ref=main";
       flake = false;
     };
+    tdf-src = {
+      url = "github:yebo-liu/tdf/91709652c18ed027dcb671200e8bf2dc7211dc2a";
+      flake = false;
+    };
   };
 
   outputs =
@@ -39,6 +43,7 @@
       nix-homebrew,
       nvim-key-insights,
       jev-jotworthy,
+      tdf-src,
 
       rust-overlay,
       pkfire,
@@ -57,6 +62,9 @@
         (final: prev: {
           jotworthy = prev.callPackage ./nix/pkgs/jotworthy.nix {
             src = jev-jotworthy;
+          };
+          tdf = final.callPackage ./nix/pkgs/tdf.nix {
+            src = tdf-src;
           };
         })
       ];
@@ -81,5 +89,10 @@
       };
 
       packages.aarch64-darwin.gccWithoutCc = self.darwinConfigurations."TY".pkgs.gccWithoutCc;
+      packages.aarch64-darwin.tdf =
+        (import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = sharedOverlays;
+        }).tdf;
     };
 }

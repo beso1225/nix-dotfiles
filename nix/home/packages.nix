@@ -53,6 +53,7 @@ in
 
     # TeX
     tex
+    tdf
     ghostscript
     poppler-utils
 
