@@ -8,7 +8,7 @@ let
     extensions = [ "llvm-tools-preview" ];
   };
 
-  tex = pkgs.texliveSmall.withPackages (tl: [ tl.scheme-full ]);
+  tex = pkgs.texliveFull;
 in
 {
   home.packages = with pkgs; [
