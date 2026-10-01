@@ -1,9 +1,11 @@
 {
   self,
+  lib,
   ...
 }:
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "obsidian";
   system = {
     # Please read the documentation of stateVersion before changing this.
     stateVersion = 6;

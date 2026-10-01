@@ -35,6 +35,7 @@ in
     gh
     wget
     ghq
+    obsidian
     uv
     chezmoi
     pkfire.packages.${pkgs.stdenv.hostPlatform.system}.default
