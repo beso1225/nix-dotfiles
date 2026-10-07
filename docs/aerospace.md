@@ -81,8 +81,23 @@ or use the configurable URL hints in `config.env`. If profile or window
 identity is ambiguous, the script logs the reason and refuses the initial
 arrangement rather than moving a guessed window.
 
+Chrome sometimes abbreviates the AppleScript window name with an ellipsis
+while AeroSpace reports the full native title. A sufficiently long unique
+prefix is accepted in that case. If exactly three Chrome windows exist,
+Profile 4 and one Default window are identified, and the remaining window is
+confirmed as Default, its workspace is inferred as the other Default
+workspace. Multiple Chrome windows initially appearing in the same workspace
+are not treated as evidence of their intended placement.
+
 Machine-specific values can be overridden in the untracked file
 `~/.config/aerospace/config.local`.
+
+To explicitly learn the current correct Chrome placement, run
+`~/.config/aerospace/scripts/restore-windows.sh --learn-current`. This validates
+one Default window each in workspaces 1 and 2 and Profile 4 in workspace 4,
+backs up the old mapping, and replaces it without rearranging any windows.
+Once a mapping exists, URL hints and current placement are no longer used to
+guess an unknown Default window's workspace during normal startup.
 
 ## Permissions and limitations
 

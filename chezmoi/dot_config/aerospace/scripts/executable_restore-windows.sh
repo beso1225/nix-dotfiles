@@ -8,6 +8,13 @@ if [ -f "$config_dir/config.local" ]; then
   source "$config_dir/config.local"
 fi
 
+learn_current=false
+case "${1:-}" in
+  "") ;;
+  --learn-current) learn_current=true ;;
+  *) echo "usage: $0 [--learn-current]" >&2; exit 2 ;;
+esac
+
 mkdir -p "$AEROSPACE_STATE_DIR" "$AEROSPACE_LOG_DIR"
 state_file="$AEROSPACE_STATE_DIR/chrome-windows.tsv"
 log_file="$AEROSPACE_LOG_DIR/restore.log"
@@ -16,6 +23,7 @@ trap 'rm -rf "$tmp_dir"' EXIT
 windows_file="$tmp_dir/windows.tsv"
 inspection_file="$tmp_dir/chrome.tsv"
 assignments_file="$tmp_dir/assignments.tsv"
+pending_default_file="$tmp_dir/pending-default.tsv"
 
 log() {
   printf '%s %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$*" >> "$log_file"
@@ -169,7 +177,15 @@ chrome_window_ids_for_title() {
   local window_name="$1"
   awk -F '\t' -v app="$CHROME_APP_BUNDLE_ID" -v title="$window_name" \
     '
-      function title_matches(aerospace_title, chrome_title) {
+      function title_matches(aerospace_title, chrome_title, prefix) {
+        # Chrome can abbreviate the AppleScript window name with an ellipsis
+        # while AeroSpace still sees the full native window title.
+        if (index(chrome_title, "…") > 0) {
+          prefix = substr(chrome_title, 1, index(chrome_title, "…") - 1)
+          if (length(prefix) >= 16 && index(aerospace_title, prefix) == 1) {
+            return 1
+          }
+        }
         return aerospace_title == chrome_title ||
           index(aerospace_title, chrome_title " - Google Chrome") == 1 ||
           index(aerospace_title, chrome_title " 🔊 - Google Chrome") == 1 ||
@@ -248,6 +264,7 @@ append_assignment() {
 }
 
 : > "$assignments_file"
+: > "$pending_default_file"
 
 # Non-Chrome applications are safe to identify by their actual Bundle ID. A
 # duplicate window is treated as ambiguous and prevents the whole initial
@@ -291,6 +308,7 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
     expected_workspace=$(single_candidate "$hints" || true)
   fi
 
+  [ "$learn_current" = false ] || expected_workspace=""
   window_id=$(unique_chrome_window_id "$window_name" "$expected_workspace" || true)
   if [ -z "$window_id" ] && \
     [ -n "$(single_candidate "$candidate_profiles" || true)" ]; then
@@ -317,6 +335,7 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
   fi
 
   for candidate in "$CHROME_DEFAULT_PROFILE_DIR" "$CHROME_PROFILE_4_DIR"; do
+    [ "$learn_current" = false ] || break
     [ -z "$profile" ] || [ "$profile" = "$candidate" ] || continue
     candidate_fingerprint=$(fingerprint "$candidate" "$normalized_urls")
     candidate_workspace=$(state_workspace_for_fingerprint "$candidate" "$candidate_fingerprint")
@@ -342,18 +361,29 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
   fi
 
   current_workspace=$(awk -F '\t' -v id="$window_id" '$1 == id { print $3; exit }' "$windows_file")
-  if [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ] && [ -z "$workspace" ]; then
-    case "$current_workspace" in
-      1|2) workspace="$current_workspace" ;;
+  if [ "$learn_current" = true ]; then
+    workspace=""
+    case "$profile:$current_workspace" in
+      "$CHROME_DEFAULT_PROFILE_DIR:1"|"$CHROME_DEFAULT_PROFILE_DIR:2"|"$CHROME_PROFILE_4_DIR:4")
+        workspace="$current_workspace" ;;
     esac
   fi
+  if [ "$learn_current" = false ] && [ ! -s "$state_file" ] && [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ] && [ -z "$workspace" ]; then
+    chrome_windows_here=$(awk -F '\t' -v app="$CHROME_APP_BUNDLE_ID" -v workspace="$current_workspace" \
+      '$2 == app && $3 == workspace { count++ } END { print count + 0 }' "$windows_file")
+    if [ "$chrome_windows_here" -eq 1 ]; then
+      case "$current_workspace" in
+        1|2) workspace="$current_workspace" ;;
+      esac
+    fi
+  fi
 
-  if [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ] && [ -z "$workspace" ]; then
+  if [ "$learn_current" = false ] && [ ! -s "$state_file" ] && [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ] && [ -z "$workspace" ]; then
     hints=$(hint_workspace "$all_urls" | sort -u || true)
     workspace=$(single_candidate "$hints" || true)
   fi
 
-  if [ -z "$profile" ] && [ -z "$candidate_profiles" ]; then
+  if [ "$learn_current" = false ] && [ ! -s "$state_file" ] && [ -z "$profile" ] && [ -z "$candidate_profiles" ]; then
     hints=$(hint_workspace "$all_urls" | sort -u || true)
     if workspace=$(single_candidate "$hints"); then
       profile="$CHROME_DEFAULT_PROFILE_DIR"
@@ -362,6 +392,10 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
   fi
 
   if [ -z "$profile" ] || [ -z "$workspace" ]; then
+    if [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ] && [ -z "$workspace" ]; then
+      profile_fingerprint=$(fingerprint "$profile" "$normalized_urls")
+      printf '%s\t%s\t%s\t%s\n' "$window_id" "$profile_fingerprint" "$active_url" "$normalized_urls" >> "$pending_default_file"
+    fi
     log "Chrome window could not be identified safely: $window_name"
     continue
   fi
@@ -376,6 +410,26 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
   append_assignment "$role" "$window_id" "$workspace" "$profile" "$profile_fingerprint" "$active_url" "$normalized_urls"
 done < "$inspection_file"
 
+# When one of exactly two Default windows is known, the other can be assigned
+# by elimination. Require Profile 4 to be resolved as well, so an unrelated
+# Chrome window cannot be mistaken for the remaining Default window.
+if [ "$learn_current" = false ] && [ "$(app_count "$CHROME_APP_BUNDLE_ID")" -eq 3 ] && \
+  [ "$(wc -l < "$pending_default_file" | tr -d ' ')" -eq 1 ] && \
+  [ "$(awk -F '\t' '$1 == "chrome-profile-4" { count++ } END { print count + 0 }' "$assignments_file")" -eq 1 ]; then
+  assigned_default=$(awk -F '\t' '$1 == "chrome-default-1" || $1 == "chrome-default-2" { print $1 }' "$assignments_file")
+  case "$assigned_default" in
+    chrome-default-1) remaining_role=chrome-default-2; remaining_workspace=2 ;;
+    chrome-default-2) remaining_role=chrome-default-1; remaining_workspace=1 ;;
+    *) remaining_role="" ;;
+  esac
+  if [ -n "$remaining_role" ]; then
+    IFS=$'\t' read -r pending_id pending_fingerprint pending_url pending_urls < "$pending_default_file"
+    append_assignment "$remaining_role" "$pending_id" "$remaining_workspace" \
+      "$CHROME_DEFAULT_PROFILE_DIR" "$pending_fingerprint" "$pending_url" "$pending_urls"
+    log "assigned remaining Default Chrome window to workspace $remaining_workspace by elimination"
+  fi
+fi
+
 for role in chrome-default-1 chrome-default-2 chrome-profile-4 line discord ghostty chatgpt music; do
   if [ "$(awk -F '\t' -v role="$role" '$1 == role { count++ } END { print count + 0 }' "$assignments_file")" -ne 1 ]; then
     log "required role is unresolved: $role"
@@ -383,14 +437,17 @@ for role in chrome-default-1 chrome-default-2 chrome-profile-4 line discord ghos
   fi
 done
 
-if ! "$script_dir/arrange-workspaces.sh" "$assignments_file"; then
+if [ "$learn_current" = false ] && ! "$script_dir/arrange-workspaces.sh" "$assignments_file"; then
   log "AeroSpace arrangement failed; state was not updated"
   exit 1
 fi
 
 state_tmp="$tmp_dir/chrome-windows.tsv"
 : > "$state_tmp"
-if [ -f "$state_file" ]; then
+if [ "$learn_current" = true ] && [ -f "$state_file" ]; then
+  cp -p "$state_file" "$state_file.before-learn-$(date '+%Y%m%d%H%M%S')"
+fi
+if [ "$learn_current" = false ] && [ -f "$state_file" ]; then
   while IFS= read -r state_line; do
     [ -n "$state_line" ] || continue
     state_profile=$(printf '%s\n' "$state_line" | awk -F '\t' '{ print $1 }')
@@ -405,6 +462,10 @@ while IFS=$'\t' read -r role window_id workspace profile profile_fingerprint act
   [ -n "$profile" ] || continue
   printf '%s\t%s\t%s\t%s\t%s\n' "$profile" "$workspace" "$profile_fingerprint" "$active_url" "$normalized_urls" >> "$state_tmp"
 done < "$assignments_file"
+chmod 600 "$state_tmp"
 mv "$state_tmp" "$state_file"
-chmod 600 "$state_file"
-log "Chrome window mapping and workspace arrangement completed"
+if [ "$learn_current" = true ]; then
+  log "learned current Chrome workspace mapping without rearranging windows"
+else
+  log "Chrome window mapping and workspace arrangement completed"
+fi
