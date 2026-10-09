@@ -33,6 +33,7 @@
     casks = [
       "copilot-cli"
       "codex"
+      "ollama-app"
     ];
   };
 }
