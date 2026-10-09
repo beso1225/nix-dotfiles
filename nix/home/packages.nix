@@ -37,6 +37,8 @@ in
     ghq
     obsidian
     uv
+    nodejs_24
+    corepack_24
     chezmoi
     pkfire.packages.${pkgs.stdenv.hostPlatform.system}.default
 
