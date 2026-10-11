@@ -1,0 +1,2 @@
+{{- /* chezmoi:modify-template */ -}}
+{{ fromJson (default "{}" .chezmoi.stdin) | setValueAtPath "theme" "dark" | toPrettyJson }}

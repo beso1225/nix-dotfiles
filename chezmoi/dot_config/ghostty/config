@@ -1,0 +1,19 @@
+font-family = JetBrains Mono
+font-family = BIZ UDGothic
+font-feature = -dlig
+font-size = 14
+
+cursor-style = block
+
+theme = "tokyonight"
+
+background-opacity = 0.9
+
+window-padding-x = 8
+window-padding-y = 8
+
+scrollback-limit = 100000
+
+macos-option-as-alt = "left"
+
+keybind = cmd+enter=unbind

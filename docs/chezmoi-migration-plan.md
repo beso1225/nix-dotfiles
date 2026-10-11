@@ -64,6 +64,12 @@ Phase 3 now gives the migrated paths a dedicated chezmoi source tree:
 - `programs.zsh` remains Nix-owned and keeps the shell wiring
 - `.gitconfig`, Codex/APM, and other user config remain outside this phase
 
+Phase 4 (issue #64) now represents Codex/APM and selected user configuration in
+chezmoi. See [User Config Ownership](user-config-ownership.md) for the file-level
+inventory, APM exclusions, partial-file handling, and restoration commands.
+`.gitconfig` remains Home Manager-owned; generated application state and credentials
+remain outside chezmoi. Nix ownership of `programs.*` does not change.
+
 ## Target Ownership Model
 
 ### Keep in Nix
@@ -78,8 +84,8 @@ Phase 3 now gives the migrated paths a dedicated chezmoi source tree:
 ### Move to chezmoi
 
 - Neovim config tree
-- `~/.codex`
-- `~/.apm`
+- selected `~/.codex` preferences, hooks, and manual skills (exclude app state)
+- `~/.apm` manifest, lockfile, and config (exclude APM modules and deployments)
 - plain `~/.config/*` trees that are content-oriented
 - shell helper files
 - `zsh-abbr` user abbreviations
@@ -125,13 +131,17 @@ This avoids double ownership of `.zshrc` while still allowing fast user-level ed
     ├── .chezmoiignore
     ├── dot_apm/
     ├── dot_codex/
+    ├── dot_arduinoIDE/
+    ├── dot_claude/
+    ├── dot_copilot/
+    ├── dot_docker/
+    ├── dot_keras/
     ├── dot_config/
     │   ├── chezmoi/
     │   ├── nvim/
     │   ├── zsh/
     │   └── zsh-abbr/
-    ├── dot_gitconfig
-    └── dot_zshrc
+    └── dot_latexmkrc
 ```
 
 ## Why this layout
@@ -241,6 +251,10 @@ Recommended order:
 
 ### Phase 4: reduce `home.file` ownership
 
+Issue #64 adds Codex/APM and the selected user configuration described in
+[User Config Ownership](user-config-ownership.md). None of those new targets
+were owned by `home.file`; `.gitconfig` is intentionally retained in Nix.
+
 As each path moves to chezmoi, delete the corresponding `home.file` entry from Nix.
 
 Important rule:
@@ -280,22 +294,16 @@ Suggested steady-state rules:
 
 ## Open Decisions
 
-The migration still needs explicit choices on these points:
+Phase 4 resolves the initial choices as follows:
 
-1. Should this repository itself become the chezmoi source repo?
-2. Should `.gitconfig` remain in Nix or move to chezmoi?
-3. Which `~/.config/*` trees are content-owned enough to move immediately?
-4. Should APM-managed or generated paths be excluded from chezmoi from day one?
-5. Should the flake stay at repo root and be invoked from chezmoi source state, or should the flake move to a chezmoi target path later?
+1. Keep `chezmoi/` as the explicit source subtree in this repository.
+2. Keep `.gitconfig` in Home Manager.
+3. Manage the selected files listed in [User Config Ownership](user-config-ownership.md).
+4. Exclude APM deployments, caches, credentials, and generated application state.
+5. Keep the flake at the repository root.
 
 ## Recommended Next Step
 
-Start with the least risky migration path:
-
-1. keep the flake at repository root
-2. create `nix/` and `chezmoi/` as ownership boundaries
-3. migrate `nvim` first
-4. then migrate shell helper files and `zsh-abbr`
-5. leave `.zshrc` main ownership in Nix
-
-This yields the structural benefits of chezmoi without destabilizing system activation.
+Continue with Phase 5's optional zsh fragment wiring and Phase 6's general
+operations guide. Keep `.zshrc` main ownership in Nix. The Phase 4 restore and
+update workflow is already documented in [User Config Ownership](user-config-ownership.md).

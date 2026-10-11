@@ -1,0 +1,21 @@
+[mgr]
+show_hidden = true
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+linemode = "size"
+
+[opener]
+edit = [
+  { run = "nvim \"$@\"", block = true }
+]
+
+[[plugin.prepend_fetchers]]
+url = "*"
+run = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url = "*/"
+run = "git"
+group = "git"
