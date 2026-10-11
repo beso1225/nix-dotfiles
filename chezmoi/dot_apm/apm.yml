@@ -14,6 +14,7 @@ dependencies:
     - openai/skills/skills/.curated/hatch-pet#49f948faa9258a0c61caceaf225e179651397431
     - openai/skills/skills/.curated/playwright#49f948faa9258a0c61caceaf225e179651397431
     - openai/skills/skills/.curated/yeet#49f948faa9258a0c61caceaf225e179651397431
+    - mattpocock/skills/skills/productivity/grilling#49dd158d1076134a641b33efb035946536778336
   mcp: []
 scripts: {}
 targets:

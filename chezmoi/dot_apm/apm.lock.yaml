@@ -26,6 +26,23 @@ dependencies:
     .agents/skills/tenbin-astra-diff-review/references/prompts.md: sha256:da4cf8dd118277da53042f3370670e50f806252ef25a463f015e3104834cda16
     .agents/skills/tenbin-astra-diff-review/scripts/generate_diff_bundle.py: sha256:d0e6fd59236ddaa649a4ad551140584adcb9233641a2222c59e2b8bae6c7380d
   content_hash: sha256:613ae9c8e90d7da8799bf8ac555db8d951ef31eb0d34a0564738b58ed0ad28b7
+- repo_url: mattpocock/skills
+  name: grilling
+  host: github.com
+  resolved_commit: 49dd158d1076134a641b33efb035946536778336
+  resolved_ref: 49dd158d1076134a641b33efb035946536778336
+  version: unknown
+  virtual_path: skills/productivity/grilling
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/grilling
+  - .agents/skills/grilling/SKILL.md
+  - .agents/skills/grilling/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/grilling/SKILL.md: sha256:befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
+    .agents/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
+  content_hash: sha256:90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755
 - repo_url: mizchi/pkfire
   name: pkfire
   host: github.com
@@ -489,6 +506,33 @@ deployments:
   - openai/skills/skills/.curated/gh-fix-ci
   active_owner: openai/skills/skills/.curated/gh-fix-ci
   content_hash: sha256:9459e5b03f86785d184a83e5cd8d621b832e918ec04158a2962d867785812c6c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
 - kind: project-relative
   target: codex
   value: .agents/skills/hatch-pet
