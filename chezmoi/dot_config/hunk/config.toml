@@ -1,0 +1,4 @@
+theme = "tokyo-night"
+mode = "auto"
+vcs = "git"
+watch = true

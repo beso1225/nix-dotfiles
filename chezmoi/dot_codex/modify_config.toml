@@ -1,0 +1,12 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Manage preferences without capturing desktop runtime or project trust. */ -}}
+{{ fromToml .chezmoi.stdin
+   | setValueAtPath "model" "gpt-6.1-sol"
+   | setValueAtPath "model_reasoning_effort" "high"
+   | setValueAtPath "personality" "pragmatic"
+   | setValueAtPath "service_tier" "default"
+   | setValueAtPath "features.hooks" true
+   | setValueAtPath "features.js_repl" false
+   | setValueAtPath "features.reasoning_effort_override" true
+   | setValueAtPath "features.context_management.experimental_mode" true
+   | toToml }}

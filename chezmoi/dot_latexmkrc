@@ -1,0 +1,13 @@
+$do_cd = 1;
+
+$lualatex = 'lualatex -synctex=1 -halt-on-error -file-line-error %O %S';
+$latex = $lualatex;
+$pdflatex = $lualatex;
+$max_repeat = 5;
+
+$bibtex_use = 2;
+$bibtex = 'biber %O %S';
+
+$out_dir = 'out';
+$emulate_aux = 1;
+$aux_dir = 'build';

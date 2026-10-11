@@ -1,0 +1,1159 @@
+lockfile_version: '1'
+apm_version: 0.32.0
+dependencies:
+- repo_url: beso1225/agent-skills
+  name: tenbin-astra-diff-review
+  host: github.com
+  resolved_commit: b885d9b55297e2af0a409929c19a23900da3d3c3
+  resolved_ref: b885d9b55297e2af0a409929c19a23900da3d3c3
+  version: unknown
+  virtual_path: skills/tenbin-astra-diff-review
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/tenbin-astra-diff-review
+  - .agents/skills/tenbin-astra-diff-review/SKILL.md
+  - .agents/skills/tenbin-astra-diff-review/agents/openai.yaml
+  - .agents/skills/tenbin-astra-diff-review/references/browser-workflow.md
+  - .agents/skills/tenbin-astra-diff-review/references/metadata-schema.md
+  - .agents/skills/tenbin-astra-diff-review/references/prompts.md
+  - .agents/skills/tenbin-astra-diff-review/scripts/generate_diff_bundle.py
+  deployed_file_hashes:
+    .agents/skills/tenbin-astra-diff-review/SKILL.md: sha256:e81829fcd0bc56f571521c402beca888991ce3bba8880a22ff8e2495c13f7706
+    .agents/skills/tenbin-astra-diff-review/agents/openai.yaml: sha256:149bcfce55562b5653afc80ffa7e0b78f1be7a12542889cb79dae01893b1f89f
+    .agents/skills/tenbin-astra-diff-review/references/browser-workflow.md: sha256:7d6211df5d0fae075d2e261ac59c885c8fbaf47047e7f2ad8e9f6f30678c2e1d
+    .agents/skills/tenbin-astra-diff-review/references/metadata-schema.md: sha256:c17ee354e643043e960309a58fba5699ea43aa5dfe83849bc7c78bcb61439b72
+    .agents/skills/tenbin-astra-diff-review/references/prompts.md: sha256:da4cf8dd118277da53042f3370670e50f806252ef25a463f015e3104834cda16
+    .agents/skills/tenbin-astra-diff-review/scripts/generate_diff_bundle.py: sha256:d0e6fd59236ddaa649a4ad551140584adcb9233641a2222c59e2b8bae6c7380d
+  content_hash: sha256:613ae9c8e90d7da8799bf8ac555db8d951ef31eb0d34a0564738b58ed0ad28b7
+- repo_url: mattpocock/skills
+  name: domain-modeling
+  host: github.com
+  resolved_commit: 49dd158d1076134a641b33efb035946536778336
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/engineering/domain-modeling
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/domain-modeling
+  - .agents/skills/domain-modeling/ADR-FORMAT.md
+  - .agents/skills/domain-modeling/GLOSSARY-FORMAT.md
+  - .agents/skills/domain-modeling/SKILL.md
+  - .agents/skills/domain-modeling/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/domain-modeling/ADR-FORMAT.md: sha256:944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0
+    .agents/skills/domain-modeling/GLOSSARY-FORMAT.md: sha256:21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801
+    .agents/skills/domain-modeling/SKILL.md: sha256:7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3
+    .agents/skills/domain-modeling/agents/openai.yaml: sha256:f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b
+  content_hash: sha256:467f5e92529c2a4637440dce99841814b0864a8528714188ec91b78d900df540
+- repo_url: mattpocock/skills
+  name: grilling
+  host: github.com
+  resolved_commit: 49dd158d1076134a641b33efb035946536778336
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/productivity/grilling
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/grilling
+  - .agents/skills/grilling/SKILL.md
+  - .agents/skills/grilling/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/grilling/SKILL.md: sha256:befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
+    .agents/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
+  content_hash: sha256:90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755
+- repo_url: mizchi/pkfire
+  name: pkfire
+  host: github.com
+  resolved_commit: 5e28fff65b7f5bbe1269e12861566838fbb03332
+  resolved_ref: 5e28fff65b7f5bbe1269e12861566838fbb03332
+  version: unknown
+  virtual_path: skills/pkfire
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/pkfire
+  - .agents/skills/pkfire/SKILL.md
+  - .agents/skills/pkfire/assets/recipes/01-build-and-test.pkl
+  - .agents/skills/pkfire/assets/recipes/02-multi-platform-matrix.pkl
+  - .agents/skills/pkfire/assets/recipes/03-monorepo.pkl
+  - .agents/skills/pkfire/assets/recipes/04-dev-watch.pkl
+  - .agents/skills/pkfire/assets/recipes/05-remote-cache.pkl
+  - .agents/skills/pkfire/assets/recipes/06-split-and-import.pkl
+  - .agents/skills/pkfire/assets/recipes/07-hierarchical-amends.pkl
+  - .agents/skills/pkfire/assets/recipes/08-services.pkl
+  - .agents/skills/pkfire/assets/recipes/09-test-against-services.pkl
+  - .agents/skills/pkfire/assets/recipes/10-args-passthrough.pkl
+  - .agents/skills/pkfire/assets/recipes/11-named-params.pkl
+  - .agents/skills/pkfire/assets/recipes/12-task-library.pkl
+  - .agents/skills/pkfire/assets/recipes/13-git-hooks.pkl
+  - .agents/skills/pkfire/assets/recipes/14-secretlint-pre-push.pkl
+  - .agents/skills/pkfire/assets/recipes/15-diagnostics-and-lint.pkl
+  - .agents/skills/pkfire/assets/recipes/16-release-version-bump.pkl
+  - .agents/skills/pkfire/assets/recipes/17-pkspec-checks.pkl
+  - .agents/skills/pkfire/assets/recipes/18-pkspec-check-pre-push.pkl
+  - .agents/skills/pkfire/assets/recipes/19-spec-task-link.pkl
+  deployed_file_hashes:
+    .agents/skills/pkfire/SKILL.md: sha256:6671f7c73c58684386877b1f6f6ca81ec1698b76b16f65a1effee8c47cadc19b
+    .agents/skills/pkfire/assets/recipes/01-build-and-test.pkl: sha256:b0e190c755549b807acb0d158be3444f1c620a559b292d85216ea5708df4be52
+    .agents/skills/pkfire/assets/recipes/02-multi-platform-matrix.pkl: sha256:a0ed3a2eccab2615661bd685a6077ef7ab517bb15fb9748829aabeed8b42a75b
+    .agents/skills/pkfire/assets/recipes/03-monorepo.pkl: sha256:52b5d41dd1e3fde13d95ed61c775a174b128a8cc294288129d64922e98846d6f
+    .agents/skills/pkfire/assets/recipes/04-dev-watch.pkl: sha256:2bc1f455810af800af40e230efbf9d44b38257ced9ecba49b5ee134601fb7dc5
+    .agents/skills/pkfire/assets/recipes/05-remote-cache.pkl: sha256:6e7bddbda14647957f78fe056aa26cc1f29cf38f2300e36b39b45ffbd0df9900
+    .agents/skills/pkfire/assets/recipes/06-split-and-import.pkl: sha256:11a851afa4a540ecfa4e454897954021f45380c6db834197862423fb4f7e44a9
+    .agents/skills/pkfire/assets/recipes/07-hierarchical-amends.pkl: sha256:7985c68f66c3368f0f4fba45dd10f38062864a185ce01d3e2b70a69a1f86d239
+    .agents/skills/pkfire/assets/recipes/08-services.pkl: sha256:90942727291971f96ab84b5b3b625014b87b2b19285068edfa0b089080393a5f
+    .agents/skills/pkfire/assets/recipes/09-test-against-services.pkl: sha256:757fde717ac2b3722900cc7c754eb111359b4fa4af02ebeba08a4befa174b3f7
+    .agents/skills/pkfire/assets/recipes/10-args-passthrough.pkl: sha256:a21977c0a588d40056224c5fd21a7a71cd8aa64d5d843a607c4cfc5022fd7b62
+    .agents/skills/pkfire/assets/recipes/11-named-params.pkl: sha256:305a6b59f316cd387ff96fe8e5ac796980dd14c43e87277d5bf1adbe3013de3d
+    .agents/skills/pkfire/assets/recipes/12-task-library.pkl: sha256:9f0a2cbd60b11362519bbcb652318a01a1d766e6bc284d37c95910520872623d
+    .agents/skills/pkfire/assets/recipes/13-git-hooks.pkl: sha256:fa50dabddeaf6a8277a7b184e6ed8045aaf41803f6161ebff5c4be79274b6051
+    .agents/skills/pkfire/assets/recipes/14-secretlint-pre-push.pkl: sha256:a860014339a5f87ce2584d3489f510aecb82e6a5a06819209ef561aebb518327
+    .agents/skills/pkfire/assets/recipes/15-diagnostics-and-lint.pkl: sha256:b6199ab90a7e50ab60aca0a112b02e649617aa20f8df2d1cfc91264c2639fbd6
+    .agents/skills/pkfire/assets/recipes/16-release-version-bump.pkl: sha256:190b69f5251a3067ae2c1cb5893a8bfd021a986ba19a4910095ba2907b9017fc
+    .agents/skills/pkfire/assets/recipes/17-pkspec-checks.pkl: sha256:ae6dfd0690f12771bb5725b3524c027095b0f219217b1b6da63485d861acdecd
+    .agents/skills/pkfire/assets/recipes/18-pkspec-check-pre-push.pkl: sha256:870768183ae8e08bbc8bda0be244dcd0386b4b47d299c1381d6570d6aebdd943
+    .agents/skills/pkfire/assets/recipes/19-spec-task-link.pkl: sha256:38d69c83a7eb13ebdb266ed2fb28d2f114b66b471afa47aaff15a7c041a1851f
+  content_hash: sha256:592906990486bcbbc52a5dd44247db9e3aca71056d22159a7c0860dcb537b32f
+- repo_url: mizchi/skills
+  name: apm-usage
+  host: github.com
+  resolved_commit: 574aa669e590d8fe9680e37bd7842b492e21637d
+  resolved_ref: 574aa669e590d8fe9680e37bd7842b492e21637d
+  version: unknown
+  virtual_path: apm-usage
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/apm-usage
+  - .agents/skills/apm-usage/SKILL-ja.md
+  - .agents/skills/apm-usage/SKILL.md
+  - .agents/skills/apm-usage/references/manifest-schema.md
+  - .agents/skills/apm-usage/references/publishing.md
+  deployed_file_hashes:
+    .agents/skills/apm-usage/SKILL-ja.md: sha256:095dff73f08d8c23fff1b8106729b1e57e34088ffae23e25d7461e17a88b9743
+    .agents/skills/apm-usage/SKILL.md: sha256:dc975426518a7e264f56ad3a8219bca5a75170fa38f83f59f1f7a7be86f0822b
+    .agents/skills/apm-usage/references/manifest-schema.md: sha256:f49955b8be35046fc963bffbf134af101055c3164ae55f86d6bc8bc001304b13
+    .agents/skills/apm-usage/references/publishing.md: sha256:392878fba913c9cc2eac9ecf028fce1671138bf59c03e66d2e44225757552034
+  content_hash: sha256:5ca113f215eb4433e6420abbdfbcbbb05166ec9325c810e5cc27bc9acbf7a5d9
+- repo_url: openai/skills
+  name: define-goal
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/define-goal
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/define-goal
+  - .agents/skills/define-goal/LICENSE.txt
+  - .agents/skills/define-goal/SKILL.md
+  - .agents/skills/define-goal/agents/openai.yaml
+  deployed_file_hashes:
+    .agents/skills/define-goal/LICENSE.txt: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+    .agents/skills/define-goal/SKILL.md: sha256:708df89ff19cbae82a762efae036735d1914b5c7e44df1832e0b723f6cd9ee30
+    .agents/skills/define-goal/agents/openai.yaml: sha256:9d870a5d594130261173d7a4bd3fd9221a71eff34c347a7c782da5046fd23cb9
+  content_hash: sha256:a159b6dae6d8e5a1d9683f22064b5c88c70580f6aedab96017d38b0a046799ad
+- repo_url: openai/skills
+  name: gh-address-comments
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/gh-address-comments
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/gh-address-comments
+  - .agents/skills/gh-address-comments/LICENSE.txt
+  - .agents/skills/gh-address-comments/SKILL.md
+  - .agents/skills/gh-address-comments/agents/openai.yaml
+  - .agents/skills/gh-address-comments/assets/github-small.svg
+  - .agents/skills/gh-address-comments/assets/github.png
+  - .agents/skills/gh-address-comments/scripts/fetch_comments.py
+  deployed_file_hashes:
+    .agents/skills/gh-address-comments/LICENSE.txt: sha256:58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+    .agents/skills/gh-address-comments/SKILL.md: sha256:77389eefd3fb6584210668ca8e43f4b8de87e7722ddd953474bc9e24cdfaaedd
+    .agents/skills/gh-address-comments/agents/openai.yaml: sha256:12cf845a78254dde85e60eefb45a60e6ce2129d321f3e1d691d4ebca9a140861
+    .agents/skills/gh-address-comments/assets/github-small.svg: sha256:ee05e92d373d4d84f4612af3c1090ef67698d421bbe30896a4ed5a00cb86a069
+    .agents/skills/gh-address-comments/assets/github.png: sha256:d55a9baa41798d8b5108e3058df3a5bda09914ea9fd73b49929cc38a8832424f
+    .agents/skills/gh-address-comments/scripts/fetch_comments.py: sha256:d7bc64f6b26f7482f9ca9dd7c923a5b8b20e1ef13491ae2d9052cd208a7c1ad1
+  content_hash: sha256:068d34fb59cb97a39aea3de1708877b6a01210d02fa7eda5e74fc8277ed52916
+- repo_url: openai/skills
+  name: gh-fix-ci
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/gh-fix-ci
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/gh-fix-ci
+  - .agents/skills/gh-fix-ci/LICENSE.txt
+  - .agents/skills/gh-fix-ci/SKILL.md
+  - .agents/skills/gh-fix-ci/agents/openai.yaml
+  - .agents/skills/gh-fix-ci/assets/github-small.svg
+  - .agents/skills/gh-fix-ci/assets/github.png
+  - .agents/skills/gh-fix-ci/scripts/inspect_pr_checks.py
+  deployed_file_hashes:
+    .agents/skills/gh-fix-ci/LICENSE.txt: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+    .agents/skills/gh-fix-ci/SKILL.md: sha256:7b326b4a2f0f5f85122144628ec02077e48841e0e0e82efce88b3415bcfb7c26
+    .agents/skills/gh-fix-ci/agents/openai.yaml: sha256:36f73b9450504983d1647c960689596f59bf9147c14b1b43162912ed7ada9af6
+    .agents/skills/gh-fix-ci/assets/github-small.svg: sha256:ee05e92d373d4d84f4612af3c1090ef67698d421bbe30896a4ed5a00cb86a069
+    .agents/skills/gh-fix-ci/assets/github.png: sha256:d55a9baa41798d8b5108e3058df3a5bda09914ea9fd73b49929cc38a8832424f
+    .agents/skills/gh-fix-ci/scripts/inspect_pr_checks.py: sha256:9459e5b03f86785d184a83e5cd8d621b832e918ec04158a2962d867785812c6c
+  content_hash: sha256:02b4d97e4bd91e342e3ec3efa06b7871097d6a64e8398f4ed5b69c64d8d902fb
+- repo_url: openai/skills
+  name: hatch-pet
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/hatch-pet
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/hatch-pet
+  - .agents/skills/hatch-pet/LICENSE.txt
+  - .agents/skills/hatch-pet/SKILL.md
+  - .agents/skills/hatch-pet/agents/openai.yaml
+  - .agents/skills/hatch-pet/references/animation-rows.md
+  - .agents/skills/hatch-pet/references/codex-pet-contract.md
+  - .agents/skills/hatch-pet/references/qa-rubric.md
+  - .agents/skills/hatch-pet/scripts/compose_atlas.py
+  - .agents/skills/hatch-pet/scripts/derive_running_left_from_running_right.py
+  - .agents/skills/hatch-pet/scripts/extract_strip_frames.py
+  - .agents/skills/hatch-pet/scripts/inspect_frames.py
+  - .agents/skills/hatch-pet/scripts/make_contact_sheet.py
+  - .agents/skills/hatch-pet/scripts/prepare_pet_run.py
+  - .agents/skills/hatch-pet/scripts/render_animation_previews.py
+  - .agents/skills/hatch-pet/scripts/validate_atlas.py
+  deployed_file_hashes:
+    .agents/skills/hatch-pet/LICENSE.txt: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+    .agents/skills/hatch-pet/SKILL.md: sha256:7ab0f01e8561085d1b494a6ca74abed766c655da8ec98284fb38a362c19d6871
+    .agents/skills/hatch-pet/agents/openai.yaml: sha256:b97c303df63c69a8857047bd87b8e681a2b7800138ede0d0b6aaac440d503d23
+    .agents/skills/hatch-pet/references/animation-rows.md: sha256:5bdbb5693334a447128ed74af41981212d746bcbc21452671c21bdae8a39492f
+    .agents/skills/hatch-pet/references/codex-pet-contract.md: sha256:ce9a9d2cef4d9cdb16c3ae53c106681d98b8ae3919a56fe74323f6f88a06f90d
+    .agents/skills/hatch-pet/references/qa-rubric.md: sha256:f2eab6f7fb85dcde5c9d7ba1a7a4b0e371ab95aa61ca8cd7783cca67275a5cc7
+    .agents/skills/hatch-pet/scripts/compose_atlas.py: sha256:a76d7c8b81033353004f5cafab8fa174c314f1d79158b69bc83a2f0bd6047fdf
+    .agents/skills/hatch-pet/scripts/derive_running_left_from_running_right.py: sha256:b3fc9b4a160ba39803a84ea61b7c4729ff8dc9e92bbc9399246350bffa04681f
+    .agents/skills/hatch-pet/scripts/extract_strip_frames.py: sha256:c9a251acf4532831b32c03d169b6c39ba891aa37ba65ea79e5d08dae297ea497
+    .agents/skills/hatch-pet/scripts/inspect_frames.py: sha256:f196917c645e910a0d594608fa43cfb043ed294a4c60dffdf3846061b65c53c7
+    .agents/skills/hatch-pet/scripts/make_contact_sheet.py: sha256:28ab6f17909dd471ba6c9529b343fd9303ec9e35c551ceac23c98808224e701c
+    .agents/skills/hatch-pet/scripts/prepare_pet_run.py: sha256:200b19089148be7a0467cfb5224a7286c76bc7ca5634210eeb2e8112d2016711
+    .agents/skills/hatch-pet/scripts/render_animation_previews.py: sha256:911e8813e1b79b7f9da44fae8a667c044818e8c71f41eaa4b280e91c78cde61e
+    .agents/skills/hatch-pet/scripts/validate_atlas.py: sha256:649a9a242d171da032de0cab1744f11629db3a2c88253fd3215e1a1174c29465
+  content_hash: sha256:7db33f6631b9c4f1d8b157d765fe575509dd93bb7139f6b02d560aac7fad02ec
+- repo_url: openai/skills
+  name: playwright
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/playwright
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/playwright
+  - .agents/skills/playwright/LICENSE.txt
+  - .agents/skills/playwright/NOTICE.txt
+  - .agents/skills/playwright/SKILL.md
+  - .agents/skills/playwright/agents/openai.yaml
+  - .agents/skills/playwright/assets/playwright-small.svg
+  - .agents/skills/playwright/assets/playwright.png
+  - .agents/skills/playwright/references/cli.md
+  - .agents/skills/playwright/references/workflows.md
+  - .agents/skills/playwright/scripts/playwright_cli.sh
+  deployed_file_hashes:
+    .agents/skills/playwright/LICENSE.txt: sha256:c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b
+    .agents/skills/playwright/NOTICE.txt: sha256:417d5d3372914ecfd9fe102ac1d7dc2119253209f9718d6c222f616876c1904b
+    .agents/skills/playwright/SKILL.md: sha256:0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8
+    .agents/skills/playwright/agents/openai.yaml: sha256:ddda43720fc566fffa45264be8f17f7745a3cee28d5245d41d3b963bc9967230
+    .agents/skills/playwright/assets/playwright-small.svg: sha256:f1d213c0f76735d8272c3d3e9fbf71fe7b894e2d1588907044c780f2c33a9732
+    .agents/skills/playwright/assets/playwright.png: sha256:521669f088c838196c6c852ccc9abdd7234d8f37fc9a8a7a9af7db2d50193381
+    .agents/skills/playwright/references/cli.md: sha256:7c069a8206ba20b9ddbdc42436b04de30bb3aa4a825ba98680757ee62e954900
+    .agents/skills/playwright/references/workflows.md: sha256:a2b5835a00ebee3906c146adf7f764f7718ea3f89a8702d86eaa135dfe0fc8c2
+    .agents/skills/playwright/scripts/playwright_cli.sh: sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5
+  content_hash: sha256:619e0a585c148c00a2d33b73888797294d1db0d34401f70cb09014b13c8eee0a
+- repo_url: openai/skills
+  name: yeet
+  host: github.com
+  resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/.curated/yeet
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/yeet
+  - .agents/skills/yeet/LICENSE.txt
+  - .agents/skills/yeet/SKILL.md
+  - .agents/skills/yeet/agents/openai.yaml
+  - .agents/skills/yeet/assets/yeet-small.svg
+  - .agents/skills/yeet/assets/yeet.png
+  deployed_file_hashes:
+    .agents/skills/yeet/LICENSE.txt: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+    .agents/skills/yeet/SKILL.md: sha256:4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595
+    .agents/skills/yeet/agents/openai.yaml: sha256:6f0a463b53232932ad70aec529e25fad9d54312de0bd29d64a38bb14a4e748de
+    .agents/skills/yeet/assets/yeet-small.svg: sha256:e4b365d5389b8772e9bad36ad7a37d8333436fa961bb98c8d77b8fbf4e9dbc3b
+    .agents/skills/yeet/assets/yeet.png: sha256:6b5448b6c5b3480ca7511f983fa81ced59e6b9c664332bc559ea0d323fc06ab8
+  content_hash: sha256:7f8e201eb4043e13b3fa4ae5bf7dced1c1dcc2af78a95674c4bc6fe018a211e1
+- repo_url: typesafe-ai/skills
+  name: typesafe-ai
+  host: github.com
+  resolved_commit: 65a39f393687675ce170e6094757de20370365b9
+  resolved_ref: 65a39f393687675ce170e6094757de20370365b9
+  version: unknown
+  virtual_path: skills/typesafe-ai
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/typesafe-ai
+  - .agents/skills/typesafe-ai/LICENSE
+  - .agents/skills/typesafe-ai/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/typesafe-ai/LICENSE: sha256:835f233f1d6ed84a9b9a351aba0689b47644a4137d6316911fc7957bde523b02
+    .agents/skills/typesafe-ai/SKILL.md: sha256:71ea90d7906c6554c4f4c460ef7361b2d26f59116ccdae986dc6d997b9389f52
+  content_hash: sha256:9cd84c5e535dec8dec59917c110f9c00b4a61faadb86b432ec7e41051170af12
+deployments:
+- kind: project-relative
+  target: codex
+  value: .agents/skills/apm-usage
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/apm-usage
+  active_owner: mizchi/skills/apm-usage
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/apm-usage/SKILL-ja.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/apm-usage
+  active_owner: mizchi/skills/apm-usage
+  content_hash: sha256:095dff73f08d8c23fff1b8106729b1e57e34088ffae23e25d7461e17a88b9743
+- kind: project-relative
+  target: codex
+  value: .agents/skills/apm-usage/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/apm-usage
+  active_owner: mizchi/skills/apm-usage
+  content_hash: sha256:dc975426518a7e264f56ad3a8219bca5a75170fa38f83f59f1f7a7be86f0822b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/apm-usage/references/manifest-schema.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/apm-usage
+  active_owner: mizchi/skills/apm-usage
+  content_hash: sha256:f49955b8be35046fc963bffbf134af101055c3164ae55f86d6bc8bc001304b13
+- kind: project-relative
+  target: codex
+  value: .agents/skills/apm-usage/references/publishing.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/apm-usage
+  active_owner: mizchi/skills/apm-usage
+  content_hash: sha256:392878fba913c9cc2eac9ecf028fce1671138bf59c03e66d2e44225757552034
+- kind: project-relative
+  target: codex
+  value: .agents/skills/define-goal
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/define-goal
+  active_owner: openai/skills/skills/.curated/define-goal
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/define-goal/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/define-goal
+  active_owner: openai/skills/skills/.curated/define-goal
+  content_hash: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/define-goal/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/define-goal
+  active_owner: openai/skills/skills/.curated/define-goal
+  content_hash: sha256:708df89ff19cbae82a762efae036735d1914b5c7e44df1832e0b723f6cd9ee30
+- kind: project-relative
+  target: codex
+  value: .agents/skills/define-goal/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/define-goal
+  active_owner: openai/skills/skills/.curated/define-goal
+  content_hash: sha256:9d870a5d594130261173d7a4bd3fd9221a71eff34c347a7c782da5046fd23cb9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/domain-modeling
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/engineering/domain-modeling
+  active_owner: mattpocock/skills/skills/engineering/domain-modeling
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/domain-modeling/ADR-FORMAT.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/engineering/domain-modeling
+  active_owner: mattpocock/skills/skills/engineering/domain-modeling
+  content_hash: sha256:944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0
+- kind: project-relative
+  target: codex
+  value: .agents/skills/domain-modeling/GLOSSARY-FORMAT.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/engineering/domain-modeling
+  active_owner: mattpocock/skills/skills/engineering/domain-modeling
+  content_hash: sha256:21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801
+- kind: project-relative
+  target: codex
+  value: .agents/skills/domain-modeling/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/engineering/domain-modeling
+  active_owner: mattpocock/skills/skills/engineering/domain-modeling
+  content_hash: sha256:7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3
+- kind: project-relative
+  target: codex
+  value: .agents/skills/domain-modeling/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/engineering/domain-modeling
+  active_owner: mattpocock/skills/skills/engineering/domain-modeling
+  content_hash: sha256:f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:77389eefd3fb6584210668ca8e43f4b8de87e7722ddd953474bc9e24cdfaaedd
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:12cf845a78254dde85e60eefb45a60e6ce2129d321f3e1d691d4ebca9a140861
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/assets/github-small.svg
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:ee05e92d373d4d84f4612af3c1090ef67698d421bbe30896a4ed5a00cb86a069
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/assets/github.png
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:d55a9baa41798d8b5108e3058df3a5bda09914ea9fd73b49929cc38a8832424f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-address-comments/scripts/fetch_comments.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-address-comments
+  active_owner: openai/skills/skills/.curated/gh-address-comments
+  content_hash: sha256:d7bc64f6b26f7482f9ca9dd7c923a5b8b20e1ef13491ae2d9052cd208a7c1ad1
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:7b326b4a2f0f5f85122144628ec02077e48841e0e0e82efce88b3415bcfb7c26
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:36f73b9450504983d1647c960689596f59bf9147c14b1b43162912ed7ada9af6
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/assets/github-small.svg
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:ee05e92d373d4d84f4612af3c1090ef67698d421bbe30896a4ed5a00cb86a069
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/assets/github.png
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:d55a9baa41798d8b5108e3058df3a5bda09914ea9fd73b49929cc38a8832424f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/gh-fix-ci/scripts/inspect_pr_checks.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/gh-fix-ci
+  active_owner: openai/skills/skills/.curated/gh-fix-ci
+  content_hash: sha256:9459e5b03f86785d184a83e5cd8d621b832e918ec04158a2962d867785812c6c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
+- kind: project-relative
+  target: codex
+  value: .agents/skills/grilling/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mattpocock/skills/skills/productivity/grilling
+  active_owner: mattpocock/skills/skills/productivity/grilling
+  content_hash: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:7ab0f01e8561085d1b494a6ca74abed766c655da8ec98284fb38a362c19d6871
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:b97c303df63c69a8857047bd87b8e681a2b7800138ede0d0b6aaac440d503d23
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/references/animation-rows.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:5bdbb5693334a447128ed74af41981212d746bcbc21452671c21bdae8a39492f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/references/codex-pet-contract.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:ce9a9d2cef4d9cdb16c3ae53c106681d98b8ae3919a56fe74323f6f88a06f90d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/references/qa-rubric.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:f2eab6f7fb85dcde5c9d7ba1a7a4b0e371ab95aa61ca8cd7783cca67275a5cc7
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/compose_atlas.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:a76d7c8b81033353004f5cafab8fa174c314f1d79158b69bc83a2f0bd6047fdf
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/derive_running_left_from_running_right.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:b3fc9b4a160ba39803a84ea61b7c4729ff8dc9e92bbc9399246350bffa04681f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/extract_strip_frames.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:c9a251acf4532831b32c03d169b6c39ba891aa37ba65ea79e5d08dae297ea497
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/inspect_frames.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:f196917c645e910a0d594608fa43cfb043ed294a4c60dffdf3846061b65c53c7
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/make_contact_sheet.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:28ab6f17909dd471ba6c9529b343fd9303ec9e35c551ceac23c98808224e701c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/prepare_pet_run.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:200b19089148be7a0467cfb5224a7286c76bc7ca5634210eeb2e8112d2016711
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/render_animation_previews.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:911e8813e1b79b7f9da44fae8a667c044818e8c71f41eaa4b280e91c78cde61e
+- kind: project-relative
+  target: codex
+  value: .agents/skills/hatch-pet/scripts/validate_atlas.py
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/hatch-pet
+  active_owner: openai/skills/skills/.curated/hatch-pet
+  content_hash: sha256:649a9a242d171da032de0cab1744f11629db3a2c88253fd3215e1a1174c29465
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:6671f7c73c58684386877b1f6f6ca81ec1698b76b16f65a1effee8c47cadc19b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/01-build-and-test.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:b0e190c755549b807acb0d158be3444f1c620a559b292d85216ea5708df4be52
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/02-multi-platform-matrix.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:a0ed3a2eccab2615661bd685a6077ef7ab517bb15fb9748829aabeed8b42a75b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/03-monorepo.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:52b5d41dd1e3fde13d95ed61c775a174b128a8cc294288129d64922e98846d6f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/04-dev-watch.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:2bc1f455810af800af40e230efbf9d44b38257ced9ecba49b5ee134601fb7dc5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/05-remote-cache.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:6e7bddbda14647957f78fe056aa26cc1f29cf38f2300e36b39b45ffbd0df9900
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/06-split-and-import.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:11a851afa4a540ecfa4e454897954021f45380c6db834197862423fb4f7e44a9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/07-hierarchical-amends.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:7985c68f66c3368f0f4fba45dd10f38062864a185ce01d3e2b70a69a1f86d239
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/08-services.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:90942727291971f96ab84b5b3b625014b87b2b19285068edfa0b089080393a5f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/09-test-against-services.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:757fde717ac2b3722900cc7c754eb111359b4fa4af02ebeba08a4befa174b3f7
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/10-args-passthrough.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:a21977c0a588d40056224c5fd21a7a71cd8aa64d5d843a607c4cfc5022fd7b62
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/11-named-params.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:305a6b59f316cd387ff96fe8e5ac796980dd14c43e87277d5bf1adbe3013de3d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/12-task-library.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:9f0a2cbd60b11362519bbcb652318a01a1d766e6bc284d37c95910520872623d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/13-git-hooks.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:fa50dabddeaf6a8277a7b184e6ed8045aaf41803f6161ebff5c4be79274b6051
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/14-secretlint-pre-push.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:a860014339a5f87ce2584d3489f510aecb82e6a5a06819209ef561aebb518327
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/15-diagnostics-and-lint.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:b6199ab90a7e50ab60aca0a112b02e649617aa20f8df2d1cfc91264c2639fbd6
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/16-release-version-bump.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:190b69f5251a3067ae2c1cb5893a8bfd021a986ba19a4910095ba2907b9017fc
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/17-pkspec-checks.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:ae6dfd0690f12771bb5725b3524c027095b0f219217b1b6da63485d861acdecd
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/18-pkspec-check-pre-push.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:870768183ae8e08bbc8bda0be244dcd0386b4b47d299c1381d6570d6aebdd943
+- kind: project-relative
+  target: codex
+  value: .agents/skills/pkfire/assets/recipes/19-spec-task-link.pkl
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/pkfire/skills/pkfire
+  active_owner: mizchi/pkfire/skills/pkfire
+  content_hash: sha256:38d69c83a7eb13ebdb266ed2fb28d2f114b66b471afa47aaff15a7c041a1851f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/NOTICE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:417d5d3372914ecfd9fe102ac1d7dc2119253209f9718d6c222f616876c1904b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:0ffaabcc8e0990627c4725f18bf1c7955534a796c1c199e872909de2013ce6a8
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:ddda43720fc566fffa45264be8f17f7745a3cee28d5245d41d3b963bc9967230
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/assets/playwright-small.svg
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:f1d213c0f76735d8272c3d3e9fbf71fe7b894e2d1588907044c780f2c33a9732
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/assets/playwright.png
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:521669f088c838196c6c852ccc9abdd7234d8f37fc9a8a7a9af7db2d50193381
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/references/cli.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:7c069a8206ba20b9ddbdc42436b04de30bb3aa4a825ba98680757ee62e954900
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/references/workflows.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:a2b5835a00ebee3906c146adf7f764f7718ea3f89a8702d86eaa135dfe0fc8c2
+- kind: project-relative
+  target: codex
+  value: .agents/skills/playwright/scripts/playwright_cli.sh
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/playwright
+  active_owner: openai/skills/skills/.curated/playwright
+  content_hash: sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:e81829fcd0bc56f571521c402beca888991ce3bba8880a22ff8e2495c13f7706
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:149bcfce55562b5653afc80ffa7e0b78f1be7a12542889cb79dae01893b1f89f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/references/browser-workflow.md
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:7d6211df5d0fae075d2e261ac59c885c8fbaf47047e7f2ad8e9f6f30678c2e1d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/references/metadata-schema.md
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:c17ee354e643043e960309a58fba5699ea43aa5dfe83849bc7c78bcb61439b72
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/references/prompts.md
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:da4cf8dd118277da53042f3370670e50f806252ef25a463f015e3104834cda16
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tenbin-astra-diff-review/scripts/generate_diff_bundle.py
+  runtime: null
+  scope: project
+  owners:
+  - beso1225/agent-skills/skills/tenbin-astra-diff-review
+  active_owner: beso1225/agent-skills/skills/tenbin-astra-diff-review
+  content_hash: sha256:d0e6fd59236ddaa649a4ad551140584adcb9233641a2222c59e2b8bae6c7380d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/typesafe-ai
+  runtime: null
+  scope: project
+  owners:
+  - typesafe-ai/skills/skills/typesafe-ai
+  active_owner: typesafe-ai/skills/skills/typesafe-ai
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/typesafe-ai/LICENSE
+  runtime: null
+  scope: project
+  owners:
+  - typesafe-ai/skills/skills/typesafe-ai
+  active_owner: typesafe-ai/skills/skills/typesafe-ai
+  content_hash: sha256:835f233f1d6ed84a9b9a351aba0689b47644a4137d6316911fc7957bde523b02
+- kind: project-relative
+  target: codex
+  value: .agents/skills/typesafe-ai/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - typesafe-ai/skills/skills/typesafe-ai
+  active_owner: typesafe-ai/skills/skills/typesafe-ai
+  content_hash: sha256:71ea90d7906c6554c4f4c460ef7361b2d26f59116ccdae986dc6d997b9389f52
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet/LICENSE.txt
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: sha256:4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: sha256:4829d4909081e1abf91507fb581e6f566ce7064001892414f32191895b08a595
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: sha256:6f0a463b53232932ad70aec529e25fad9d54312de0bd29d64a38bb14a4e748de
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet/assets/yeet-small.svg
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: sha256:e4b365d5389b8772e9bad36ad7a37d8333436fa961bb98c8d77b8fbf4e9dbc3b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/yeet/assets/yeet.png
+  runtime: null
+  scope: project
+  owners:
+  - openai/skills/skills/.curated/yeet
+  active_owner: openai/skills/skills/.curated/yeet
+  content_hash: sha256:6b5448b6c5b3480ca7511f983fa81ced59e6b9c664332bc559ea0d323fc06ab8

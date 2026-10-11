@@ -18,6 +18,24 @@ local switchTask = new Task {
   cmd = "sudo darwin-rebuild switch --flake .#$HOST"
 }
 
+local chezmoiDiffTask = new Task {
+  name = "chezmoi-diff"
+  description = "Show local differences from the chezmoi source"
+  cache = false
+  shellFlags = strictShellFlags
+  workdir = "."
+  cmd = "chezmoi --source \"$PWD/chezmoi\" diff"
+}
+
+local chezmoiApplyTask = new Task {
+  name = "chezmoi-apply"
+  description = "Apply the chezmoi source to the local home"
+  cache = false
+  shellFlags = strictShellFlags
+  workdir = "."
+  cmd = "chezmoi --source \"$PWD/chezmoi\" apply"
+}
+
 local updateNixpkgsTask = new Task {
   name = "update-nixpkgs"
   description = "Update only the nixpkgs flake input"
@@ -117,10 +135,20 @@ local testChezmoiTask = new Task {
     "chezmoi/.chezmoi.toml.tmpl"
     "chezmoi/.chezmoiignore"
     "chezmoi/dot_config/**/*"
+    "chezmoi/dot_codex/**/*"
+    "chezmoi/dot_apm/**/*"
+    "chezmoi/dot_claude/**/*"
+    "chezmoi/dot_copilot/**/*"
+    "chezmoi/dot_latexmkrc"
+    "chezmoi/dot_docker/**/*"
     "nix/home/shell.nix"
     "tests/chezmoi/phase3_contract.sh"
+    "tests/chezmoi/phase4_contract.py"
   }
-  cmd = "bash tests/chezmoi/phase3_contract.sh"
+  cmd = """
+    bash tests/chezmoi/phase3_contract.sh
+    python3 tests/chezmoi/phase4_contract.py
+    """
 }
 
 local testGccPathTask = new Task {
@@ -152,6 +180,8 @@ local testAerospaceTask = new Task {
 
 tasks {
   switchTask
+  chezmoiDiffTask
+  chezmoiApplyTask
   updateNixpkgsTask
   updateHomebrewTask
   updateAllTask
