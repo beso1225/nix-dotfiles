@@ -8,13 +8,13 @@ dependencies:
     - mizchi/pkfire/skills/pkfire#5e28fff65b7f5bbe1269e12861566838fbb03332
     - typesafe-ai/skills/skills/typesafe-ai#65a39f393687675ce170e6094757de20370365b9
     - beso1225/agent-skills/skills/tenbin-astra-diff-review#b885d9b55297e2af0a409929c19a23900da3d3c3
-    - openai/skills/skills/.curated/define-goal#49f948faa9258a0c61caceaf225e179651397431
-    - openai/skills/skills/.curated/gh-address-comments#49f948faa9258a0c61caceaf225e179651397431
-    - openai/skills/skills/.curated/gh-fix-ci#49f948faa9258a0c61caceaf225e179651397431
-    - openai/skills/skills/.curated/hatch-pet#49f948faa9258a0c61caceaf225e179651397431
-    - openai/skills/skills/.curated/playwright#49f948faa9258a0c61caceaf225e179651397431
-    - openai/skills/skills/.curated/yeet#49f948faa9258a0c61caceaf225e179651397431
-    - mattpocock/skills/skills/productivity/grilling#49dd158d1076134a641b33efb035946536778336
+    - openai/skills/skills/.curated/define-goal#main
+    - openai/skills/skills/.curated/gh-address-comments#main
+    - openai/skills/skills/.curated/gh-fix-ci#main
+    - openai/skills/skills/.curated/hatch-pet#main
+    - openai/skills/skills/.curated/playwright#main
+    - openai/skills/skills/.curated/yeet#main
+    - mattpocock/skills/skills/productivity/grilling#main
   mcp: []
 scripts: {}
 targets:

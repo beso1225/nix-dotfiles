@@ -30,7 +30,7 @@ dependencies:
   name: grilling
   host: github.com
   resolved_commit: 49dd158d1076134a641b33efb035946536778336
-  resolved_ref: 49dd158d1076134a641b33efb035946536778336
+  resolved_ref: main
   version: unknown
   virtual_path: skills/productivity/grilling
   is_virtual: true
@@ -121,7 +121,7 @@ dependencies:
   name: define-goal
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/define-goal
   is_virtual: true
@@ -140,7 +140,7 @@ dependencies:
   name: gh-address-comments
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/gh-address-comments
   is_virtual: true
@@ -165,7 +165,7 @@ dependencies:
   name: gh-fix-ci
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/gh-fix-ci
   is_virtual: true
@@ -190,7 +190,7 @@ dependencies:
   name: hatch-pet
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/hatch-pet
   is_virtual: true
@@ -231,7 +231,7 @@ dependencies:
   name: playwright
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/playwright
   is_virtual: true
@@ -262,7 +262,7 @@ dependencies:
   name: yeet
   host: github.com
   resolved_commit: 49f948faa9258a0c61caceaf225e179651397431
-  resolved_ref: 49f948faa9258a0c61caceaf225e179651397431
+  resolved_ref: main
   version: unknown
   virtual_path: skills/.curated/yeet
   is_virtual: true

@@ -11,6 +11,7 @@ import tempfile
 
 REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
+TRACKING_SKILLS = OPENAI_SKILLS + ("grilling",)
 APM_SKILLS = OPENAI_SKILLS + ("typesafe-ai", "tenbin-astra-diff-review", "grilling")
 for skill in APM_SKILLS:
     assert not (REPO / "chezmoi/dot_codex/skills" / skill).exists(), skill
@@ -30,12 +31,18 @@ assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"][
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
-    location, commit = specification.rsplit("#", 1)
-    assert re.fullmatch(r"[0-9a-f]{40}", commit), specification
+    location, reference = specification.rsplit("#", 1)
     name = location.rsplit("/", 1)[-1]
+    if name in TRACKING_SKILLS:
+        assert reference == "main", specification
+    else:
+        assert re.fullmatch(r"[0-9a-f]{40}", reference), specification
     dependency = locked[name]
     assert location == dependency["repo_url"] + "/" + dependency["virtual_path"]
-    assert dependency["resolved_commit"] == dependency["resolved_ref"] == commit
+    assert dependency["resolved_ref"] == reference
+    assert re.fullmatch(r"[0-9a-f]{40}", dependency["resolved_commit"])
+    if name not in TRACKING_SKILLS:
+        assert dependency["resolved_commit"] == reference
     hashes = dependency["deployed_file_hashes"]
     assert f".agents/skills/{name}/SKILL.md" in hashes
     assert all(path.startswith(f".agents/skills/{name}/") for path in hashes)
