@@ -23,6 +23,7 @@ chezmoistate.boltdb
 .codex/skills/typesafe-ai
 .codex/skills/tenbin-astra-diff-review
 .codex/skills/grilling
+.codex/skills/domain-modeling
 
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*

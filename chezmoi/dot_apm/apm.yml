@@ -15,6 +15,7 @@ dependencies:
     - openai/skills/skills/.curated/playwright#main
     - openai/skills/skills/.curated/yeet#main
     - mattpocock/skills/skills/productivity/grilling#main
+    - mattpocock/skills/skills/engineering/domain-modeling#main
   mcp: []
 scripts: {}
 targets:
