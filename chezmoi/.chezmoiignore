@@ -36,9 +36,7 @@ chezmoistate.boltdb
 .copilot/*
 !.copilot/settings.json
 .claude.json
-.arduinoIDE/*
-!.arduinoIDE/settings.json
-!.arduinoIDE/arduino-cli.yaml
+.arduinoIDE
 .keras/*
 !.keras/keras.json
 .docker/*

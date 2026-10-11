@@ -131,7 +131,6 @@ This avoids double ownership of `.zshrc` while still allowing fast user-level ed
     ├── .chezmoiignore
     ├── dot_apm/
     ├── dot_codex/
-    ├── dot_arduinoIDE/
     ├── dot_claude/
     ├── dot_copilot/
     ├── dot_docker/

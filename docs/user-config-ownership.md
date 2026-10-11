@@ -13,7 +13,6 @@ directories: applications often store credentials and session data beside config
 | `.agents` | None in this phase | APM deploys the twelve dependencies listed below |
 | `.claude` | `settings.json`: `theme` only | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
-| `.arduinoIDE` | `settings.json`, `arduino-cli.yaml` with templated home paths | IDE storage, logs, recent sketches/workspaces, monitor state |
 | `.docker` | `daemon.json` | CLI auth, account/context selection in `config.json`, token seeds, binaries, and runtime state |
 | `.keras` | `keras.json` | Any adjacent generated data |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
@@ -102,6 +101,7 @@ paths. Bundled `.system` skills and plugin caches remain installed by Codex.
 
 | Category | Paths / reason |
 | --- | --- |
+| Application config excluded by user preference | `.arduinoIDE`; all Arduino IDE settings and state remain local |
 | Nix-generated configuration | `.gitconfig`, `.zshenv`, `.zprofile`, `.zshrc`, `.config/starship.toml`, `.config/sheldon`, `.config/tmux`; keep shell wiring and prompt/plugin behavior in `programs.*` |
 | Inactive shell config and backups | `.p10k.zsh`, `.profile` (Docker/rustup-generated PATH setup), `.tmux.conf.back`, `.latexmkrc.back`, `*.backup`, `*.hm-backup`, `chezmoi.back`, `nvim.back`, `zshenv.before-nix-darwin` |
 | Credentials and app databases | `.ssh`, `.claude.json`, `.dsh`, `.pgadmin`, `.plastic4`, `.config/github-copilot`, `.config/jotworthy/env`, `.config/configstore`, `.config/containers`, `.config/raycast`, `.config/iterm2` |

@@ -64,7 +64,6 @@ EXPECTED = [
     ".codex/skills/herdr/references/commands.md",
     ".apm/apm.yml", ".apm/apm.lock.yaml", ".apm/config.json",
     ".claude/settings.json", ".copilot/settings.json", ".latexmkrc",
-    ".arduinoIDE/settings.json", ".arduinoIDE/arduino-cli.yaml",
     ".keras/keras.json", ".docker/daemon.json",
     ".config/btop/btop.conf", ".config/gh/config.yml", ".config/git/ignore",
     ".config/ghostty/config", ".config/herdr/config.toml",
@@ -88,6 +87,7 @@ EXCLUDED = [
     ".config/yazi/plugins/test/main.lua", ".config/yazi/flavors/test/flavor.toml",
     ".config/zed/conversations/test", ".config/sheldon/plugins.toml",
     ".config/starship.toml", ".config/tmux/tmux.conf", ".gitconfig",
+    ".arduinoIDE/settings.json", ".arduinoIDE/arduino-cli.yaml",
     ".arduinoIDE/recent-sketches.json", ".keras/cache/test",
     ".docker/config.json", ".docker/.token_seed",
 ]
