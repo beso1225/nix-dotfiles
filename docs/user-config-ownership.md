@@ -120,10 +120,16 @@ After the bootstrap in [the migration plan](chezmoi-migration-plan.md), restore
 external content explicitly:
 
 ```sh
-chezmoi --source <repo-path>/chezmoi apply
+cd <repo-path>
+pkf run chezmoi-diff
+pkf run chezmoi-apply
 GITHUB_APM_PAT="$(gh auth token)" apm install --global --frozen
 ya pkg install
 ```
+
+The chezmoi tasks run from the repository root and use its `chezmoi/` source,
+independently of the default source configured on the machine. Both run every
+time without caching. Review the diff before applying.
 
 The APM install needs GitHub access to the private `beso1225/agent-skills` repo.
 Authenticate with `gh auth login` first; the command above passes the existing

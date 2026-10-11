@@ -18,6 +18,24 @@ local switchTask = new Task {
   cmd = "sudo darwin-rebuild switch --flake .#$HOST"
 }
 
+local chezmoiDiffTask = new Task {
+  name = "chezmoi-diff"
+  description = "Show local differences from the chezmoi source"
+  cache = false
+  shellFlags = strictShellFlags
+  workdir = "."
+  cmd = "chezmoi --source \"$PWD/chezmoi\" diff"
+}
+
+local chezmoiApplyTask = new Task {
+  name = "chezmoi-apply"
+  description = "Apply the chezmoi source to the local home"
+  cache = false
+  shellFlags = strictShellFlags
+  workdir = "."
+  cmd = "chezmoi --source \"$PWD/chezmoi\" apply"
+}
+
 local updateNixpkgsTask = new Task {
   name = "update-nixpkgs"
   description = "Update only the nixpkgs flake input"
@@ -162,6 +180,8 @@ local testAerospaceTask = new Task {
 
 tasks {
   switchTask
+  chezmoiDiffTask
+  chezmoiApplyTask
   updateNixpkgsTask
   updateHomebrewTask
   updateAllTask
