@@ -134,7 +134,6 @@ This avoids double ownership of `.zshrc` while still allowing fast user-level ed
     ├── dot_claude/
     ├── dot_copilot/
     ├── dot_docker/
-    ├── dot_keras/
     ├── dot_config/
     │   ├── chezmoi/
     │   ├── nvim/
