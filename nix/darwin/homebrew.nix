@@ -24,7 +24,6 @@
 
     # List of Homebrew packages to be installed.
     brews = [
-      "arduino-cli"
       "microsoft/apm/apm"
       "qemu"
       "hunk"
