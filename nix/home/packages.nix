@@ -21,6 +21,7 @@ in
     git
     neovim
     jotworthy
+    pi
     key-insights
     eza
     lazygit
@@ -39,6 +40,7 @@ in
     uv
     nodejs_24
     corepack_24
+    fnm
     chezmoi
     pkfire.packages.${pkgs.stdenv.hostPlatform.system}.default
 

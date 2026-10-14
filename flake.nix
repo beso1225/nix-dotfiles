@@ -18,6 +18,10 @@
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     pkfire.url = "github:mizchi/pkfire";
+    pi = {
+      url = "github:earendil-works/pi/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvim-key-insights = {
       url = "github:beso1225/nvim-key-insights?ref=v0.2.4";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
 
       rust-overlay,
       pkfire,
+      pi,
       ...
     }:
     let
@@ -58,6 +63,7 @@
         })
         rust-overlay.overlays.default
         nvim-key-insights.overlays.default
+        pi.overlays.default
         (import ./nix/overlays)
         (final: prev: {
           jotworthy = prev.callPackage ./nix/pkgs/jotworthy.nix {
