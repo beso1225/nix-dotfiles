@@ -55,3 +55,4 @@ if rg -n --fixed-strings 'open -na' "$aerospace_root"; then
 fi
 
 echo 'AeroSpace contract: ok'
+node "$repo_root/tests/aerospace/pinned-tabs.cjs"

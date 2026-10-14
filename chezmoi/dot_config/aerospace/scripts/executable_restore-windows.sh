@@ -59,10 +59,22 @@ while [ "$attempt" -le "$AEROSPACE_WINDOW_RETRIES" ]; do
   attempt=$((attempt + 1))
 done
 
-if ! CHROME_APP_PATH="$CHROME_APP_PATH" /usr/bin/osascript -l JavaScript "$script_dir/inspect-chrome-windows.js" > "$inspection_file" 2>"$tmp_dir/osascript.stderr"; then
-  log "Chrome AppleScript inspection failed"
-  exit 1
-fi
+attempt=1
+while :; do
+  if CHROME_APP_PATH="$CHROME_APP_PATH" CHROME_PIN_HELPER="$script_dir/chrome-pinned-tabs.js" /usr/bin/osascript -l JavaScript "$script_dir/inspect-chrome-windows.js" > "$inspection_file" 2>"$tmp_dir/osascript.stderr" &&
+    awk -F '\t' '$6 == 1 { one++ } $6 == 2 { two++ } END { exit !(one == 1 && two == 1) }' "$inspection_file"; then
+    # Refresh titles after session restoration, before resolving native IDs.
+    list_windows > "$windows_file"
+    break
+  fi
+  if [ "$attempt" -ge "$AEROSPACE_WINDOW_RETRIES" ]; then
+    log "Chrome pinned-mail classification did not become unambiguous before timeout"
+    exit 1
+  fi
+  [ "$attempt" -ne 1 ] || log "waiting for current Chrome session and pinned-mail tabs"
+  sleep "$AEROSPACE_WINDOW_RETRY_SECONDS"
+  attempt=$((attempt + 1))
+done
 
 normalize_urls() {
   printf '%s' "$1" | tr '\037' '\n' | LC_ALL=C sort | tr '\n' '\037'
@@ -291,7 +303,7 @@ done
 # Chrome AppleScript IDs are not persistent and are not the same namespace as
 # AeroSpace window IDs. The move target is therefore resolved from the window
 # title, and ambiguous titles are deliberately skipped.
-while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_urls; do
+while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_urls pinned_mail_workspace; do
   [ -n "$window_name" ] || continue
 
   normalized_urls=$(normalize_urls "$all_urls")
@@ -309,6 +321,9 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
   fi
 
   [ "$learn_current" = false ] || expected_workspace=""
+  case "$pinned_mail_workspace" in
+    1|2) expected_workspace="$pinned_mail_workspace" ;;
+  esac
   window_id=$(unique_chrome_window_id "$window_name" "$expected_workspace" || true)
   if [ -z "$window_id" ] && \
     [ -n "$(single_candidate "$candidate_profiles" || true)" ]; then
@@ -389,6 +404,22 @@ while IFS=$'\t' read -r chrome_window_id window_name active_url tab_count all_ur
       profile="$CHROME_DEFAULT_PROFILE_DIR"
       log "using configurable first-run hint for a Chrome window; profile inferred as Default"
     fi
+  fi
+
+  if [ "$learn_current" = false ]; then
+    case "$pinned_mail_workspace" in
+      1|2)
+        profile="$CHROME_DEFAULT_PROFILE_DIR"
+        workspace="$pinned_mail_workspace"
+        log "matched Default Chrome window $window_id to workspace $workspace using pinned mail tabs"
+        ;;
+      *)
+        if [ "$profile" = "$CHROME_DEFAULT_PROFILE_DIR" ]; then
+          log "pinned-mail rule is unresolved for Default Chrome window $window_id; refusing saved-state fallback"
+          continue
+        fi
+        ;;
+    esac
   fi
 
   if [ -z "$profile" ] || [ -z "$workspace" ]; then

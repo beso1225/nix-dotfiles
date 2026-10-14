@@ -69,25 +69,31 @@ with a different logical width.
 
 The configured profile directories are `Default` and `Profile 4`, verified
 from Chrome's `Local State` on the target machine. JXA reads each live Chrome
-window's title, active URL, tab count, and tab URLs without changing tabs.
+window's title, active URL, tab count, tab IDs, and tab URLs without changing tabs.
+
+Default windows are assigned by pinned mail tabs: the window containing both
+pinned Gmail account tabs (`https://mail.google.com/mail/u/0/` and `/u/1/`)
+goes to workspace 1; the other Default window goes to workspace 2. Additional
+non-mail pinned tabs are allowed. Chrome's AppleScript API does not expose
+pinning, so `chrome-pinned-tabs.js` reads the latest Default `Session_*` file
+using Chromium's SNSS v3 tab/window and pinned-state commands. Live tab IDs
+must match the current session and exactly two Default windows must be found.
+The script retries while session data is unavailable or incomplete. Unknown
+formats, missing mail pins, or two matching windows stop arrangement safely.
 
 The live Chrome window ID is not used as persistent state. It is only used to
 inspect the current session, and the corresponding AeroSpace window ID is
 resolved from an unambiguous window title. The state file stores a local TSV
 mapping of profile, workspace, URL fingerprint, and active URL with mode 600.
-Exact fingerprints and active URLs take precedence on later runs. On a first
-run, the script can learn from an existing placement in workspaces 1 and 2,
-or use the configurable URL hints in `config.env`. If profile or window
-identity is ambiguous, the script logs the reason and refuses the initial
-arrangement rather than moving a guessed window.
+Fingerprints, active URLs, and URL hints remain available as supporting
+metadata, but cannot override the pinned-mail rule for Default windows.
+If profile or window identity is ambiguous, the script logs the reason and
+refuses the initial arrangement rather than moving a guessed window.
 
 Chrome sometimes abbreviates the AppleScript window name with an ellipsis
 while AeroSpace reports the full native title. A sufficiently long unique
-prefix is accepted in that case. If exactly three Chrome windows exist,
-Profile 4 and one Default window are identified, and the remaining window is
-confirmed as Default, its workspace is inferred as the other Default
-workspace. Multiple Chrome windows initially appearing in the same workspace
-are not treated as evidence of their intended placement.
+prefix is accepted in that case. Multiple Chrome windows initially appearing
+in the same workspace are not treated as evidence of their intended placement.
 
 Machine-specific values can be overridden in the untracked file
 `~/.config/aerospace/config.local`.
