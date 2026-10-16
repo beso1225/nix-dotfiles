@@ -33,6 +33,7 @@ chezmoistate.boltdb
 .agents
 .claude/*
 !.claude/settings.json
+!.claude/CLAUDE.md
 .copilot/*
 !.copilot/settings.json
 .claude.json

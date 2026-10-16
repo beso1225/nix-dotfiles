@@ -2,6 +2,7 @@
 """Exercise Phase 4 against isolated homes, including third-party state."""
 
 import json
+import os
 import re
 from pathlib import Path
 import shutil
@@ -63,7 +64,8 @@ EXPECTED = [
     ".codex/runcat-hook.py",
     ".codex/skills/herdr/references/commands.md",
     ".apm/apm.yml", ".apm/apm.lock.yaml", ".apm/config.json",
-    ".claude/settings.json", ".copilot/settings.json", ".latexmkrc",
+    ".claude/settings.json", ".claude/CLAUDE.md",
+    ".copilot/settings.json", ".latexmkrc",
     ".docker/daemon.json",
     ".config/btop/btop.conf", ".config/gh/config.yml", ".config/git/ignore",
     ".config/ghostty/config", ".config/herdr/config.toml",
@@ -151,7 +153,7 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
 
         run("init", "--guess-repo-url=false")
         run("apply")
-        managed = set(run("managed", "--include=files").splitlines())
+        managed = set(run("managed", "--include=files,symlinks").splitlines())
         for target in EXPECTED:
             assert (home / target).is_file(), target
             assert target in managed, target
@@ -199,6 +201,10 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
             elif path.suffix == ".toml":
                 toml(path)
         assert (home / ".codex/runcat-hook.py").stat().st_mode & 0o111
+        claude_memory = home / ".claude/CLAUDE.md"
+        assert claude_memory.is_symlink(), claude_memory
+        assert os.readlink(claude_memory) == "../.codex/AGENTS.md"
+        assert claude_memory.read_bytes() == (home / ".codex/AGENTS.md").read_bytes()
         before = {p.relative_to(home): p.read_bytes() for p in home.rglob("*") if p.is_file()}
         run("apply")
         after = {p.relative_to(home): p.read_bytes() for p in home.rglob("*") if p.is_file()}

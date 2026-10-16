@@ -11,7 +11,7 @@ directories: applications often store credentials and session data beside config
 | `.codex` | `AGENTS.md`, selected preferences in `config.toml`, RunCat registration in `hooks.json`, `runcat-hook.py`, the customized `herdr` skill | Codex owns auth, sessions, databases, plugins, bundled `.system` skills, generated rules, runtimes, project trust, and app integration settings; herdr owns its integration script and hook registrations |
 | `.apm` | `apm.yml`, `apm.lock.yaml`, `config.json` | APM owns `apm_modules` and deployed skills |
 | `.agents` | None in this phase | APM deploys the twelve dependencies listed below |
-| `.claude` | `settings.json`: `theme` only | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
+| `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.codex/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
 | `.docker` | `daemon.json` | CLI auth, account/context selection in `config.json`, token seeds, binaries, and runtime state |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
@@ -51,6 +51,13 @@ The JSON modify templates preserve unrelated settings and herdr registrations.
 Codex's RunCat hook uses `$HOME` at execution time and replaces existing RunCat
 commands without adding duplicates. The other AI clients do not receive hooks
 pointing to herdr scripts that might not be installed yet.
+
+`~/.claude/CLAUDE.md` is a chezmoi-managed symlink to `~/.codex/AGENTS.md`, so
+Claude Code reuses the same personal instructions as Codex. It is declared with
+the `symlink_` source attribute and a relative target
+(`chezmoi/dot_claude/symlink_CLAUDE.md`); edit `dot_codex/AGENTS.md` to change the
+content. The `.chezmoiignore` exception `!.claude/CLAUDE.md` keeps only this link
+managed while the rest of `.claude` stays local.
 
 These templates use chezmoi's documented
 [partial-file management](https://www.chezmoi.io/user-guide/manage-different-types-of-file/).
