@@ -10,6 +10,7 @@ function M.mason_lspconfig()
       "lua_ls",
       "rust_analyzer",
       "pyright",
+      "ts_ls",
       "clangd",
       "texlab",
       --"moonbit-lsp",
