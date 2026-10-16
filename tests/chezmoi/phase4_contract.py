@@ -66,7 +66,6 @@ EXPECTED = [
     ".apm/apm.yml", ".apm/apm.lock.yaml", ".apm/config.json",
     ".claude/settings.json", ".claude/CLAUDE.md",
     ".copilot/settings.json", ".latexmkrc",
-    ".docker/daemon.json",
     ".config/btop/btop.conf", ".config/gh/config.yml", ".config/git/ignore",
     ".config/ghostty/config", ".config/herdr/config.toml",
     ".config/hunk/config.toml", ".config/karabiner/karabiner.json",

@@ -40,7 +40,6 @@ chezmoistate.boltdb
 .arduinoIDE
 .keras
 .docker/*
-!.docker/daemon.json
 
 # Keep Nix-generated files under their existing owner.
 .gitconfig

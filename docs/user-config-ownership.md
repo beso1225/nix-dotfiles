@@ -13,7 +13,6 @@ directories: applications often store credentials and session data beside config
 | `.agents` | None in this phase | APM deploys the twelve dependencies listed below |
 | `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.codex/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
-| `.docker` | `daemon.json` | CLI auth, account/context selection in `config.json`, token seeds, binaries, and runtime state |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
 | `.config/btop` | `btop.conf` | Downloaded themes |
 | `.config/gh` | `config.yml` | `hosts.yml`, authentication |
@@ -107,7 +106,7 @@ paths. Bundled `.system` skills and plugin caches remain installed by Codex.
 
 | Category | Paths / reason |
 | --- | --- |
-| Application config excluded by user preference | `.arduinoIDE`, `.keras`; all Arduino IDE and Keras settings and state remain local |
+| Application config excluded by user preference | `.arduinoIDE`, `.keras`, `.docker`; all Arduino IDE, Keras, and Docker settings, including CLI auth, context selection, and runtime state, remain local |
 | Nix-generated configuration | `.gitconfig`, `.zshenv`, `.zprofile`, `.zshrc`, `.config/starship.toml`, `.config/sheldon`, `.config/tmux`; keep shell wiring and prompt/plugin behavior in `programs.*` |
 | Inactive shell config and backups | `.p10k.zsh`, `.profile` (Docker/rustup-generated PATH setup), `.tmux.conf.back`, `.latexmkrc.back`, `*.backup`, `*.hm-backup`, `chezmoi.back`, `nvim.back`, `zshenv.before-nix-darwin` |
 | Credentials and app databases | `.ssh`, `.claude.json`, `.dsh`, `.pgadmin`, `.plastic4`, `.config/github-copilot`, `.config/jotworthy/env`, `.config/configstore`, `.config/containers`, `.config/raycast`, `.config/iterm2` |
