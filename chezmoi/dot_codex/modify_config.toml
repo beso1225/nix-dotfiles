@@ -2,7 +2,7 @@
 {{- /* Manage preferences without capturing desktop runtime or project trust. */ -}}
 {{ fromToml .chezmoi.stdin
    | setValueAtPath "model" "gpt-6.1-sol"
-   | setValueAtPath "model_reasoning_effort" "high"
+   | setValueAtPath "model_reasoning_effort" "medium"
    | setValueAtPath "personality" "pragmatic"
    | setValueAtPath "service_tier" "default"
    | setValueAtPath "features.hooks" true

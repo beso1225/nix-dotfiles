@@ -166,7 +166,7 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
 
         preferences = toml(home / ".codex/config.toml")
         assert preferences["model"] == "gpt-6.1-sol"
-        assert preferences["model_reasoning_effort"] == "high"
+        assert preferences["model_reasoning_effort"] == "medium"
         assert preferences["features"]["hooks"] is True
         if populated:
             assert preferences["notify"] == ["/local/app"]
