@@ -15,7 +15,7 @@
   ];
 
   home.file = {
-    # Git configuration remains Home Manager-owned for now.
+    # Git stays Home Manager-owned; see docs/user-config-ownership.md.
     ".gitconfig".source = ../../home-manager/git/.gitconfig;
   };
 

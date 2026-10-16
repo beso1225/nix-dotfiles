@@ -1,0 +1,19 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /* Replace only RunCat commands; herdr owns its own hook registrations. */ -}}
+{{- $config := fromJson (default "{}" .chezmoi.stdin) -}}
+{{- $hooks := default dict (get $config "hooks") -}}
+{{- $sessions := list -}}
+{{- range default list (get $hooks "SessionStart") -}}
+  {{- $commands := list -}}
+  {{- range get . "hooks" -}}
+    {{- if not (contains "runcat-hook.py" (get . "command")) -}}
+      {{- $commands = append $commands . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $commands -}}
+    {{- $sessions = append $sessions (setValueAtPath "hooks" $commands .) -}}
+  {{- end -}}
+{{- end -}}
+{{- $runcat := dict "type" "command" "command" "python3 \"$HOME/.codex/runcat-hook.py\"" "timeout" 5 -}}
+{{- $sessions = append $sessions (dict "hooks" (list $runcat)) -}}
+{{ $config | setValueAtPath "hooks.SessionStart" $sessions | toPrettyJson }}

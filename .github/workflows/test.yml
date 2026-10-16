@@ -29,6 +29,14 @@ jobs:
       - name: Show flake outputs
         run: nix flake show
 
+      - name: Verify chezmoi ownership and restoration
+        run: |
+          nix shell --inputs-from . nixpkgs#chezmoi nixpkgs#python3 nixpkgs#ripgrep \
+            --command bash -e -c '
+              bash tests/chezmoi/phase3_contract.sh
+              python3 tests/chezmoi/phase4_contract.py
+            '
+
   # Build the macOS (aarch64-darwin) nix-darwin configuration
   build-darwin:
     name: Build nix-darwin (macOS aarch64)

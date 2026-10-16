@@ -70,9 +70,12 @@ for target in "${expected_targets[@]}"; do
   test -f "$target"
 done
 
-diff -r -q \
-  "$source_root/dot_config/nvim" \
-  "$tmp_home/.config/nvim"
+# Chezmoi omits empty regular source files unless they use the empty_ attribute.
+# Normalize that omission before comparing the untemplated Neovim tree.
+nvim_expected="$tmp_home/nvim-expected"
+cp -R "$source_root/dot_config/nvim" "$nvim_expected"
+find "$nvim_expected" -type f -empty -delete
+diff -r -q "$nvim_expected" "$tmp_home/.config/nvim"
 cmp \
   "$source_root/dot_config/zsh/functions/ccnew" \
   "$tmp_home/.config/zsh/functions/ccnew"
