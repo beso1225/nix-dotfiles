@@ -5,5 +5,5 @@
   requests in English.
 - Respect each project's existing tools and language. For a new project, prefer
   Rust; consider a Nix flake, pkfire for tasks, and uv for Python.
-- Use TDD for behavior changes when a focused regression test is practical.
+- Use TDD for behavior changes when a focused regression test is practical (Exploring -> Red -> Green -> Refactoring).
   Match verification to the change and complete the requested work.
