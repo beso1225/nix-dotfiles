@@ -29,18 +29,23 @@ jobs:
       - name: Show flake outputs
         run: nix flake show
 
-      - name: Verify chezmoi ownership and restoration
+      # Evaluate and instantiate the aarch64-darwin configuration on Linux.
+      # Evaluation is host-independent (nixpkgs.hostPlatform is pinned in
+      # nix/darwin/configuration.nix) and --dry-run never enforces the target
+      # system, so a macOS runner is not required.
+      - name: Evaluate nix-darwin configuration (aarch64-darwin)
         run: |
-          nix shell --inputs-from . nixpkgs#chezmoi nixpkgs#python3 nixpkgs#ripgrep \
-            --command bash -e -c '
-              bash tests/chezmoi/phase3_contract.sh
-              python3 tests/chezmoi/phase4_contract.py
-            '
+          nix eval --raw .#darwinConfigurations.TY.config.system.build.toplevel.drvPath
+          nix build .#darwinConfigurations.TY.system \
+            --dry-run \
+            --show-trace
 
-  # Build the macOS (aarch64-darwin) nix-darwin configuration
-  build-darwin:
-    name: Build nix-darwin (macOS aarch64)
-    runs-on: macos-latest
+  # Platform-agnostic contract tests for dotfiles and tooling. These need
+  # neither macOS nor a Nix build, so they run on Linux via the Taskfile
+  # (single source of truth shared with local development).
+  test-tooling:
+    name: Tooling Contracts (Linux)
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -50,11 +55,14 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
 
-      - name: Build nix-darwin configuration (dry-run)
-        run: |
-          nix build .#darwinConfigurations.TY.system \
-            --dry-run \
-            --show-trace
+      - name: Verify chezmoi ownership and restoration
+        run: nix shell --inputs-from . pkfire nixpkgs#chezmoi nixpkgs#python3 nixpkgs#ripgrep --command pkf run test-chezmoi
+
+      - name: Verify the AeroSpace automation contract
+        run: nix shell --inputs-from . pkfire nixpkgs#ripgrep nixpkgs#nodejs --command pkf run test-aerospace
+
+      - name: Run headless Neovim configuration tests
+        run: nix shell --inputs-from . pkfire nixpkgs#neovim --command pkf run test-neovim
 
   # Placeholder for future Linux (NixOS / generic Linux) support
   # Uncomment and extend when a Linux home-manager configuration is added.
