@@ -19,7 +19,7 @@ assert(vim.deep_equal(spec.cmd, {
 }))
 assert(spec.lazy ~= false, "key-insights must remain lazy-loadable")
 assert(spec.opts.storage.directory == vim.fn.expand("~/.local/state/key-insights/sessions/"))
-assert(spec.opts.report.analyzer == "key-insight")
+assert(spec.opts.report.analyzer == "key-insights")
 assert(spec.opts.report.directory == vim.fn.expand("~/.local/state/key-insights/reports/"))
 assert(type(spec.config) == "function")
 
