@@ -10,7 +10,7 @@ directories: applications often store credentials and session data beside config
 | --- | --- | --- |
 | `.codex` | `AGENTS.md`, selected preferences in `config.toml`, RunCat registration in `hooks.json`, `runcat-hook.py`, the customized `herdr` skill | Codex owns auth, sessions, databases, plugins, bundled `.system` skills, generated rules, runtimes, project trust, and app integration settings; herdr owns its integration script and hook registrations |
 | `.apm` | `apm.yml`, `apm.lock.yaml`, `config.json` | APM owns `apm_modules` and deployed skills |
-| `.agents` | None in this phase | APM deploys the twelve dependencies listed below |
+| `.agents` | `AGENTS.md` symlink to `../.codex/AGENTS.md` | APM deploys the twelve dependencies listed below |
 | `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.codex/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
@@ -58,6 +58,10 @@ the `symlink_` source attribute and a relative target
 content. The `.chezmoiignore` exception `!.claude/CLAUDE.md` keeps only this link
 managed while the rest of `.claude` stays local.
 
+`~/.agents/AGENTS.md` also links to `../.codex/AGENTS.md`, declared in
+`chezmoi/dot_agents/symlink_AGENTS.md`. Only this link is managed under `.agents`;
+APM continues to own `.agents/skills`.
+
 These templates use chezmoi's documented
 [partial-file management](https://www.chezmoi.io/user-guide/manage-different-types-of-file/).
 TOML/JSON serialization can change formatting and remove comments; values outside
@@ -99,7 +103,7 @@ twelve dependencies, pinned commits, deployed paths, and file hashes. The six Op
 skills were restored and compared against the official source archive. The
 `grilling` and `domain-modeling` contents were compared against their pinned
 upstream source. Fresh installations with `--frozen` verify reproducibility. `.chezmoiignore` excludes
-module caches, `.agents`, and all ten relocated legacy `.codex/skills/<name>`
+module caches, `.agents/skills`, and all ten relocated legacy `.codex/skills/<name>`
 paths. Bundled `.system` skills and plugin caches remain installed by Codex.
 
 ## Paths intentionally left outside this phase

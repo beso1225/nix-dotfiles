@@ -7,3 +7,7 @@
   Rust; consider a Nix flake, pkfire for tasks, and uv for Python.
 - Use TDD for behavior changes when a focused regression test is practical (Exploring -> Red -> Green -> Refactoring).
   Match verification to the change and complete the requested work.
+
+- When `coding_memory` is available, search it before investigating recurring
+failures or relying on project-specific constraints. Use short English
+technical queries, read relevant notes, and check their applicability.

@@ -30,7 +30,8 @@ chezmoistate.boltdb
 !.apm/apm.yml
 !.apm/apm.lock.yaml
 !.apm/config.json
-.agents
+.agents/*
+!.agents/AGENTS.md
 .claude/*
 !.claude/settings.json
 !.claude/CLAUDE.md
