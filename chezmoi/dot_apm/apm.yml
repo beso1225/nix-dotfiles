@@ -16,6 +16,15 @@ dependencies:
     - openai/skills/skills/.curated/yeet#main
     - mattpocock/skills/skills/productivity/grilling#main
     - mattpocock/skills/skills/engineering/domain-modeling#main
+    - moonbitlang/skills/skills/make-moonbit-c-bindings#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-agent-guide#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-c-binding#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-extract-spec-test#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-orientation#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-proof#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-refactoring#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/moonbit-spec-test-development#8b9f1bad14bc62560dbe3537855379e561a4e066
+    - moonbitlang/skills/skills/ocaml2moonbit-migration#8b9f1bad14bc62560dbe3537855379e561a4e066
   mcp: []
 scripts: {}
 targets:

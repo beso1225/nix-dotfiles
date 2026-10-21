@@ -25,6 +25,16 @@ chezmoistate.boltdb
 .codex/skills/grilling
 .codex/skills/domain-modeling
 
+.codex/skills/make-moonbit-c-bindings
+.codex/skills/moonbit-agent-guide
+.codex/skills/moonbit-c-binding
+.codex/skills/moonbit-extract-spec-test
+.codex/skills/moonbit-orientation
+.codex/skills/moonbit-proof
+.codex/skills/moonbit-refactoring
+.codex/skills/moonbit-spec-test-development
+.codex/skills/ocaml2moonbit-migration
+
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*
 !.apm/apm.yml

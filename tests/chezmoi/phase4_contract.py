@@ -13,7 +13,12 @@ import tempfile
 REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
 TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling")
-APM_SKILLS = TRACKING_SKILLS + ("typesafe-ai", "tenbin-astra-diff-review")
+MOONBIT_SKILLS = (
+    "make-moonbit-c-bindings", "moonbit-agent-guide", "moonbit-c-binding",
+    "moonbit-extract-spec-test", "moonbit-orientation", "moonbit-proof",
+    "moonbit-refactoring", "moonbit-spec-test-development", "ocaml2moonbit-migration",
+)
+APM_SKILLS = TRACKING_SKILLS + ("typesafe-ai", "tenbin-astra-diff-review") + MOONBIT_SKILLS
 for skill in APM_SKILLS:
     assert not (REPO / "chezmoi/dot_codex/skills" / skill).exists(), skill
 # Chezmoi provides YAML parsing, so these checks need no Python YAML dependency.
@@ -28,7 +33,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 12
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 21
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -52,6 +57,10 @@ for name in OPENAI_SKILLS:
     assert locked[name]["repo_url"] == "openai/skills"
     assert locked[name]["virtual_path"] == f"skills/.curated/{name}"
 assert len({locked[name]["resolved_commit"] for name in OPENAI_SKILLS}) == 1
+for name in MOONBIT_SKILLS:
+    assert locked[name]["repo_url"] == "moonbitlang/skills"
+    assert locked[name]["virtual_path"] == f"skills/{name}"
+assert len({locked[name]["resolved_commit"] for name in MOONBIT_SKILLS}) == 1
 for name, path in (("grilling", "skills/productivity/grilling"),
                    ("domain-modeling", "skills/engineering/domain-modeling")):
     assert locked[name]["repo_url"] == "mattpocock/skills"
