@@ -4,6 +4,8 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # Use the security-fixed uv while it is still pending on nixpkgs-unstable.
+    nixpkgs-uv.url = "github:NixOS/nixpkgs/master";
     rust-overlay = {
       url = "github:oxalica/rust-overlay/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +44,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-uv,
       home-manager,
       nix-darwin,
       nix-homebrew,
@@ -56,6 +59,12 @@
     }:
     let
       sharedOverlays = [
+        (final: _: {
+          uv =
+            (import nixpkgs-uv {
+              system = final.stdenv.hostPlatform.system;
+            }).uv;
+        })
         (_: prev: {
           direnv = prev.direnv.overrideAttrs (_: {
             doCheck = false;

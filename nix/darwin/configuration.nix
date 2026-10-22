@@ -28,6 +28,12 @@
   # Set the default shell to zsh
   programs.zsh.enable = true;
 
+  # Block roots used by the compromised eMudhra intermediates, including cross-signs.
+  security.pki.caCertificateBlacklist = [
+    "emSign ECC Root CA - G3"
+    "Comodo AAA Services root"
+  ];
+
   # Enable Touch ID authentication for sudo and reattach to the session after authentication.
   security.pam.services.sudo_local = {
     touchIdAuth = true;
