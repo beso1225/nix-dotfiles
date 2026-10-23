@@ -1,2 +1,6 @@
 nvim.log
 
+# Nix build outputs.
+/result
+/result-*
+
