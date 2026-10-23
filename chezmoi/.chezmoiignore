@@ -34,6 +34,12 @@ chezmoistate.boltdb
 .codex/skills/moonbit-refactoring
 .codex/skills/moonbit-spec-test-development
 .codex/skills/ocaml2moonbit-migration
+.codex/skills/moonbit-practice
+.codex/skills/moonbit-js-binding
+
+.codex/skills/technical-writing
+.codex/skills/unslop
+.codex/skills/tdd
 
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*

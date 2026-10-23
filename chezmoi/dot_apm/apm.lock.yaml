@@ -1,5 +1,5 @@
 lockfile_version: '1'
-apm_version: 0.33.0
+apm_version: 0.34.0
 dependencies:
 - repo_url: beso1225/agent-skills
   name: tenbin-astra-diff-review
@@ -29,7 +29,7 @@ dependencies:
 - repo_url: mattpocock/skills
   name: domain-modeling
   host: github.com
-  resolved_commit: 49dd158d1076134a641b33efb035946536778336
+  resolved_commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
   resolved_ref: main
   version: unknown
   virtual_path: skills/engineering/domain-modeling
@@ -50,7 +50,7 @@ dependencies:
 - repo_url: mattpocock/skills
   name: grilling
   host: github.com
-  resolved_commit: 49dd158d1076134a641b33efb035946536778336
+  resolved_commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
   resolved_ref: main
   version: unknown
   virtual_path: skills/productivity/grilling
@@ -64,6 +64,51 @@ dependencies:
     .agents/skills/grilling/SKILL.md: sha256:befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
     .agents/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
   content_hash: sha256:90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755
+- repo_url: michael-denyer/pstack-claude
+  name: tdd
+  host: github.com
+  resolved_commit: 356c6e0f978df729eb16f227d795f34d221c5aad
+  resolved_ref: main
+  version: unknown
+  virtual_path: plugins/pstack/skills/tdd
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/tdd
+  - .agents/skills/tdd/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/tdd/SKILL.md: sha256:276f883002b7a0b9be4ec982d0752fc68eaceed8e6db502316a87aa4600d152e
+  content_hash: sha256:419aaff49912ac0e09212dbd7dfa3667025058001f1e5c2989a9491d9c5f4894
+- repo_url: michael-denyer/pstack-claude
+  name: technical-writing
+  host: github.com
+  resolved_commit: 356c6e0f978df729eb16f227d795f34d221c5aad
+  resolved_ref: main
+  version: unknown
+  virtual_path: plugins/pstack/skills/technical-writing
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/technical-writing
+  - .agents/skills/technical-writing/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/technical-writing/SKILL.md: sha256:7a6c08c90548d13b80e74b06115aeeb03847dbef758cefc1eeca70ba9c0db50b
+  content_hash: sha256:067f648b3d950f6bf57a1278ebf5cd17d0c86b6157f571671e779a85fb00587d
+- repo_url: michael-denyer/pstack-claude
+  name: unslop
+  host: github.com
+  resolved_commit: 356c6e0f978df729eb16f227d795f34d221c5aad
+  resolved_ref: main
+  version: unknown
+  virtual_path: plugins/pstack/skills/unslop
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/unslop
+  - .agents/skills/unslop/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/unslop/SKILL.md: sha256:0503149a9b85dad02bbc747a3aeb534e2ba07f53c5fd57e491ea3d1e67659aa3
+  content_hash: sha256:019420f8a43e1c6b3e11e895bd3493da0d163d2560f38ac47b9b746c19351667
 - repo_url: mizchi/pkfire
   name: pkfire
   host: github.com
@@ -138,6 +183,104 @@ dependencies:
     .agents/skills/apm-usage/references/manifest-schema.md: sha256:f49955b8be35046fc963bffbf134af101055c3164ae55f86d6bc8bc001304b13
     .agents/skills/apm-usage/references/publishing.md: sha256:392878fba913c9cc2eac9ecf028fce1671138bf59c03e66d2e44225757552034
   content_hash: sha256:5ca113f215eb4433e6420abbdfbcbbb05166ec9325c810e5cc27bc9acbf7a5d9
+- repo_url: mizchi/skills
+  name: moonbit-js-binding
+  host: github.com
+  resolved_commit: ab4eb2f7a92a13fb37c225ab427f2f492143ace1
+  version: unknown
+  virtual_path: moonbit-js-binding
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/moonbit-js-binding
+  - .agents/skills/moonbit-js-binding/README.md
+  - .agents/skills/moonbit-js-binding/SKILL.md
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/moon.mod
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async_test.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target_test.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/ffi.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib_test.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules_test.mbt
+  - .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/moon.pkg
+  - .agents/skills/moonbit-js-binding/references/cfg-and-target-gating.md
+  - .agents/skills/moonbit-js-binding/references/error-handling.md
+  - .agents/skills/moonbit-js-binding/references/interop-patterns.md
+  - .agents/skills/moonbit-js-binding/references/promise-bridging.md
+  - .agents/skills/moonbit-js-binding/references/typescript-integration.md
+  deployed_file_hashes:
+    .agents/skills/moonbit-js-binding/README.md: sha256:8f5c263ea49f3441ca1abe39f039cb2cc6b27480985f976769d552baf9c87908
+    .agents/skills/moonbit-js-binding/SKILL.md: sha256:148bc52287b376fe7f9ff566e242eeb79efcab5efcc3c90fc02839fd4473145d
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/moon.mod: sha256:fb4ce69c752f6b9445294371649139aef30c427a7d38b6d2bd227843ed21c3f1
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async.mbt: sha256:8e5c9681d9b48dca50ace439b1b95244a4490edb01a6fa558c61e52b24633564
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async_test.mbt: sha256:b4be8bc8916969e92d8a88bbd92df7c8857a06005dfdd65c945364f6a44f7079
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target.mbt: sha256:f618dc564f3c84b4a7cbeecc6feed7dde0bc2c0d3f4ef5a01b215ba076269ab8
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target_test.mbt: sha256:694585443bd2faf8fe6641366d1f27733f5ac9d24384735280aade13d0d0c848
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/ffi.mbt: sha256:58a54e71df4cce27caf924982457e52726c8cb64eb66f49d72caace89fb4244f
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib.mbt: sha256:48b7481d868a033a51f1a644f228a34d607f294caa5447ad6b11fdd008b48adf
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib_test.mbt: sha256:3cd8f07482c0eea6e6d3c83f75d17466107c0a37fbb6ba02477d502ca7c3b3e5
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules.mbt: sha256:fc9b47efd66548b1f35273b1533e94243300a96f47fc3284609e9e8edc5a3186
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules_test.mbt: sha256:324ac40a78ded90dec5ae317aa02f2dea62e6f78d163d621fb49ccf22c581fe7
+    .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/moon.pkg: sha256:c1d8dd4892256c524b8274bfdc4c69863fb9ea2c1ec3b099013b7f6c7de3a27b
+    .agents/skills/moonbit-js-binding/references/cfg-and-target-gating.md: sha256:f1409412c20618507c3947b61ca6e3e9f7768ac8dc17fa08526ffb6494f9f859
+    .agents/skills/moonbit-js-binding/references/error-handling.md: sha256:d799e70adf950b10ad09decd1de826c6fca74051ca3576aeec69ee6af39e3156
+    .agents/skills/moonbit-js-binding/references/interop-patterns.md: sha256:819fe304561158bef9669386ea5e95f03c393f84b7b6911b1edfd4e1efa91755
+    .agents/skills/moonbit-js-binding/references/promise-bridging.md: sha256:2c7b10f344fc38783038c7c846254102dbec84c213d7f0ba4618f442edc96e39
+    .agents/skills/moonbit-js-binding/references/typescript-integration.md: sha256:7c5fd939239572cd0f03b63e3fc15d7629acd53f7662356ad0d6e911e45098da
+  content_hash: sha256:54bfd60f216062f50e4350c0b70151d603fc709e19f139f1be9f8104f84b5b32
+- repo_url: mizchi/skills
+  name: moonbit-practice
+  host: github.com
+  resolved_commit: ab4eb2f7a92a13fb37c225ab427f2f492143ace1
+  version: unknown
+  virtual_path: moonbit-practice
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/moonbit-practice
+  - .agents/skills/moonbit-practice/README.md
+  - .agents/skills/moonbit-practice/SKILL.md
+  - .agents/skills/moonbit-practice/assets/ci-nix.yaml
+  - .agents/skills/moonbit-practice/assets/ci.yaml
+  - .agents/skills/moonbit-practice/assets/moon.mod
+  - .agents/skills/moonbit-practice/assets/moon.pkg
+  - .agents/skills/moonbit-practice/assets/publish-to-npm.yaml
+  - .agents/skills/moonbit-practice/reference/configuration.md
+  - .agents/skills/moonbit-practice/reference/ffi-native.md
+  - .agents/skills/moonbit-practice/reference/ffi.md
+  - .agents/skills/moonbit-practice/reference/ide.md
+  - .agents/skills/moonbit-practice/reference/language.md
+  - .agents/skills/moonbit-practice/reference/mbtx.md
+  - .agents/skills/moonbit-practice/reference/nix.md
+  - .agents/skills/moonbit-practice/reference/performance.md
+  - .agents/skills/moonbit-practice/reference/refactor.md
+  - .agents/skills/moonbit-practice/reference/skills-marketplace.md
+  - .agents/skills/moonbit-practice/reference/stdlib.md
+  - .agents/skills/moonbit-practice/reference/testing.md
+  deployed_file_hashes:
+    .agents/skills/moonbit-practice/README.md: sha256:09d2eeefc993f66d551bf292874d781ea25211c28d0782f2ca86c7177a12e115
+    .agents/skills/moonbit-practice/SKILL.md: sha256:bd9618a9eba507953d55d4314d3bb7cd6af7a08b45b2f758ff73a531e9a92357
+    .agents/skills/moonbit-practice/assets/ci-nix.yaml: sha256:592a87265557fbb229c39e942677297e760bb2b5fe46949ba57588b09b9b0798
+    .agents/skills/moonbit-practice/assets/ci.yaml: sha256:a4a16c20673e7976626250e14dab10f28d1bf48edc57c7483f554170a36939f7
+    .agents/skills/moonbit-practice/assets/moon.mod: sha256:aa5535aa4348b80d3bd956cd00ed6c4987119d9fcd0ac1b32226cd9540f0ef79
+    .agents/skills/moonbit-practice/assets/moon.pkg: sha256:383ff7725b79202cf21c9fc15f8db0de656f9552683e039dd27c9928c797102f
+    .agents/skills/moonbit-practice/assets/publish-to-npm.yaml: sha256:5a301277b9e1a5c785f0dd2b2cb7e3008b7a1473e59ca058a30f13d69bc0a545
+    .agents/skills/moonbit-practice/reference/configuration.md: sha256:83fd4c7299bfb266a61e83a495828ff6dd6286d1c5e7c43a1668ed6ecb36a098
+    .agents/skills/moonbit-practice/reference/ffi-native.md: sha256:59eb79e87d8a93b10e869c468ec6f597a7bfde9cd719141a16ab569374d778ee
+    .agents/skills/moonbit-practice/reference/ffi.md: sha256:079d2e0eccb88b809c6cfc0f80fb8a29c8669de370feb3e60e57c31099250423
+    .agents/skills/moonbit-practice/reference/ide.md: sha256:c5ea2300112b1cac90b9980b9692b5d5e055813da97c9c156a97d0a4b1a01241
+    .agents/skills/moonbit-practice/reference/language.md: sha256:ded95cb1197e0ae9ecc77a1be28038c25f5bcd7507f9189bec2fb57a4c28e524
+    .agents/skills/moonbit-practice/reference/mbtx.md: sha256:8afface0c24b32e6834cd102ce16b4016e25b34d4ba174f6a813bdc112831bce
+    .agents/skills/moonbit-practice/reference/nix.md: sha256:1737b862534030754ce06165bcf1ae9f36aaceaf553208fdd4aad4f6ff2b5ed6
+    .agents/skills/moonbit-practice/reference/performance.md: sha256:57c655e80417662cfd6d76fc233510e9fcad11725f6399c5ec6945fadbfa4f3f
+    .agents/skills/moonbit-practice/reference/refactor.md: sha256:79a9f1bd18f00f0189ac2e60dec34b73a065d4f1fa8c37a27f244295bd5ee1f8
+    .agents/skills/moonbit-practice/reference/skills-marketplace.md: sha256:394a635145c788738b455560408cbecd09c4906981cb221e04cd3a527e78fa8e
+    .agents/skills/moonbit-practice/reference/stdlib.md: sha256:10a183c4782bac1a17f829b9015f7bc3ce42073836abf75b64fa91e7d5148b57
+    .agents/skills/moonbit-practice/reference/testing.md: sha256:d2365a0552b9d801a8a9d0694f3a66611204f05b10d896c1322fca467e16150e
+  content_hash: sha256:da9e9b74fed94884a6e49c7b083ef8145233affea69b6008b29105552ae14c62
 - repo_url: moonbitlang/skills
   name: make-moonbit-c-bindings
   host: github.com
@@ -1235,6 +1378,177 @@ deployments:
   content_hash: sha256:84d3fc21ca976d174f0c2eb9f92b1510ce45b3d20d4fbf8660c94e2a3adf973d
 - kind: project-relative
   target: codex
+  value: .agents/skills/moonbit-js-binding
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/README.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:8f5c263ea49f3441ca1abe39f039cb2cc6b27480985f976769d552baf9c87908
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:148bc52287b376fe7f9ff566e242eeb79efcab5efcc3c90fc02839fd4473145d
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/moon.mod
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:fb4ce69c752f6b9445294371649139aef30c427a7d38b6d2bd227843ed21c3f1
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:8e5c9681d9b48dca50ace439b1b95244a4490edb01a6fa558c61e52b24633564
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/async_test.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:b4be8bc8916969e92d8a88bbd92df7c8857a06005dfdd65c945364f6a44f7079
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:f618dc564f3c84b4a7cbeecc6feed7dde0bc2c0d3f4ef5a01b215ba076269ab8
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/cross_target_test.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:694585443bd2faf8fe6641366d1f27733f5ac9d24384735280aade13d0d0c848
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/ffi.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:58a54e71df4cce27caf924982457e52726c8cb64eb66f49d72caace89fb4244f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:48b7481d868a033a51f1a644f228a34d607f294caa5447ad6b11fdd008b48adf
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/lib_test.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:3cd8f07482c0eea6e6d3c83f75d17466107c0a37fbb6ba02477d502ca7c3b3e5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:fc9b47efd66548b1f35273b1533e94243300a96f47fc3284609e9e8edc5a3186
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/modules_test.mbt
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:324ac40a78ded90dec5ae317aa02f2dea62e6f78d163d621fb49ccf22c581fe7
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/assets/js_binding_proj/src/moon.pkg
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:c1d8dd4892256c524b8274bfdc4c69863fb9ea2c1ec3b099013b7f6c7de3a27b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/references/cfg-and-target-gating.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:f1409412c20618507c3947b61ca6e3e9f7768ac8dc17fa08526ffb6494f9f859
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/references/error-handling.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:d799e70adf950b10ad09decd1de826c6fca74051ca3576aeec69ee6af39e3156
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/references/interop-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:819fe304561158bef9669386ea5e95f03c393f84b7b6911b1edfd4e1efa91755
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/references/promise-bridging.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:2c7b10f344fc38783038c7c846254102dbec84c213d7f0ba4618f442edc96e39
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-js-binding/references/typescript-integration.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-js-binding
+  active_owner: mizchi/skills/moonbit-js-binding
+  content_hash: sha256:7c5fd939239572cd0f03b63e3fc15d7629acd53f7662356ad0d6e911e45098da
+- kind: project-relative
+  target: codex
   value: .agents/skills/moonbit-orientation
   runtime: null
   scope: project
@@ -1341,6 +1655,186 @@ deployments:
   - moonbitlang/skills/skills/moonbit-orientation
   active_owner: moonbitlang/skills/skills/moonbit-orientation
   content_hash: sha256:db3fbe3b8821089a788aaf119ff3856459d7f9c8a88b87b8c2f3d3868748d810
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/README.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:09d2eeefc993f66d551bf292874d781ea25211c28d0782f2ca86c7177a12e115
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:bd9618a9eba507953d55d4314d3bb7cd6af7a08b45b2f758ff73a531e9a92357
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/assets/ci-nix.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:592a87265557fbb229c39e942677297e760bb2b5fe46949ba57588b09b9b0798
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/assets/ci.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:a4a16c20673e7976626250e14dab10f28d1bf48edc57c7483f554170a36939f7
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/assets/moon.mod
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:aa5535aa4348b80d3bd956cd00ed6c4987119d9fcd0ac1b32226cd9540f0ef79
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/assets/moon.pkg
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:383ff7725b79202cf21c9fc15f8db0de656f9552683e039dd27c9928c797102f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/assets/publish-to-npm.yaml
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:5a301277b9e1a5c785f0dd2b2cb7e3008b7a1473e59ca058a30f13d69bc0a545
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/configuration.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:83fd4c7299bfb266a61e83a495828ff6dd6286d1c5e7c43a1668ed6ecb36a098
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/ffi-native.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:59eb79e87d8a93b10e869c468ec6f597a7bfde9cd719141a16ab569374d778ee
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/ffi.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:079d2e0eccb88b809c6cfc0f80fb8a29c8669de370feb3e60e57c31099250423
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/ide.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:c5ea2300112b1cac90b9980b9692b5d5e055813da97c9c156a97d0a4b1a01241
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/language.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:ded95cb1197e0ae9ecc77a1be28038c25f5bcd7507f9189bec2fb57a4c28e524
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/mbtx.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:8afface0c24b32e6834cd102ce16b4016e25b34d4ba174f6a813bdc112831bce
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/nix.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:1737b862534030754ce06165bcf1ae9f36aaceaf553208fdd4aad4f6ff2b5ed6
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/performance.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:57c655e80417662cfd6d76fc233510e9fcad11725f6399c5ec6945fadbfa4f3f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/refactor.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:79a9f1bd18f00f0189ac2e60dec34b73a065d4f1fa8c37a27f244295bd5ee1f8
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/skills-marketplace.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:394a635145c788738b455560408cbecd09c4906981cb221e04cd3a527e78fa8e
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/stdlib.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:10a183c4782bac1a17f829b9015f7bc3ce42073836abf75b64fa91e7d5148b57
+- kind: project-relative
+  target: codex
+  value: .agents/skills/moonbit-practice/reference/testing.md
+  runtime: null
+  scope: project
+  owners:
+  - mizchi/skills/moonbit-practice
+  active_owner: mizchi/skills/moonbit-practice
+  content_hash: sha256:d2365a0552b9d801a8a9d0694f3a66611204f05b10d896c1322fca467e16150e
 - kind: project-relative
   target: codex
   value: .agents/skills/moonbit-proof
@@ -1730,6 +2224,42 @@ deployments:
   content_hash: sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5
 - kind: project-relative
   target: codex
+  value: .agents/skills/tdd
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/tdd
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/tdd
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/tdd/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/tdd
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/tdd
+  content_hash: sha256:276f883002b7a0b9be4ec982d0752fc68eaceed8e6db502316a87aa4600d152e
+- kind: project-relative
+  target: codex
+  value: .agents/skills/technical-writing
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/technical-writing
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/technical-writing
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/technical-writing/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/technical-writing
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/technical-writing
+  content_hash: sha256:7a6c08c90548d13b80e74b06115aeeb03847dbef758cefc1eeca70ba9c0db50b
+- kind: project-relative
+  target: codex
   value: .agents/skills/tenbin-astra-diff-review
   runtime: null
   scope: project
@@ -1818,6 +2348,24 @@ deployments:
   - typesafe-ai/skills/skills/typesafe-ai
   active_owner: typesafe-ai/skills/skills/typesafe-ai
   content_hash: sha256:71ea90d7906c6554c4f4c460ef7361b2d26f59116ccdae986dc6d997b9389f52
+- kind: project-relative
+  target: codex
+  value: .agents/skills/unslop
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/unslop
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/unslop
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/unslop/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/unslop
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/unslop
+  content_hash: sha256:0503149a9b85dad02bbc747a3aeb534e2ba07f53c5fd57e491ea3d1e67659aa3
 - kind: project-relative
   target: codex
   value: .agents/skills/yeet
