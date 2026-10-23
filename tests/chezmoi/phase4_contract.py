@@ -13,7 +13,7 @@ import tempfile
 REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
 PSTACK_SKILLS = ("technical-writing", "unslop", "tdd")
-TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling") + PSTACK_SKILLS
+TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS
 DEFAULT_REF_SKILLS = ("moonbit-practice", "moonbit-js-binding")
 MOONBIT_SKILLS = (
     "make-moonbit-c-bindings", "moonbit-agent-guide", "moonbit-c-binding",
@@ -35,7 +35,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 26
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 27
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -67,6 +67,12 @@ for name in PSTACK_SKILLS:
     assert locked[name]["repo_url"] == "michael-denyer/pstack-claude"
     assert locked[name]["virtual_path"] == f"plugins/pstack/skills/{name}"
 assert len({locked[name]["resolved_commit"] for name in PSTACK_SKILLS}) == 1
+assert locked["yomiyasu"]["repo_url"] == "nanaism/yomiyasu"
+assert locked["yomiyasu"]["virtual_path"] == "skills/yomiyasu"
+for filename in ("LICENSE", "UNICODE-LICENSE.txt", "references/review-points.md",
+                 "scripts/yomiyasu_check.py", "scripts/yomiyasu_lint.py",
+                 "scripts/yomiyasu_diff.py", "scripts/markdown_visibility.py"):
+    assert f".agents/skills/yomiyasu/{filename}" in locked["yomiyasu"]["deployed_file_hashes"]
 for name in MOONBIT_SKILLS:
     assert locked[name]["repo_url"] == "moonbitlang/skills"
     assert locked[name]["virtual_path"] == f"skills/{name}"

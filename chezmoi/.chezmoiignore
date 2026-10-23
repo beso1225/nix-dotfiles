@@ -40,6 +40,7 @@ chezmoistate.boltdb
 .codex/skills/technical-writing
 .codex/skills/unslop
 .codex/skills/tdd
+.codex/skills/yomiyasu
 
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*

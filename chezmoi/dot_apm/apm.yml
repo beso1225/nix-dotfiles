@@ -39,6 +39,9 @@ dependencies:
     - michael-denyer/pstack-claude/plugins/pstack/skills/unslop#main
     - michael-denyer/pstack-claude/plugins/pstack/skills/tdd#main
 
+    # Japanese writing
+    - nanaism/yomiyasu/skills/yomiyasu#main
+
     # mattpocock's skills
     - mattpocock/skills/skills/productivity/grilling#main
     - mattpocock/skills/skills/engineering/domain-modeling#main
