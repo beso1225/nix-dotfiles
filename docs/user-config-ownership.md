@@ -203,6 +203,10 @@ Search and design-system generation work offline. Add `--persist` only when the
 task calls for saved design-system files, and provide the project's absolute
 path with `--output-dir`.
 
+Vercel's `web-design-guidelines` skill also installs through APM. It needs network
+access to retrieve the current Web Interface Guidelines before each review, but
+requires no additional CLI or MCP server.
+
 Reinstall herdr integrations
 using herdr on a machine that needs them; their generated files remain local.
 

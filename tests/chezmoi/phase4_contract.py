@@ -14,7 +14,7 @@ REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
 PSTACK_SKILLS = ("technical-writing", "unslop", "tdd")
 TOOL_SKILLS = ("agent-browser", "workers-best-practices")
-DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max")
+DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max", "web-design-guidelines")
 TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS + TOOL_SKILLS + DESIGN_SKILLS
 DEFAULT_REF_SKILLS = ("moonbit-practice", "moonbit-js-binding")
 MOONBIT_SKILLS = (
@@ -37,7 +37,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 31
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 32
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -72,6 +72,7 @@ assert len({locked[name]["resolved_commit"] for name in PSTACK_SKILLS}) == 1
 for name, repository, path in (
     ("frontend-design", "anthropics/skills", "skills/frontend-design"),
     ("ui-ux-pro-max", "nextlevelbuilder/ui-ux-pro-max-skill", ".claude/skills/ui-ux-pro-max"),
+    ("web-design-guidelines", "vercel-labs/agent-skills", "skills/web-design-guidelines"),
 ):
     assert locked[name]["repo_url"] == repository
     assert locked[name]["virtual_path"] == path
