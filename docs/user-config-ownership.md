@@ -207,6 +207,12 @@ Vercel's `web-design-guidelines` skill also installs through APM. It needs netwo
 access to retrieve the current Web Interface Guidelines before each review, but
 requires no additional CLI or MCP server.
 
+`dickwu/apple-design-skill` installs as the `apple-design` skill. APM places this
+repository-root skill in `~/.agents/skills/apple-design-skill/`. Its HIG references
+are bundled, so reviews need no extra packages or initial download. Keep reference
+updates in APM's lockfile workflow instead of regenerating APM-managed files with
+the optional Node.js refresh script.
+
 Reinstall herdr integrations
 using herdr on a machine that needs them; their generated files remain local.
 

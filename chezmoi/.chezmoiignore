@@ -46,6 +46,8 @@ chezmoistate.boltdb
 .codex/skills/frontend-design
 .codex/skills/ui-ux-pro-max
 .codex/skills/web-design-guidelines
+.codex/skills/apple-design
+.codex/skills/apple-design-skill
 
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*

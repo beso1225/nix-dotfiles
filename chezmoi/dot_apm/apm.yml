@@ -50,6 +50,7 @@ dependencies:
     - anthropics/skills/skills/frontend-design#main
     - nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#main
     - vercel-labs/agent-skills/skills/web-design-guidelines#main
+    - dickwu/apple-design-skill#main
 
     # mattpocock's skills
     - mattpocock/skills/skills/productivity/grilling#main
