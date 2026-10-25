@@ -26,6 +26,27 @@ dependencies:
     .agents/skills/tenbin-astra-diff-review/references/prompts.md: sha256:da4cf8dd118277da53042f3370670e50f806252ef25a463f015e3104834cda16
     .agents/skills/tenbin-astra-diff-review/scripts/generate_diff_bundle.py: sha256:d0e6fd59236ddaa649a4ad551140584adcb9233641a2222c59e2b8bae6c7380d
   content_hash: sha256:613ae9c8e90d7da8799bf8ac555db8d951ef31eb0d34a0564738b58ed0ad28b7
+- repo_url: cloudflare/skills
+  name: workers-best-practices
+  host: github.com
+  resolved_commit: 86505e44f87d801aa1864a3c4109e9a8ae5c409f
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/workers-best-practices
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/workers-best-practices
+  - .agents/skills/workers-best-practices/SKILL.md
+  - .agents/skills/workers-best-practices/references/configuration.md
+  - .agents/skills/workers-best-practices/references/platform-apis.md
+  - .agents/skills/workers-best-practices/references/runtime-patterns.md
+  deployed_file_hashes:
+    .agents/skills/workers-best-practices/SKILL.md: sha256:039c2a70aac53e00da20adc3d527bd3fc9b727be90c28b94c81c5e10092339ef
+    .agents/skills/workers-best-practices/references/configuration.md: sha256:cdb5c9cd5168231373523332c0e7a5cf8811dc244c48298823e3ccc5eb7157c1
+    .agents/skills/workers-best-practices/references/platform-apis.md: sha256:9ca9f5a7a82f92de45d310f5e2ee05aa464ddb7a63a737529caa17fff3660f28
+    .agents/skills/workers-best-practices/references/runtime-patterns.md: sha256:704ce8d4ff62c7655eb1d15f804ad566ed2012d11c2086e0d94bd3addb4d2c07
+  content_hash: sha256:c5857dda525f9e1cc5d08718769150dde262809332b5889c4d6c16d234ec4a68
 - repo_url: mattpocock/skills
   name: domain-modeling
   host: github.com
@@ -770,7 +791,40 @@ dependencies:
     .agents/skills/typesafe-ai/LICENSE: sha256:835f233f1d6ed84a9b9a351aba0689b47644a4137d6316911fc7957bde523b02
     .agents/skills/typesafe-ai/SKILL.md: sha256:71ea90d7906c6554c4f4c460ef7361b2d26f59116ccdae986dc6d997b9389f52
   content_hash: sha256:9cd84c5e535dec8dec59917c110f9c00b4a61faadb86b432ec7e41051170af12
+- repo_url: vercel-labs/agent-browser
+  name: agent-browser
+  host: github.com
+  resolved_commit: 372ac5ce20fab885dbf45ee0c9d510ec8c3b6fdb
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/agent-browser
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/agent-browser
+  - .agents/skills/agent-browser/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/agent-browser/SKILL.md: sha256:3a7520e64de2dfaa516b6721c001e84e06e3c06a187b82af029ae721540ebfac
+  content_hash: sha256:dd491d53824ad9286ec950aee667098446332429a6d41fe28b4ba11f1959264c
 deployments:
+- kind: project-relative
+  target: codex
+  value: .agents/skills/agent-browser
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/agent-browser/skills/agent-browser
+  active_owner: vercel-labs/agent-browser/skills/agent-browser
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/agent-browser/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/agent-browser/skills/agent-browser
+  active_owner: vercel-labs/agent-browser/skills/agent-browser
+  content_hash: sha256:3a7520e64de2dfaa516b6721c001e84e06e3c06a187b82af029ae721540ebfac
 - kind: project-relative
   target: codex
   value: .agents/skills/apm-usage
@@ -2463,6 +2517,51 @@ deployments:
   - michael-denyer/pstack-claude/plugins/pstack/skills/unslop
   active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/unslop
   content_hash: sha256:0503149a9b85dad02bbc747a3aeb534e2ba07f53c5fd57e491ea3d1e67659aa3
+- kind: project-relative
+  target: codex
+  value: .agents/skills/workers-best-practices
+  runtime: null
+  scope: project
+  owners:
+  - cloudflare/skills/skills/workers-best-practices
+  active_owner: cloudflare/skills/skills/workers-best-practices
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/workers-best-practices/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - cloudflare/skills/skills/workers-best-practices
+  active_owner: cloudflare/skills/skills/workers-best-practices
+  content_hash: sha256:039c2a70aac53e00da20adc3d527bd3fc9b727be90c28b94c81c5e10092339ef
+- kind: project-relative
+  target: codex
+  value: .agents/skills/workers-best-practices/references/configuration.md
+  runtime: null
+  scope: project
+  owners:
+  - cloudflare/skills/skills/workers-best-practices
+  active_owner: cloudflare/skills/skills/workers-best-practices
+  content_hash: sha256:cdb5c9cd5168231373523332c0e7a5cf8811dc244c48298823e3ccc5eb7157c1
+- kind: project-relative
+  target: codex
+  value: .agents/skills/workers-best-practices/references/platform-apis.md
+  runtime: null
+  scope: project
+  owners:
+  - cloudflare/skills/skills/workers-best-practices
+  active_owner: cloudflare/skills/skills/workers-best-practices
+  content_hash: sha256:9ca9f5a7a82f92de45d310f5e2ee05aa464ddb7a63a737529caa17fff3660f28
+- kind: project-relative
+  target: codex
+  value: .agents/skills/workers-best-practices/references/runtime-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - cloudflare/skills/skills/workers-best-practices
+  active_owner: cloudflare/skills/skills/workers-best-practices
+  content_hash: sha256:704ce8d4ff62c7655eb1d15f804ad566ed2012d11c2086e0d94bd3addb4d2c07
 - kind: project-relative
   target: codex
   value: .agents/skills/yeet

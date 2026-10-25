@@ -170,6 +170,24 @@ See the [APM lockfile specification](https://microsoft.github.io/apm/reference/l
 Do not recursively re-add restored skill trees.
 Yazi's checked-in `package.toml` records plugin/flavor revisions and hashes.
 Chezmoi apply needs no skill downloads; APM and Yazi installation remain explicit.
+
+The `agent-browser` and `workers-best-practices` skills also install through APM.
+Homebrew manages the `agent-browser` CLI through `nix/darwin/homebrew.nix`.
+After installing the CLI on a new machine, download its dedicated Chrome and
+load the usage guide that matches the installed CLI:
+
+```sh
+agent-browser install
+agent-browser skills get core
+agent-browser doctor --offline --quick
+```
+
+The browser download stays in the user's cache, outside chezmoi. No MCP server or
+cloud browser account is required for local browser automation. The Workers
+skill has no required global CLI: use each Workers project's installed Wrangler,
+generated types, and compatibility settings. Install related Cloudflare skills
+only when the work needs them.
+
 Reinstall herdr integrations
 using herdr on a machine that needs them; their generated files remain local.
 

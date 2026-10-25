@@ -42,6 +42,10 @@ dependencies:
     # Japanese writing
     - nanaism/yomiyasu/skills/yomiyasu#main
 
+    # Browser automation and Cloudflare Workers
+    - vercel-labs/agent-browser/skills/agent-browser#main
+    - cloudflare/skills/skills/workers-best-practices#main
+
     # mattpocock's skills
     - mattpocock/skills/skills/productivity/grilling#main
     - mattpocock/skills/skills/engineering/domain-modeling#main

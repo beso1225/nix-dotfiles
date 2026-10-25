@@ -25,6 +25,7 @@
     # List of Homebrew packages to be installed.
     brews = [
       "microsoft/apm/apm"
+      "agent-browser"
       "qemu"
       "hunk"
       "herdr"
