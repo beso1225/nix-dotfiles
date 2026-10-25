@@ -345,6 +345,98 @@ dependencies:
     .agents/skills/apple-design-skill/references/hig/writing.md: sha256:b865a5773cfa3619ee9903e6d3867b604e144b529dfedb8cc62f54f3747b195a
     .agents/skills/apple-design-skill/scripts/pull-hig.mjs: sha256:b33abfd88221f685b04f8dd7318ae9e5b88ae0512d187dbbccb65a664c6bcaf2
   content_hash: sha256:31d3ed745e4cd0989e72cb501db1da3193f5e4dbb8b4b6c7808b3491ebed3944
+- repo_url: leonxlnx/taste-skill
+  materialization_repo_url: Leonxlnx/taste-skill
+  name: design-taste-frontend
+  host: github.com
+  resolved_commit: 12af471f627f866411b4bd785b19646d3672784c
+  resolved_ref: main
+  version: unknown
+  virtual_path: skills/taste-skill
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/taste-skill
+  - .agents/skills/taste-skill/README.md
+  - .agents/skills/taste-skill/SKILL.md
+  - .agents/skills/taste-skill/assets/app.css
+  - .agents/skills/taste-skill/assets/base.css
+  - .agents/skills/taste-skill/assets/base.js
+  - .agents/skills/taste-skill/assets/charts.js
+  - .agents/skills/taste-skill/assets/scenes/stage.css
+  - .agents/skills/taste-skill/assets/scenes/stage.js
+  - .agents/skills/taste-skill/evals/evals.json
+  - .agents/skills/taste-skill/library/app.json
+  - .agents/skills/taste-skill/library/directions.json
+  - .agents/skills/taste-skill/library/heroes.json
+  - .agents/skills/taste-skill/library/motions.json
+  - .agents/skills/taste-skill/library/palettes.json
+  - .agents/skills/taste-skill/library/photos.json
+  - .agents/skills/taste-skill/library/sections.json
+  - .agents/skills/taste-skill/library/sites.json
+  - .agents/skills/taste-skill/library/type.json
+  - .agents/skills/taste-skill/references/app-screens.md
+  - .agents/skills/taste-skill/references/colour.md
+  - .agents/skills/taste-skill/references/copy.md
+  - .agents/skills/taste-skill/references/critique.md
+  - .agents/skills/taste-skill/references/imagery.md
+  - .agents/skills/taste-skill/references/layout.md
+  - .agents/skills/taste-skill/references/motion.md
+  - .agents/skills/taste-skill/references/research.md
+  - .agents/skills/taste-skill/references/scenes.md
+  - .agents/skills/taste-skill/references/tells.md
+  - .agents/skills/taste-skill/references/type.md
+  - .agents/skills/taste-skill/scripts/assets.mjs
+  - .agents/skills/taste-skill/scripts/draw.mjs
+  - .agents/skills/taste-skill/scripts/inspect.mjs
+  - .agents/skills/taste-skill/scripts/lib/app-draw.mjs
+  - .agents/skills/taste-skill/scripts/lib/cdp.mjs
+  - .agents/skills/taste-skill/scripts/lib/inspection-files.mjs
+  - .agents/skills/taste-skill/scripts/lib/probe.mjs
+  - .agents/skills/taste-skill/scripts/lib/rules.mjs
+  - .agents/skills/taste-skill/scripts/lint.mjs
+  - .agents/skills/taste-skill/scripts/scenes.mjs
+  deployed_file_hashes:
+    .agents/skills/taste-skill/README.md: sha256:5e33fd716b3e1ffaca9340f645d44c193f9b446107fa67f0cce498d33025672c
+    .agents/skills/taste-skill/SKILL.md: sha256:3435ed963b15a1b6447746ec8844ab2cd38d8d2e8ead3451937f42df01e408c4
+    .agents/skills/taste-skill/assets/app.css: sha256:16518c3a999fb81b2698137f1f743128c189272e8b1d411c4b02598c6755b67f
+    .agents/skills/taste-skill/assets/base.css: sha256:aa6ea21613c79e06e06dea3d33200c78590c89b0346bb976ec07947bb45ceafa
+    .agents/skills/taste-skill/assets/base.js: sha256:8d50416125596b84c0083d5d5ffba09add57db4b06cbf0eedac2d4999b7653bc
+    .agents/skills/taste-skill/assets/charts.js: sha256:a7e916594729576b7c7e37048a68508a3243fe8fbc9654775cd245232e9f8100
+    .agents/skills/taste-skill/assets/scenes/stage.css: sha256:b5c587dac45ac6fcc34ae7cb4aa2b3e43797b2ef5d71fd32b48483bda3fca3e0
+    .agents/skills/taste-skill/assets/scenes/stage.js: sha256:9ce782a94406e6a230c49ca5f87e56aff9d436da3f56416b1659421f8976bc2b
+    .agents/skills/taste-skill/evals/evals.json: sha256:df0ee2a248cd5445c0e1600eb095dc0d43dd312f5b4bb4316a78471ae0d22a74
+    .agents/skills/taste-skill/library/app.json: sha256:3678ccbe1e8d05feff6d4f07fa16a0d610aefeea5e697e842a876713ba763cf5
+    .agents/skills/taste-skill/library/directions.json: sha256:d71e3824af33a92d9e1ca543e17f80baa5b7a30c815df5125cfe3300a14892c1
+    .agents/skills/taste-skill/library/heroes.json: sha256:98d5e01104412a5fb27936f9c686f3bc0a5f76ce0793186d3de46b982c65b172
+    .agents/skills/taste-skill/library/motions.json: sha256:51815dd09a823c829897f99ed9ea7dc5c35bd305ac989b8a0632ea6d42a3f08b
+    .agents/skills/taste-skill/library/palettes.json: sha256:a14be9f45baba848c53436f4aa44eb4f1925ad3e232c5d1dcddf4f565661a525
+    .agents/skills/taste-skill/library/photos.json: sha256:8fc3b76bca90f44675bd99d99bb4ce95b0756c6c5d4141b7e917d11d90e61520
+    .agents/skills/taste-skill/library/sections.json: sha256:7c2c8a470a22501176948661f803434db8c542a511281752c717252de80c1ad8
+    .agents/skills/taste-skill/library/sites.json: sha256:a2bc4d0cff8ebff481f0dfd4879c106d5e1e16cb3122f9ab3702184a5e1f3502
+    .agents/skills/taste-skill/library/type.json: sha256:dbabf41a468775cf6cc5ea5f3c898b0663293822e167b72b02feba1ef03ebf37
+    .agents/skills/taste-skill/references/app-screens.md: sha256:55e937ec30de605b53a11310b446f328a3ce7403de24fff008920a00be1a5ed4
+    .agents/skills/taste-skill/references/colour.md: sha256:6556bcc7eed48b7bc2d0d281c28bf57c1b75e94d7ca0bde49f5d9df8c6a09351
+    .agents/skills/taste-skill/references/copy.md: sha256:676edbe75d5f3cfd8a793010ea9f730525ae074b231a674c2426264d3398262e
+    .agents/skills/taste-skill/references/critique.md: sha256:9c2f4392674530b3f02ac529fba53d82ab37b85f401c4c1989fbe98d6217f0b4
+    .agents/skills/taste-skill/references/imagery.md: sha256:518def6b2c643b295e13e66b09b66f2e3fc1421d3cf6c7dbb1dc749097ad2ad9
+    .agents/skills/taste-skill/references/layout.md: sha256:40080640719b07737afb94a8868afef87767a1ab4892814d9b6882e2d283453b
+    .agents/skills/taste-skill/references/motion.md: sha256:79f94d8469898d2bf6186c198ad86ddf691a67c6536eaec36a4ec101285d9a37
+    .agents/skills/taste-skill/references/research.md: sha256:83433646a352cae588591e05bc0a75fe1deadff55ede8851bc8dd5dd483adfc5
+    .agents/skills/taste-skill/references/scenes.md: sha256:733ac7258a1a28f2f6ae8205bc36ba66c563594ad0a2e2f829c5eaaba3199a61
+    .agents/skills/taste-skill/references/tells.md: sha256:8e6de4411c43d3108f832b3f33bb1a2a838148a72b92a176df893b67d99a0da9
+    .agents/skills/taste-skill/references/type.md: sha256:6353ff1d0ce2f9913628c88fbcb7dad3cc3877e61196848bce99e33a17d20611
+    .agents/skills/taste-skill/scripts/assets.mjs: sha256:b4b4b99b5634735f5a0b4213169cda5240ee6bbed8ed8042ad1bcf2b6607c1fa
+    .agents/skills/taste-skill/scripts/draw.mjs: sha256:6c2047d207d2400d3b099956dfe2ac306203b614246e66bc8760212a7f797dbf
+    .agents/skills/taste-skill/scripts/inspect.mjs: sha256:c0d7366f789b3f594787b37a525d1d7096104a499aac8a97ae04b405046cf02c
+    .agents/skills/taste-skill/scripts/lib/app-draw.mjs: sha256:aa0802d341d19b53ec14ec21746e428be49a8ec3ed7b30253194105fc18a8df6
+    .agents/skills/taste-skill/scripts/lib/cdp.mjs: sha256:320fb75c6454a97b88458e5c33559a1188042aa0041bd5eff53455900236c88a
+    .agents/skills/taste-skill/scripts/lib/inspection-files.mjs: sha256:5635c0d5fbe0f5bd012e58534bcd554ff7440a4e5c724a61a61c476c7f42e918
+    .agents/skills/taste-skill/scripts/lib/probe.mjs: sha256:a5a17df891e438f55f196d8233601c3c79c873755f442c1ac5c3568de4e6bb48
+    .agents/skills/taste-skill/scripts/lib/rules.mjs: sha256:8244aa9f53e77a59a562410310414e6b1a0f0cf002ce8f5aa792740b7f0149bf
+    .agents/skills/taste-skill/scripts/lint.mjs: sha256:05f2fae2f56fc051b539cdbacb43a6f78fbbfb9644bb74aa11be472ff12dcaf5
+    .agents/skills/taste-skill/scripts/scenes.mjs: sha256:234ec582e2b841457c33033feeeba8535f9ac285495a74d08dc533a1566c90d5
+  content_hash: sha256:2d5cfa3d6116729411548ac7898d1f031882a3365f236ba81893cdd0257077ce
 - repo_url: mattpocock/skills
   name: domain-modeling
   host: github.com
@@ -4098,6 +4190,366 @@ deployments:
   - openai/skills/skills/.curated/playwright
   active_owner: openai/skills/skills/.curated/playwright
   content_hash: sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/README.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:5e33fd716b3e1ffaca9340f645d44c193f9b446107fa67f0cce498d33025672c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:3435ed963b15a1b6447746ec8844ab2cd38d8d2e8ead3451937f42df01e408c4
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/app.css
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:16518c3a999fb81b2698137f1f743128c189272e8b1d411c4b02598c6755b67f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/base.css
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:aa6ea21613c79e06e06dea3d33200c78590c89b0346bb976ec07947bb45ceafa
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/base.js
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:8d50416125596b84c0083d5d5ffba09add57db4b06cbf0eedac2d4999b7653bc
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/charts.js
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:a7e916594729576b7c7e37048a68508a3243fe8fbc9654775cd245232e9f8100
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/scenes/stage.css
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:b5c587dac45ac6fcc34ae7cb4aa2b3e43797b2ef5d71fd32b48483bda3fca3e0
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/assets/scenes/stage.js
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:9ce782a94406e6a230c49ca5f87e56aff9d436da3f56416b1659421f8976bc2b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:df0ee2a248cd5445c0e1600eb095dc0d43dd312f5b4bb4316a78471ae0d22a74
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/app.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:3678ccbe1e8d05feff6d4f07fa16a0d610aefeea5e697e842a876713ba763cf5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/directions.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:d71e3824af33a92d9e1ca543e17f80baa5b7a30c815df5125cfe3300a14892c1
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/heroes.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:98d5e01104412a5fb27936f9c686f3bc0a5f76ce0793186d3de46b982c65b172
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/motions.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:51815dd09a823c829897f99ed9ea7dc5c35bd305ac989b8a0632ea6d42a3f08b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/palettes.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:a14be9f45baba848c53436f4aa44eb4f1925ad3e232c5d1dcddf4f565661a525
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/photos.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:8fc3b76bca90f44675bd99d99bb4ce95b0756c6c5d4141b7e917d11d90e61520
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/sections.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:7c2c8a470a22501176948661f803434db8c542a511281752c717252de80c1ad8
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/sites.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:a2bc4d0cff8ebff481f0dfd4879c106d5e1e16cb3122f9ab3702184a5e1f3502
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/library/type.json
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:dbabf41a468775cf6cc5ea5f3c898b0663293822e167b72b02feba1ef03ebf37
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/app-screens.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:55e937ec30de605b53a11310b446f328a3ce7403de24fff008920a00be1a5ed4
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/colour.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:6556bcc7eed48b7bc2d0d281c28bf57c1b75e94d7ca0bde49f5d9df8c6a09351
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/copy.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:676edbe75d5f3cfd8a793010ea9f730525ae074b231a674c2426264d3398262e
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/critique.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:9c2f4392674530b3f02ac529fba53d82ab37b85f401c4c1989fbe98d6217f0b4
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/imagery.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:518def6b2c643b295e13e66b09b66f2e3fc1421d3cf6c7dbb1dc749097ad2ad9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/layout.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:40080640719b07737afb94a8868afef87767a1ab4892814d9b6882e2d283453b
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/motion.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:79f94d8469898d2bf6186c198ad86ddf691a67c6536eaec36a4ec101285d9a37
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/research.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:83433646a352cae588591e05bc0a75fe1deadff55ede8851bc8dd5dd483adfc5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/scenes.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:733ac7258a1a28f2f6ae8205bc36ba66c563594ad0a2e2f829c5eaaba3199a61
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/tells.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:8e6de4411c43d3108f832b3f33bb1a2a838148a72b92a176df893b67d99a0da9
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/references/type.md
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:6353ff1d0ce2f9913628c88fbcb7dad3cc3877e61196848bce99e33a17d20611
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/assets.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:b4b4b99b5634735f5a0b4213169cda5240ee6bbed8ed8042ad1bcf2b6607c1fa
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/draw.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:6c2047d207d2400d3b099956dfe2ac306203b614246e66bc8760212a7f797dbf
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/inspect.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:c0d7366f789b3f594787b37a525d1d7096104a499aac8a97ae04b405046cf02c
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lib/app-draw.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:aa0802d341d19b53ec14ec21746e428be49a8ec3ed7b30253194105fc18a8df6
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lib/cdp.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:320fb75c6454a97b88458e5c33559a1188042aa0041bd5eff53455900236c88a
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lib/inspection-files.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:5635c0d5fbe0f5bd012e58534bcd554ff7440a4e5c724a61a61c476c7f42e918
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lib/probe.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:a5a17df891e438f55f196d8233601c3c79c873755f442c1ac5c3568de4e6bb48
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lib/rules.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:8244aa9f53e77a59a562410310414e6b1a0f0cf002ce8f5aa792740b7f0149bf
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/lint.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:05f2fae2f56fc051b539cdbacb43a6f78fbbfb9644bb74aa11be472ff12dcaf5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/taste-skill/scripts/scenes.mjs
+  runtime: null
+  scope: project
+  owners:
+  - leonxlnx/taste-skill/skills/taste-skill
+  active_owner: leonxlnx/taste-skill/skills/taste-skill
+  content_hash: sha256:234ec582e2b841457c33033feeeba8535f9ac285495a74d08dc533a1566c90d5
 - kind: project-relative
   target: codex
   value: .agents/skills/tdd

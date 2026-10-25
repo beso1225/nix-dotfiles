@@ -14,8 +14,8 @@ REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
 PSTACK_SKILLS = ("technical-writing", "unslop", "tdd")
 TOOL_SKILLS = ("agent-browser", "workers-best-practices")
-DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max", "web-design-guidelines", "apple-design")
-SKILL_DIRECTORIES = {"apple-design": "apple-design-skill"}
+DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max", "web-design-guidelines", "apple-design", "design-taste-frontend")
+SKILL_DIRECTORIES = {"apple-design": "apple-design-skill", "design-taste-frontend": "taste-skill"}
 TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS + TOOL_SKILLS + DESIGN_SKILLS
 DEFAULT_REF_SKILLS = ("moonbit-practice", "moonbit-js-binding")
 MOONBIT_SKILLS = (
@@ -39,7 +39,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 33
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 34
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -49,6 +49,8 @@ for specification in manifest["dependencies"]["apm"]:
     name = location.rsplit("/", 1)[-1]
     if location == "dickwu/apple-design-skill":
         name = "apple-design"
+    elif location == "Leonxlnx/taste-skill/skills/taste-skill":
+        name = "design-taste-frontend"
     if name in TRACKING_SKILLS:
         assert reference == "main", specification
     elif name in DEFAULT_REF_SKILLS:
@@ -57,7 +59,8 @@ for specification in manifest["dependencies"]["apm"]:
         assert re.fullmatch(r"[0-9a-f]{40}", reference), specification
     dependency = locked[name]
     virtual_path = dependency.get("virtual_path")
-    assert location == dependency["repo_url"] + (f"/{virtual_path}" if virtual_path else "")
+    source_repo = dependency.get("materialization_repo_url", dependency["repo_url"])
+    assert location == source_repo + (f"/{virtual_path}" if virtual_path else "")
     assert dependency.get("resolved_ref") == reference
     assert re.fullmatch(r"[0-9a-f]{40}", dependency["resolved_commit"])
     if name not in TRACKING_SKILLS + DEFAULT_REF_SKILLS:
@@ -76,6 +79,11 @@ for name in PSTACK_SKILLS:
     assert locked[name]["virtual_path"] == f"plugins/pstack/skills/{name}"
 assert len({locked[name]["resolved_commit"] for name in PSTACK_SKILLS}) == 1
 assert locked["apple-design"]["repo_url"] == "dickwu/apple-design-skill"
+assert locked["design-taste-frontend"]["repo_url"] == "leonxlnx/taste-skill"
+assert locked["design-taste-frontend"]["virtual_path"] == "skills/taste-skill"
+for filename in ("scripts/draw.mjs", "scripts/inspect.mjs", "scripts/lib/cdp.mjs",
+                 "library/directions.json", "references/critique.md", "assets/base.css"):
+    assert f".agents/skills/taste-skill/{filename}" in locked["design-taste-frontend"]["deployed_file_hashes"]
 for filename in ("references/hig-lookup.md", "references/cross-platform.md",
                  "references/hig/accessibility.md", "references/hig/liquid-glass.md",
                  "scripts/pull-hig.mjs"):

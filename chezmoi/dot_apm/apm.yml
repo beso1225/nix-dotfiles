@@ -51,6 +51,7 @@ dependencies:
     - nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#main
     - vercel-labs/agent-skills/skills/web-design-guidelines#main
     - dickwu/apple-design-skill#main
+    - Leonxlnx/taste-skill/skills/taste-skill#main
 
     # mattpocock's skills
     - mattpocock/skills/skills/productivity/grilling#main

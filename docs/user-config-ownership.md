@@ -213,6 +213,13 @@ are bundled, so reviews need no extra packages or initial download. Keep referen
 updates in APM's lockfile workflow instead of regenerating APM-managed files with
 the optional Node.js refresh script.
 
+`Leonxlnx/taste-skill` installs as `design-taste-frontend` under
+`~/.agents/skills/taste-skill/`, including its design libraries and inspection
+scripts. It requires Node.js 22+ and Chrome, Edge, or Chromium. The existing
+Node.js and Chrome satisfy these requirements; no npm dependencies or API keys
+are needed. Set `CHROME_PATH` only when the browser is outside the standard
+locations. Image searches need network access; local design draws do not.
+
 Reinstall herdr integrations
 using herdr on a machine that needs them; their generated files remain local.
 
