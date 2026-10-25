@@ -188,6 +188,21 @@ skill has no required global CLI: use each Workers project's installed Wrangler,
 generated types, and compatibility settings. Install related Cloudflare skills
 only when the work needs them.
 
+The official `frontend-design` and `ui-ux-pro-max` skills install through APM too.
+UI UX Pro Max includes its search scripts and local datasets; Python 3's standard
+library is sufficient, so the npm installer is not required. Its upstream
+examples use Claude plugin paths. For the shared Codex and DSH installation,
+resolve scripts from the installed skill directory instead:
+
+```sh
+python3 "$HOME/.agents/skills/ui-ux-pro-max/scripts/search.py" \
+  "keyboard focus modal" --domain ux
+```
+
+Search and design-system generation work offline. Add `--persist` only when the
+task calls for saved design-system files, and provide the project's absolute
+path with `--output-dir`.
+
 Reinstall herdr integrations
 using herdr on a machine that needs them; their generated files remain local.
 

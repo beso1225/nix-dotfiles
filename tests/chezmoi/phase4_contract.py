@@ -14,7 +14,8 @@ REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
 PSTACK_SKILLS = ("technical-writing", "unslop", "tdd")
 TOOL_SKILLS = ("agent-browser", "workers-best-practices")
-TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS + TOOL_SKILLS
+DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max")
+TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS + TOOL_SKILLS + DESIGN_SKILLS
 DEFAULT_REF_SKILLS = ("moonbit-practice", "moonbit-js-binding")
 MOONBIT_SKILLS = (
     "make-moonbit-c-bindings", "moonbit-agent-guide", "moonbit-c-binding",
@@ -36,7 +37,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 29
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 31
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -68,6 +69,17 @@ for name in PSTACK_SKILLS:
     assert locked[name]["repo_url"] == "michael-denyer/pstack-claude"
     assert locked[name]["virtual_path"] == f"plugins/pstack/skills/{name}"
 assert len({locked[name]["resolved_commit"] for name in PSTACK_SKILLS}) == 1
+for name, repository, path in (
+    ("frontend-design", "anthropics/skills", "skills/frontend-design"),
+    ("ui-ux-pro-max", "nextlevelbuilder/ui-ux-pro-max-skill", ".claude/skills/ui-ux-pro-max"),
+):
+    assert locked[name]["repo_url"] == repository
+    assert locked[name]["virtual_path"] == path
+assert ".agents/skills/frontend-design/LICENSE.txt" in locked["frontend-design"]["deployed_file_hashes"]
+for filename in ("scripts/search.py", "scripts/core.py", "scripts/design_system.py",
+                 "data/styles.csv", "data/ui-reasoning.csv", "data/stacks/react.csv",
+                 "references/quick-reference.md", "references/pro-rules.md"):
+    assert f".agents/skills/ui-ux-pro-max/{filename}" in locked["ui-ux-pro-max"]["deployed_file_hashes"]
 for name, repository in (("agent-browser", "vercel-labs/agent-browser"),
                          ("workers-best-practices", "cloudflare/skills")):
     assert locked[name]["repo_url"] == repository

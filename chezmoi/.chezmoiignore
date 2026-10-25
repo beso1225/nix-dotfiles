@@ -43,6 +43,8 @@ chezmoistate.boltdb
 .codex/skills/yomiyasu
 .codex/skills/agent-browser
 .codex/skills/workers-best-practices
+.codex/skills/frontend-design
+.codex/skills/ui-ux-pro-max
 
 # APM owns module caches and deployed skills; chezmoi owns the install inputs.
 .apm/*
