@@ -39,6 +39,9 @@ dependencies:
     - michael-denyer/pstack-claude/plugins/pstack/skills/unslop#main
     - michael-denyer/pstack-claude/plugins/pstack/skills/tdd#main
 
+    - michael-denyer/pstack-claude/plugins/pstack/skills/correct#main
+    - michael-denyer/pstack-claude/plugins/pstack/skills/sharpen#main
+
     # Japanese writing
     - nanaism/yomiyasu/skills/yomiyasu#main
 

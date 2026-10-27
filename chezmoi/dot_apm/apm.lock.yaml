@@ -476,6 +476,36 @@ dependencies:
     .agents/skills/grilling/agents/openai.yaml: sha256:1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
   content_hash: sha256:90b54c72a48114f62072de27e1bef0c61d55f0959044725c593ed9fc72197755
 - repo_url: michael-denyer/pstack-claude
+  name: correct
+  host: github.com
+  resolved_commit: 36885ea631d2afd9482cf9333cc4bbc829b3b02d
+  resolved_ref: main
+  version: unknown
+  virtual_path: plugins/pstack/skills/correct
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/correct
+  - .agents/skills/correct/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/correct/SKILL.md: sha256:7df667ae327c76c958b1bcbcad9759a70c8ad5cdacf5f8d2e3af46a5a7e5f85c
+  content_hash: sha256:fafc1b767c5cbb47d4b957cd35a9a13dfd86cbd38997a0543141c5e1738bd8ef
+- repo_url: michael-denyer/pstack-claude
+  name: sharpen
+  host: github.com
+  resolved_commit: 36885ea631d2afd9482cf9333cc4bbc829b3b02d
+  resolved_ref: main
+  version: unknown
+  virtual_path: plugins/pstack/skills/sharpen
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/sharpen
+  - .agents/skills/sharpen/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/sharpen/SKILL.md: sha256:c804fef77be5157c6a47125e931ff0f914988316cad544607e837cd805d68f93
+  content_hash: sha256:349b990911ccaa7123ecc4a501ff018fad55a202216d62aa3afec498046ad63c
+- repo_url: michael-denyer/pstack-claude
   name: tdd
   host: github.com
   resolved_commit: 356c6e0f978df729eb16f227d795f34d221c5aad
@@ -2662,6 +2692,24 @@ deployments:
   content_hash: sha256:b33abfd88221f685b04f8dd7318ae9e5b88ae0512d187dbbccb65a664c6bcaf2
 - kind: project-relative
   target: codex
+  value: .agents/skills/correct
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/correct
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/correct
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/correct/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/correct
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/correct
+  content_hash: sha256:7df667ae327c76c958b1bcbcad9759a70c8ad5cdacf5f8d2e3af46a5a7e5f85c
+- kind: project-relative
+  target: codex
   value: .agents/skills/define-goal
   runtime: null
   scope: project
@@ -4190,6 +4238,24 @@ deployments:
   - openai/skills/skills/.curated/playwright
   active_owner: openai/skills/skills/.curated/playwright
   content_hash: sha256:aa3fdff5d0e4556177f4dfd5f04117e772aa54f94b6a2e34b6c0edf629c6b9b5
+- kind: project-relative
+  target: codex
+  value: .agents/skills/sharpen
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/sharpen
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/sharpen
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/sharpen/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - michael-denyer/pstack-claude/plugins/pstack/skills/sharpen
+  active_owner: michael-denyer/pstack-claude/plugins/pstack/skills/sharpen
+  content_hash: sha256:c804fef77be5157c6a47125e931ff0f914988316cad544607e837cd805d68f93
 - kind: project-relative
   target: codex
   value: .agents/skills/taste-skill
