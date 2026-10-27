@@ -63,6 +63,9 @@ chezmoistate.boltdb
 !.apm/config.json
 .agents/*
 !.agents/AGENTS.md
+# DSH's global instructions are managed; credentials and runtime data are not.
+.dsh/*
+!.dsh/AGENTS.md
 .claude/*
 !.claude/settings.json
 !.claude/CLAUDE.md

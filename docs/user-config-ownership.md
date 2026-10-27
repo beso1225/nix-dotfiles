@@ -11,6 +11,7 @@ directories: applications often store credentials and session data beside config
 | `.codex` | `AGENTS.md`, selected preferences in `config.toml`, RunCat registration in `hooks.json`, `runcat-hook.py`, the customized `herdr` skill | Codex owns auth, sessions, databases, plugins, bundled `.system` skills, generated rules, runtimes, project trust, and app integration settings; herdr owns its integration script and hook registrations |
 | `.apm` | `apm.yml`, `apm.lock.yaml`, `config.json` | APM owns `apm_modules` and deployed skills |
 | `.agents` | `AGENTS.md` symlink to `../.codex/AGENTS.md` | APM deploys the twelve dependencies listed below |
+| `.dsh` | `AGENTS.md` points pstack workflows to the DSH mapping | DSH owns credentials, profiles, sessions, and runtime data |
 | `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.codex/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
@@ -21,6 +22,7 @@ directories: applications often store credentials and session data beside config
 | `.config/herdr` | `config.toml` | Sockets, logs, sessions/snapshots, integration scripts |
 | `.config/hunk` | `config.toml` | `state.json` |
 | `.config/karabiner` | `karabiner.json` | Automatic backups and downloaded modification assets |
+| `.config/pstack` | `dsh-tools.md` contains the DSH tool mapping | APM owns deployed pstack skills |
 | `.config/rstudio` | `rstudio-prefs.json` | Dictionaries and other app data |
 | `.config/yazi` | `init.lua`, `keymap.toml`, `package.toml`, `theme.toml`, `yazi.toml` | `ya pkg` owns `plugins` and `flavors` |
 | `.config/zed` | `settings.json`, `keymap.json` | Conversations, prompt databases, downloaded themes |
@@ -113,7 +115,7 @@ paths. Bundled `.system` skills and plugin caches remain installed by Codex.
 | Application config excluded by user preference | `.arduinoIDE`, `.keras`, `.docker`; all Arduino IDE, Keras, and Docker settings, including CLI auth, context selection, and runtime state, remain local |
 | Nix-generated configuration | `.gitconfig`, `.zshenv`, `.zprofile`, `.zshrc`, `.config/starship.toml`, `.config/sheldon`, `.config/tmux`; keep shell wiring and prompt/plugin behavior in `programs.*` |
 | Inactive shell config and backups | `.p10k.zsh`, `.profile` (Docker/rustup-generated PATH setup), `.tmux.conf.back`, `.latexmkrc.back`, `*.backup`, `*.hm-backup`, `chezmoi.back`, `nvim.back`, `zshenv.before-nix-darwin` |
-| Credentials and app databases | `.ssh`, `.claude.json`, `.dsh`, `.pgadmin`, `.plastic4`, `.config/github-copilot`, `.config/jotworthy/env`, `.config/configstore`, `.config/containers`, `.config/raycast`, `.config/iterm2` |
+| Credentials and app databases | `.ssh`, `.claude.json`, `.dsh` runtime data, `.pgadmin`, `.plastic4`, `.config/github-copilot`, `.config/jotworthy/env`, `.config/configstore`, `.config/containers`, `.config/raycast`, `.config/iterm2` |
 | Mixed preferences and local state | `.psychopy3`, `.config/fontforge/prefs` (includes recent private document paths), `.config/gtk-2.0/gtkfilechooser.ini`, `.gtk-bookmarks`, `.vscode/argv.json`; need a separate selection/partial-file decision |
 | Installed tools, dependencies, and caches | `.cargo`, `.rustup`, `.npm`, `.pyenv`, `.moon`, `.ollama`, `.pkl`, `.swiftpm`, `.texlive2025`, `.nix-defexpr`, `.nix-profile`, `.local`, `.cache`, `.ServiceHub`, `.Library`, `.vscode*/extensions`, `.tmux/plugins`, `Applications`, `bin`, `etc`, `go`, `ghq`, `LizzieYzy-2.5.4-non_RTX` |
 | Generated histories and metadata | Shell/Python/R/Node histories, `.bash_sessions`, `.zsh_sessions`, `.zcompdump*`, `.viminfo`, `.vim/.netrwhist`, `.chpwd-recent-dirs`, `.wget-hsts`, `.DS_Store`, `.CFUserTextEncoding`, `.cups`, `.Trash`, `.obsidian-cli.sock`, `.matplotlib/fontlist-*`, `.ipython` runtime files, `.vscode-R`, `.vscode-server`, `.vscode-shared`, `.config/cagent`, `.config/ghc` |
