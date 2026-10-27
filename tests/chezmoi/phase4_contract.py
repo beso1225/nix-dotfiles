@@ -12,7 +12,8 @@ import tempfile
 
 REPO = Path(__file__).resolve().parents[2]
 OPENAI_SKILLS = ("define-goal", "gh-address-comments", "gh-fix-ci", "hatch-pet", "playwright", "yeet")
-PSTACK_SKILLS = ("technical-writing", "unslop", "tdd", "correct", "sharpen")
+PSTACK_SKILLS = ("technical-writing", "unslop", "tdd", "correct", "sharpen",
+                 "create-verification-skill", "maintain-verification-skill", "poteto-mode")
 TOOL_SKILLS = ("agent-browser", "workers-best-practices")
 DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max", "web-design-guidelines", "apple-design", "design-taste-frontend")
 SKILL_DIRECTORIES = {"apple-design": "apple-design-skill", "design-taste-frontend": "taste-skill"}
@@ -39,7 +40,7 @@ def yaml(path):
 manifest = yaml(REPO / "chezmoi/dot_apm/apm.yml")
 lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
-assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 36
+assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 39
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
 assert manifest["targets"] == ["codex"]
 for specification in manifest["dependencies"]["apm"]:
@@ -78,6 +79,10 @@ for name in PSTACK_SKILLS:
     assert locked[name]["repo_url"] == "michael-denyer/pstack-claude"
     assert locked[name]["virtual_path"] == f"plugins/pstack/skills/{name}"
 assert locked["correct"]["resolved_commit"] == locked["sharpen"]["resolved_commit"]
+assert len({locked[name]["resolved_commit"] for name in
+            ("create-verification-skill", "maintain-verification-skill", "poteto-mode")}) == 1
+assert ".agents/skills/poteto-mode/references/codex-tools.md" in locked["poteto-mode"]["deployed_file_hashes"]
+assert ".agents/skills/create-verification-skill/references/feature-map-example/README.md" in locked["create-verification-skill"]["deployed_file_hashes"]
 assert locked["apple-design"]["repo_url"] == "dickwu/apple-design-skill"
 assert locked["design-taste-frontend"]["repo_url"] == "leonxlnx/taste-skill"
 assert locked["design-taste-frontend"]["virtual_path"] == "skills/taste-skill"

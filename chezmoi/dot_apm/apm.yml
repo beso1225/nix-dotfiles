@@ -42,6 +42,10 @@ dependencies:
     - michael-denyer/pstack-claude/plugins/pstack/skills/correct#main
     - michael-denyer/pstack-claude/plugins/pstack/skills/sharpen#main
 
+    - michael-denyer/pstack-claude/plugins/pstack/skills/create-verification-skill#main
+    - michael-denyer/pstack-claude/plugins/pstack/skills/maintain-verification-skill#main
+    - michael-denyer/pstack-claude/plugins/pstack/skills/poteto-mode#main
+
     # Japanese writing
     - nanaism/yomiyasu/skills/yomiyasu#main
 

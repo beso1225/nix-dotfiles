@@ -42,6 +42,9 @@ chezmoistate.boltdb
 .codex/skills/tdd
 .codex/skills/correct
 .codex/skills/sharpen
+.codex/skills/create-verification-skill
+.codex/skills/maintain-verification-skill
+.codex/skills/poteto-mode
 .codex/skills/yomiyasu
 .codex/skills/agent-browser
 .codex/skills/workers-best-practices
