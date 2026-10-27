@@ -8,6 +8,6 @@
 - Use TDD for behavior changes when a focused regression test is practical (Exploring -> Red -> Green -> Refactoring).
   Match verification to the change and complete the requested work.
 
-- When `coding_memory` is available, search it before investigating recurring
+- When `coding_memory` (or the mcp which name is starting with `mcp-coding-memory`) is available, search it before investigating recurring
 failures or relying on project-specific constraints. Use short English
 technical queries, read relevant notes, and check their applicability.
