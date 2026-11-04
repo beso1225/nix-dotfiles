@@ -1,6 +1,6 @@
 # AeroSpace configuration for the external-monitor bootstrap.
 #
-# This keeps the existing sample key bindings and Finder rule. Login startup
+# This keeps the existing sample key bindings and floating app rules. Login startup
 # is deliberately disabled here; launchd decides whether AeroSpace should run.
 
 config-version = 2
@@ -131,4 +131,29 @@ gaps.outer.right =      0
 
 [[on-window-detected]]
   if.app-id = "com.apple.finder"
+  run = "layout floating"
+
+# Muse
+[[on-window-detected]]
+  if.app-id = "com.meta.endo"
+  run = "layout floating"
+
+# 1Password
+[[on-window-detected]]
+  if.app-id = "com.1password.1password"
+  run = "layout floating"
+
+# Ente Auth
+[[on-window-detected]]
+  if.app-id = "io.ente.auth.mac"
+  run = "layout floating"
+
+# Slack
+[[on-window-detected]]
+  if.app-id = "com.tinyspeck.slackmacgap"
+  run = "layout floating"
+
+# Preview
+[[on-window-detected]]
+  if.app-id = "com.apple.Preview"
   run = "layout floating"
