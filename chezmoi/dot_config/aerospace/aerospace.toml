@@ -157,3 +157,13 @@ gaps.outer.right =      0
 [[on-window-detected]]
   if.app-id = "com.apple.Preview"
   run = "layout floating"
+
+# MATLAB
+[[on-window-detected]]
+  if.app-id = "com.mathworks.matlab"
+  run = "layout floating"
+
+# Zoom
+[[on-window-detected]]
+  if.app-id = "us.zoom.xos"
+  run = "layout floating"
