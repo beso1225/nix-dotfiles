@@ -129,7 +129,7 @@ for filename in ("GLOSSARY-FORMAT.md", "ADR-FORMAT.md"):
     assert f".agents/skills/domain-modeling/{filename}" in locked["domain-modeling"]["deployed_file_hashes"]
 
 EXPECTED = [
-    ".codex/AGENTS.md", ".codex/config.toml", ".codex/hooks.json",
+    ".agents/AGENTS.md", ".codex/AGENTS.md", ".codex/config.toml", ".codex/hooks.json",
     ".codex/runcat-hook.py",
     ".codex/skills/herdr/references/commands.md",
     ".apm/apm.yml", ".apm/apm.lock.yaml", ".apm/config.json",
@@ -199,6 +199,13 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
                                   input=path.read_text()))
 
         if populated:
+            # Reproduce the previous shared-instructions layout before migration.
+            (home / ".codex").mkdir()
+            (home / ".codex/AGENTS.md").write_text("previous personal instructions\n")
+            (home / ".agents").mkdir()
+            (home / ".agents/AGENTS.md").symlink_to("../.codex/AGENTS.md")
+            (home / ".claude").mkdir()
+            (home / ".claude/CLAUDE.md").symlink_to("../.codex/AGENTS.md")
             for target in EXCLUDED:
                 path = home / target
                 path.parent.mkdir(parents=True, exist_ok=True)
@@ -270,10 +277,16 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
             elif path.suffix == ".toml":
                 toml(path)
         assert (home / ".codex/runcat-hook.py").stat().st_mode & 0o111
+        agents_memory = home / ".agents/AGENTS.md"
+        assert not agents_memory.is_symlink(), "shared instructions must be a regular file"
+        assert agents_memory.read_bytes() == (source / "dot_agents/AGENTS.md").read_bytes()
+        assert agents_memory.read_bytes(), "shared instructions must not be empty"
+        assert (home / ".codex/AGENTS.md").read_bytes() == (
+            source / "dot_codex/AGENTS.md").read_bytes()
         claude_memory = home / ".claude/CLAUDE.md"
         assert claude_memory.is_symlink(), claude_memory
-        assert os.readlink(claude_memory) == "../.codex/AGENTS.md"
-        assert claude_memory.read_bytes() == (home / ".codex/AGENTS.md").read_bytes()
+        assert os.readlink(claude_memory) == "../.agents/AGENTS.md"
+        assert claude_memory.read_bytes() == agents_memory.read_bytes()
         before = {p.relative_to(home): p.read_bytes() for p in home.rglob("*") if p.is_file()}
         run("apply")
         after = {p.relative_to(home): p.read_bytes() for p in home.rglob("*") if p.is_file()}

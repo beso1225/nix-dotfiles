@@ -8,11 +8,11 @@ directories: applications often store credentials and session data beside config
 
 | Target under `$HOME` | Chezmoi-owned content | Other owner / excluded content |
 | --- | --- | --- |
-| `.codex` | `AGENTS.md`, selected preferences in `config.toml`, RunCat registration in `hooks.json`, `runcat-hook.py`, the customized `herdr` skill | Codex owns auth, sessions, databases, plugins, bundled `.system` skills, generated rules, runtimes, project trust, and app integration settings; herdr owns its integration script and hook registrations |
+| `.codex` | `AGENTS.md` with Notion shared-context rules, selected preferences in `config.toml`, RunCat registration in `hooks.json`, `runcat-hook.py`, the customized `herdr` skill | Codex owns auth, sessions, databases, plugins, bundled `.system` skills, generated rules, runtimes, project trust, and app integration settings; herdr owns its integration script and hook registrations |
 | `.apm` | `apm.yml`, `apm.lock.yaml`, `config.json` | APM owns `apm_modules` and deployed skills |
-| `.agents` | `AGENTS.md` symlink to `../.codex/AGENTS.md` | APM deploys the twelve dependencies listed below |
+| `.agents` | `AGENTS.md` contains the shared personal instructions | APM deploys the twelve dependencies listed below |
 | `.dsh` | `AGENTS.md` points pstack workflows to the DSH mapping | DSH owns credentials, profiles, sessions, and runtime data |
-| `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.codex/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
+| `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.agents/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
 | `.config/btop` | `btop.conf` | Downloaded themes |
@@ -53,16 +53,19 @@ Codex's RunCat hook uses `$HOME` at execution time and replaces existing RunCat
 commands without adding duplicates. The other AI clients do not receive hooks
 pointing to herdr scripts that might not be installed yet.
 
-`~/.claude/CLAUDE.md` is a chezmoi-managed symlink to `~/.codex/AGENTS.md`, so
-Claude Code reuses the same personal instructions as Codex. It is declared with
-the `symlink_` source attribute and a relative target
-(`chezmoi/dot_claude/symlink_CLAUDE.md`); edit `dot_codex/AGENTS.md` to change the
-content. The `.chezmoiignore` exception `!.claude/CLAUDE.md` keeps only this link
-managed while the rest of `.claude` stays local.
+`~/.agents/AGENTS.md` contains the shared personal instructions as a regular
+file. Edit `chezmoi/dot_agents/AGENTS.md` to change the content. APM continues to
+own `.agents/skills`.
 
-`~/.agents/AGENTS.md` also links to `../.codex/AGENTS.md`, declared in
-`chezmoi/dot_agents/symlink_AGENTS.md`. Only this link is managed under `.agents`;
-APM continues to own `.agents/skills`.
+`~/.claude/CLAUDE.md` is a chezmoi-managed symlink to `../.agents/AGENTS.md`,
+declared in `chezmoi/dot_claude/symlink_CLAUDE.md`. The `.chezmoiignore` exception
+`!.claude/CLAUDE.md` keeps this link managed alongside `settings.json`.
+
+`~/.codex/AGENTS.md` explicitly directs Codex to read `~/.agents/AGENTS.md`.
+It also contains Codex-specific Coding-Memory guidance and the Notion
+shared-context rules, including the
+existing Agent Operating Guide URL and `instructions_version="0.0.6"` for Notion
+MCP calls. Its source file is `chezmoi/dot_codex/AGENTS.md`.
 
 These templates use chezmoi's documented
 [partial-file management](https://www.chezmoi.io/user-guide/manage-different-types-of-file/).
