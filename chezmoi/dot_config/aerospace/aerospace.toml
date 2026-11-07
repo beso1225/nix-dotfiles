@@ -177,3 +177,28 @@ gaps.outer.right =      0
 [[on-window-detected]]
   if.app-id = "com.apple.iCal"
   run = "layout floating"
+
+# Ghostty
+[[on-window-detected]]
+  if.app-id = "com.mitchellh.ghostty"
+  run = "move-node-to-workspace 2"
+
+# T3 Code Nightly and Beta share the same bundle ID.
+[[on-window-detected]]
+  if.app-id = "com.t3tools.t3code"
+  run = "move-node-to-workspace 3"
+
+# ChatGPT
+[[on-window-detected]]
+  if.app-id = "com.openai.codex"
+  run = "move-node-to-workspace 3"
+
+# DeepSeek Harness
+[[on-window-detected]]
+  if.app-id = "com.deepseek.dsh"
+  run = "move-node-to-workspace 3"
+
+# Obsidian
+[[on-window-detected]]
+  if.app-id = "md.obsidian"
+  run = "move-node-to-workspace 5"
