@@ -31,6 +31,49 @@
 - If Notion is unavailable, state which context could not be checked.
   Do not invent remembered facts or claim that an unsuccessful save succeeded.
 
+## Project progress checkpoints
+
+- Before finishing a substantial project task, evaluate whether the
+  project's durable state has changed. Do this proactively, even
+  when the user has not explicitly requested a memory update.
+
+- Treat the following as meaningful checkpoints:
+  - Starting, completing, reopening, or substantially advancing
+    a project phase or milestone.
+  - Implementing a significant feature or capability, even if
+    the overall milestone remains incomplete.
+  - Discovering or resolving a blocker that affects future work.
+  - Changing architecture, scope, technology, priorities, or plans.
+  - Finding that an existing Notion project status is outdated.
+
+- For a meaningful checkpoint, search for the existing project
+  Memory and update it before the final response. Preserve
+  relevant history and avoid creating duplicate pages.
+
+- Record a concise status: what changed, what is implemented,
+  what was actually verified, what remains, and the next
+  meaningful step. Include a date and source references.
+
+- Distinguish local working-tree changes, committed changes,
+  merged changes, tested behavior, and production deployment.
+  Never describe an unverified milestone as completed.
+
+- Treat the repository as the source of truth for implementation
+  details. Store only cross-session project status in Notion,
+  not code, commit logs, transient errors, or routine edits.
+
+- If no meaningful state change occurred, skip the write.
+  Do not save a redundant progress update merely because
+  another task or conversation ended.
+
+- When a Memory was updated, verify the saved content and
+  briefly mention the update in the final response. If the
+  update was needed but failed, report that it was not saved.
+
+- Respect the existing Agent Operating Guide, approval
+  requirements, exclusions, and Notion MCP instructions.
+  This rule does not authorize scheduled synchronization.
+
 # Coding-Memory
 - When `coding_memory` is available, search it before investigating recurring
 failures or relying on project-specific constraints. Use short English
