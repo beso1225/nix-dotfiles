@@ -178,6 +178,11 @@ gaps.outer.right =      0
   if.app-id = "com.apple.iCal"
   run = "layout floating"
 
+# Notes
+[[on-window-detected]]
+  if.app-id = "com.apple.Notes"
+  run = "layout floating"
+
 # Ghostty
 [[on-window-detected]]
   if.app-id = "com.mitchellh.ghostty"
