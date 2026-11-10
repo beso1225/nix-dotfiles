@@ -19,6 +19,7 @@ in
     nix-direnv
 
     git
+    jujutsu
     neovim
     jotworthy
     pi
