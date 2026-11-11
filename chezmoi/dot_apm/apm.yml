@@ -5,26 +5,26 @@ author: Yutaro Takagi
 dependencies:
   apm:
     # apm usage
-    - mizchi/skills/apm-usage#574aa669e590d8fe9680e37bd7842b492e21637d
+    - mizchi/skills/apm-usage#main
 
     # pkfire
-    - mizchi/pkfire/skills/pkfire#5e28fff65b7f5bbe1269e12861566838fbb03332
+    - mizchi/pkfire/skills/pkfire#main
 
     # moonbit skills
-    - moonbitlang/skills/skills/make-moonbit-c-bindings#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-agent-guide#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-c-binding#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-extract-spec-test#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-orientation#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-proof#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-refactoring#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/moonbit-spec-test-development#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - moonbitlang/skills/skills/ocaml2moonbit-migration#8b9f1bad14bc62560dbe3537855379e561a4e066
-    - mizchi/skills/moonbit-practice
-    - mizchi/skills/moonbit-js-binding
+    - moonbitlang/skills/skills/make-moonbit-c-bindings#master
+    - moonbitlang/skills/skills/moonbit-agent-guide#master
+    - moonbitlang/skills/skills/moonbit-c-binding#master
+    - moonbitlang/skills/skills/moonbit-extract-spec-test#master
+    - moonbitlang/skills/skills/moonbit-orientation#master
+    - moonbitlang/skills/skills/moonbit-proof#master
+    - moonbitlang/skills/skills/moonbit-refactoring#master
+    - moonbitlang/skills/skills/moonbit-spec-test-development#master
+    - moonbitlang/skills/skills/ocaml2moonbit-migration#master
+    - mizchi/skills/moonbit-practice#main
+    - mizchi/skills/moonbit-js-binding#main
 
     # typesafe-ai skills
-    - typesafe-ai/skills/skills/typesafe-ai#65a39f393687675ce170e6094757de20370365b9
+    - typesafe-ai/skills/skills/typesafe-ai#main
 
     # openai skills
     - openai/skills/skills/.curated/define-goal#main
@@ -47,7 +47,7 @@ dependencies:
     - michael-denyer/pstack-claude/plugins/pstack/skills/poteto-mode#main
 
     # Japanese writing
-    - nanaism/yomiyasu/skills/yomiyasu#main
+    - nanaism/yomiyasu#main
 
     # Browser automation and Cloudflare Workers
     - vercel-labs/agent-browser/skills/agent-browser#main
@@ -65,8 +65,8 @@ dependencies:
     - mattpocock/skills/skills/engineering/domain-modeling#main
 
     # my skills
-    - beso1225/agent-skills/skills/tenbin-astra-diff-review#b885d9b55297e2af0a409929c19a23900da3d3c3
+    - beso1225/agent-skills/skills/tenbin-astra-diff-review#main
   mcp: []
 scripts: {}
 targets:
-  - codex
+  - agent-skills

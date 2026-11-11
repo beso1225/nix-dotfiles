@@ -18,13 +18,13 @@ TOOL_SKILLS = ("agent-browser", "workers-best-practices")
 DESIGN_SKILLS = ("frontend-design", "ui-ux-pro-max", "web-design-guidelines", "apple-design", "design-taste-frontend")
 SKILL_DIRECTORIES = {"apple-design": "apple-design-skill", "design-taste-frontend": "taste-skill"}
 TRACKING_SKILLS = OPENAI_SKILLS + ("grilling", "domain-modeling", "yomiyasu") + PSTACK_SKILLS + TOOL_SKILLS + DESIGN_SKILLS
-DEFAULT_REF_SKILLS = ("moonbit-practice", "moonbit-js-binding")
+MIZCHI_SKILLS = ("moonbit-practice", "moonbit-js-binding")
 MOONBIT_SKILLS = (
     "make-moonbit-c-bindings", "moonbit-agent-guide", "moonbit-c-binding",
     "moonbit-extract-spec-test", "moonbit-orientation", "moonbit-proof",
     "moonbit-refactoring", "moonbit-spec-test-development", "ocaml2moonbit-migration",
 )
-APM_SKILLS = TRACKING_SKILLS + DEFAULT_REF_SKILLS + ("typesafe-ai", "tenbin-astra-diff-review") + MOONBIT_SKILLS
+APM_SKILLS = TRACKING_SKILLS + MIZCHI_SKILLS + ("typesafe-ai", "tenbin-astra-diff-review") + MOONBIT_SKILLS
 for skill in APM_SKILLS:
     skill = SKILL_DIRECTORIES.get(skill, skill)
     assert not (REPO / "chezmoi/dot_codex/skills" / skill).exists(), skill
@@ -42,7 +42,7 @@ lock = yaml(REPO / "chezmoi/dot_apm/apm.lock.yaml")
 locked = {dependency["name"]: dependency for dependency in lock["dependencies"]}
 assert len(locked) == len(lock["dependencies"]) == len(manifest["dependencies"]["apm"]) == 39
 assert set(locked) == set(APM_SKILLS) | {"apm-usage", "pkfire"}
-assert manifest["targets"] == ["codex"]
+assert manifest["targets"] == ["agent-skills"]
 for specification in manifest["dependencies"]["apm"]:
     location, separator, reference = specification.rpartition("#")
     if not separator:
@@ -52,20 +52,14 @@ for specification in manifest["dependencies"]["apm"]:
         name = "apple-design"
     elif location == "Leonxlnx/taste-skill/skills/taste-skill":
         name = "design-taste-frontend"
-    if name in TRACKING_SKILLS:
-        assert reference == "main", specification
-    elif name in DEFAULT_REF_SKILLS:
-        assert reference is None, specification
-    else:
-        assert re.fullmatch(r"[0-9a-f]{40}", reference), specification
+    expected_reference = "master" if name in MOONBIT_SKILLS else "main"
+    assert reference == expected_reference, specification
     dependency = locked[name]
     virtual_path = dependency.get("virtual_path")
     source_repo = dependency.get("materialization_repo_url", dependency["repo_url"])
     assert location == source_repo + (f"/{virtual_path}" if virtual_path else "")
     assert dependency.get("resolved_ref") == reference
     assert re.fullmatch(r"[0-9a-f]{40}", dependency["resolved_commit"])
-    if name not in TRACKING_SKILLS + DEFAULT_REF_SKILLS:
-        assert dependency["resolved_commit"] == reference
     hashes = dependency["deployed_file_hashes"]
     directory = SKILL_DIRECTORIES.get(name, name)
     assert f".agents/skills/{directory}/SKILL.md" in hashes
@@ -86,8 +80,8 @@ assert ".agents/skills/create-verification-skill/references/feature-map-example/
 assert locked["apple-design"]["repo_url"] == "dickwu/apple-design-skill"
 assert locked["design-taste-frontend"]["repo_url"] == "leonxlnx/taste-skill"
 assert locked["design-taste-frontend"]["virtual_path"] == "skills/taste-skill"
-for filename in ("scripts/draw.mjs", "scripts/inspect.mjs", "scripts/lib/cdp.mjs",
-                 "library/directions.json", "references/critique.md", "assets/base.css"):
+for filename in ("scripts/start.mjs", "scripts/gate.mjs", "scripts/shoot.mjs",
+                 "library/palettes.json", "references/layout-v4.md", "assets/system.css"):
     assert f".agents/skills/taste-skill/{filename}" in locked["design-taste-frontend"]["deployed_file_hashes"]
 for filename in ("references/hig-lookup.md", "references/cross-platform.md",
                  "references/hig/accessibility.md", "references/hig/liquid-glass.md",
@@ -112,7 +106,7 @@ for name, repository in (("agent-browser", "vercel-labs/agent-browser"),
 for filename in ("configuration.md", "runtime-patterns.md", "platform-apis.md"):
     assert f".agents/skills/workers-best-practices/references/{filename}" in locked["workers-best-practices"]["deployed_file_hashes"]
 assert locked["yomiyasu"]["repo_url"] == "nanaism/yomiyasu"
-assert locked["yomiyasu"]["virtual_path"] == "skills/yomiyasu"
+assert not locked["yomiyasu"].get("virtual_path")
 for filename in ("LICENSE", "UNICODE-LICENSE.txt", "references/review-points.md",
                  "scripts/yomiyasu_check.py", "scripts/yomiyasu_lint.py",
                  "scripts/yomiyasu_diff.py", "scripts/markdown_visibility.py"):
