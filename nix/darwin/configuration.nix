@@ -28,9 +28,9 @@
   # Set the default shell to zsh
   programs.zsh.enable = true;
 
-  # Block roots used by the compromised eMudhra intermediates, including cross-signs.
+  # Block the remaining cross-sign root used by the compromised eMudhra intermediates.
+  # NSS already excludes emSign ECC Root CA - G3; blacklisting an absent root fails the build.
   security.pki.caCertificateBlacklist = [
-    "emSign ECC Root CA - G3"
     "Comodo AAA Services root"
   ];
 
