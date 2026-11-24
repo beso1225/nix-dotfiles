@@ -139,6 +139,7 @@ local testChezmoiTask = new Task {
     "chezmoi/dot_apm/**/*"
     "chezmoi/dot_claude/**/*"
     "chezmoi/dot_copilot/**/*"
+    "chezmoi/dot_gemini/**/*"
     "chezmoi/dot_latexmkrc"
     "nix/home/shell.nix"
     "tests/chezmoi/phase3_contract.sh"

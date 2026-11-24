@@ -128,7 +128,7 @@ EXPECTED = [
     ".codex/skills/herdr/references/commands.md",
     ".apm/apm.yml", ".apm/apm.lock.yaml", ".apm/config.json",
     ".claude/settings.json", ".claude/CLAUDE.md",
-    ".copilot/settings.json", ".latexmkrc",
+    ".copilot/settings.json", ".gemini/AGENTS.md", ".latexmkrc",
     ".config/btop/btop.conf", ".config/gh/config.yml", ".config/git/ignore",
     ".config/ghostty/config", ".config/herdr/config.toml",
     ".config/hunk/config.toml", ".config/karabiner/karabiner.json",
@@ -144,7 +144,9 @@ EXCLUDED = [
     ".codex/rules/default.rules", ".codex/herdr-agent-state.sh",
     ".apm/apm_modules/test", ".agents/skills/apm-usage/SKILL.md",
     ".agents/skills/pkfire/SKILL.md", ".claude/hooks/herdr-agent-state.sh",
-    ".copilot/hooks/herdr-agent-state.sh", ".config/gh/hosts.yml",
+    ".copilot/hooks/herdr-agent-state.sh",
+    ".gemini/antigravity-cli/test", ".gemini/config/test", ".gemini/sandbox/test",
+    ".config/gh/hosts.yml",
     ".config/github-copilot/auth.db", ".config/jotworthy/env",
     ".config/herdr/session.json", ".config/hunk/state.json",
     ".config/karabiner/automatic_backups/test.json",
@@ -277,6 +279,8 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
         assert agents_memory.read_bytes(), "shared instructions must not be empty"
         assert (home / ".codex/AGENTS.md").read_bytes() == (
             source / "dot_codex/AGENTS.md").read_bytes()
+        assert (home / ".gemini/AGENTS.md").read_bytes() == (
+            source / "dot_gemini/AGENTS.md").read_bytes()
         claude_memory = home / ".claude/CLAUDE.md"
         assert claude_memory.is_symlink(), claude_memory
         assert os.readlink(claude_memory) == "../.agents/AGENTS.md"

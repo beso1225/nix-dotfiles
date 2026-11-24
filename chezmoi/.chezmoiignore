@@ -66,6 +66,9 @@ chezmoistate.boltdb
 # DSH's global instructions are managed; credentials and runtime data are not.
 .dsh/*
 !.dsh/AGENTS.md
+# Gemini/Antigravity global instructions are managed; runtime data and config are not.
+.gemini/*
+!.gemini/AGENTS.md
 .claude/*
 !.claude/settings.json
 !.claude/CLAUDE.md

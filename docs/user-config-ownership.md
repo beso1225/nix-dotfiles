@@ -12,6 +12,7 @@ directories: applications often store credentials and session data beside config
 | `.apm` | `apm.yml`, `apm.lock.yaml`, `config.json` | APM owns `apm_modules` and deployed skills |
 | `.agents` | `AGENTS.md` contains the shared personal instructions | APM deploys the 39 dependencies in `apm.yml` |
 | `.dsh` | `AGENTS.md` points pstack workflows to the DSH mapping | DSH owns credentials, profiles, sessions, and runtime data |
+| `.gemini` | `AGENTS.md` directs Gemini/Antigravity to `~/.agents/AGENTS.md` and Notion shared memory | Gemini/Antigravity owns `antigravity-cli`, `config`, `sandbox`, and runtime data |
 | `.claude` | `settings.json`: `theme` only; `CLAUDE.md` symlink to `../.agents/AGENTS.md` | Preserve all other settings, including herdr hooks; ignore hooks, caches, and backups |
 | `.copilot` | `settings.json`: `showReasoning` only | Preserve other settings; ignore auth/config state, permissions, sessions, and herdr scripts |
 | `.latexmkrc` | LuaLaTeX/Biber commands and output directories | Backup files |
@@ -66,6 +67,10 @@ It also contains Codex-specific Coding-Memory guidance and the Notion
 shared-context rules, including the
 existing Agent Operating Guide URL and `instructions_version="0.0.6"` for Notion
 MCP calls. Its source file is `chezmoi/dot_codex/AGENTS.md`.
+
+`~/.gemini/AGENTS.md` directs Gemini/Antigravity to read `~/.agents/AGENTS.md`
+and use Notion shared memory with the Agent Operating Guide URL and
+`instructions_version="0.0.6"`. Its source file is `chezmoi/dot_gemini/AGENTS.md`.
 
 These templates use chezmoi's documented
 [partial-file management](https://www.chezmoi.io/user-guide/manage-different-types-of-file/).
