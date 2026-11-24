@@ -52,6 +52,9 @@ in
     cargo-compete
     mini-redis
 
+    # Lean toolchains selected by each project's lean-toolchain file
+    elan
+
     # C/C++ tools
     gccWithoutCc
     cmake
