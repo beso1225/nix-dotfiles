@@ -168,8 +168,12 @@ with tempfile.TemporaryDirectory(prefix="nix-dotfiles-phase4-") as temporary:
     shutil.copytree(REPO / "chezmoi", source)
     # Accidental recursive imports must remain ignored even if in source state.
     for target in EXCLUDED:
-        path = source.joinpath(*(f"dot_{p[1:]}" if p.startswith(".") else p
-                                 for p in Path(target).parts))
+        path = source
+        for part in Path(target).parts:
+            name = f"dot_{part[1:]}" if part.startswith(".") else part
+            if (path / f"private_{name}").is_dir():
+                name = f"private_{name}"
+            path = path / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("unwanted source content\n")
 

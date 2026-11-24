@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "project_panel": {
     "dock": "left"
   },
@@ -50,12 +53,9 @@
       "always_treat_brackets_as_autoclosed": false,
     },
   },
-  "features": {
-    "edit_prediction_provider": "copilot",
-  },
   "terminal": {
     "font_size": 12.0,
-    "font_family": "MesloLGS NF",
+    "font_family": "JetBrains Mono",
   },
   "git_panel": {
     "dock": "left",
