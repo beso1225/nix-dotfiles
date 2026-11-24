@@ -20,3 +20,7 @@ keybind = cmd+enter=unbind
 
 title = "Ghostty"
 window-subtitle = working-directory
+
+keybind = global:alt+space=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-autohide = true
