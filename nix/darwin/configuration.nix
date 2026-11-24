@@ -28,6 +28,20 @@
   # Set the default shell to zsh
   programs.zsh.enable = true;
 
+  # Set the GUI session environment on every login.
+  launchd.user.agents.t3code-environment.serviceConfig = {
+    Label = "com.yutarotakagi.t3code-environment";
+    ProgramArguments = [
+      "/bin/launchctl"
+      "setenv"
+      "T3CODE_TELEMETRY_ENABLED"
+      "false"
+      "T3CODE_OTEL_SDK_DISABLED"
+      "true"
+    ];
+    RunAtLoad = true;
+  };
+
   # Block the remaining cross-sign root used by the compromised eMudhra intermediates.
   # NSS already excludes emSign ECC Root CA - G3; blacklisting an absent root fails the build.
   security.pki.caCertificateBlacklist = [
