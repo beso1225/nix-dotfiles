@@ -44,7 +44,7 @@
   # macOS defaults
   system.defaults = {
     NSGlobalDomain = {
-      AppleInterfaceStyle = "Dark";
+      AppleInterfaceStyle = null;
       "com.apple.mouse.tapBehavior" = 1;
 
       # menubar space size
